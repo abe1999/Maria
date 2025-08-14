@@ -1,0 +1,131 @@
+/* ==========================================================================
+   Página de Detalhe do Evento
+   ========================================================================== */
+
+.event-detail-page {
+  padding: 60px 0;
+  background-color: #fff;
+}
+
+.event-detail-page .container {
+  max-width: 800px; /* Largura ideal para leitura */
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+#event-title-full {
+  font-family: "Merriweather", serif;
+  font-size: clamp(1.8rem, 5vw, 2.8rem); /* Título responsivo */
+  line-height: 1.2;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+/* Corrigido de .news-meta para .event-meta para corresponder ao HTML */
+.event-meta {
+  font-family: "Roboto", sans-serif;
+  color: #888;
+  margin-bottom: 30px;
+  font-size: 0.9rem;
+}
+
+/* Corrigido de .main-news-image para .main-event-image */
+.main-event-image {
+  width: 100%;
+  height: auto;
+  max-height: 450px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 40px;
+}
+
+/* Corrigido de .news-content-full para .event-content-full */
+.event-content-full p {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #444;
+  margin-bottom: 20px;
+}
+
+/* Corrigido de #news-gallery-container para #event-gallery-container */
+#event-gallery-container {
+  margin-top: 60px;
+  padding-top: 40px;
+  border-top: 1px solid #eee;
+}
+
+.gallery-title {
+  font-family: "Merriweather", serif;
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 1.8rem;
+}
+
+.photo-gallery {
+  display: grid;
+  /* Cria 3 colunas em telas maiores e se ajusta para telas menores */
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 15px;
+}
+
+.photo-gallery a {
+  display: block;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.photo-gallery img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.photo-gallery img:hover {
+  transform: scale(1.05);
+}
+
+/* Corrigido de #news-drive-link-container para #event-drive-link-container */
+#event-drive-link-container {
+  text-align: center;
+  margin-top: 40px;
+}
+
+/* ==========================================================================
+   Estilos de Botão Genérico (.btn)
+   ========================================================================== */
+
+.btn {
+  /* Box Model e Layout */
+  display: inline-block; /* Permite que o link (<a>) tenha padding e margin verticais */
+  padding: 12px 24px; /* Espaçamento interno: 12px em cima/baixo, 24px nas laterais */
+  margin-top: 20px; /* Adiciona um espaço acima do botão */
+
+  /* Tipografia */
+  color: #ffffff; /* Cor do texto: branco */
+  font-family: "Roboto", sans-serif; /* Fonte consistente com o resto do site */
+  font-size: 1rem; /* Tamanho da fonte */
+  font-weight: 700; /* Deixa o texto em negrito (bold) */
+  text-align: center; /* Centraliza o texto (útil se o botão ocupar a largura toda) */
+  text-decoration: none; /* Remove o sublinhado padrão dos links */
+  text-transform: uppercase; /* Deixa o texto em maiúsculas */
+
+  /* Aparência */
+  background-color: #007bff; /* Cor de fundo principal: um azul moderno */
+  border: none; /* Remove qualquer borda padrão */
+  border-radius: 8px; /* Cantos arredondados */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil para dar profundidade */
+
+  /* Animação */
+  transition: all 0.3s ease; /* Animação suave para todas as propriedades ao passar o mouse */
+}
+
+/* Efeito ao passar o mouse sobre o botão */
+.btn:hover {
+  background-color: #0056b3; /* Um tom de azul mais escuro */
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Aumenta a sombra para um efeito de "levantar" */
+  transform: translateY(-2px); /* Move o botão 2px para cima */
+  cursor: pointer; /* Muda o cursor para a "mãozinha" para indicar que é clicável */
+}

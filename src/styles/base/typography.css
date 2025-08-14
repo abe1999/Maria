@@ -1,0 +1,30 @@
+/* =================================================================
+TIPOGRAFIA E CONTAINER
+Estilos base para textos e o container principal.
+================================================================= */
+
+body {
+  font-family: var(--font-primary);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--color-text);
+  background-color: var(--color-white);
+   /* LINHA ADICIONADA AQUI */
+  padding-top: 91px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-secondary);
+  font-weight: 700;
+  color: var(--color-headings);
+  line-height: 1.2;
+}
+
+/* Classe utilitária para centralizar o conteúdo */
+.container {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}

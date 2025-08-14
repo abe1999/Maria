@@ -1,0 +1,96 @@
+[
+  {
+    "id": "sao-pedro",
+    "nome": "Comunidade São Pedro",
+    "imagemCard": "https://picsum.photos/id/43/800/600",
+    "imagemBanner": "https://picsum.photos/id/043/1200/800",
+    "bairro": "Centro",
+    "resumo": "Localizada no bairro Centro, é a comunidade mais antiga da nossa paróquia.",
+    "historia": "Fundada em 1975, a Comunidade São Pedro serve como um pilar de fé e tradição no coração da cidade, reunindo gerações de fiéis em suas celebrações e atividades pastorais.",
+    "horarios": [
+      { "dia": "Domingo", "descricao": "Missa às 8h e 19h" },
+      { "dia": "Quarta-feira", "descricao": "Novena às 19h30" },
+      {
+        "dia": "Toda 1ª Sexta-feira do mês",
+        "descricao": "Missa do Sagrado Coração às 7h"
+      }
+    ],
+    "endereco": "Av. Carlos Gomes, 964 - Centro, Porto Velho (RO)",
+    "googleMapsUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3942.923811818276!2d-63.90566868521504!3d-8.79198089373908!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x92325e4af235bc6d%3A0x7e34b3f619e859a1!2sAv.%20Carlos%20Gomes%2C%20964%20-%20Centro%2C%20Porto%20Velho%20-%20RO%2C%2076801-150!5e0!3m2!1spt-BR!2sbr!4v1660000000001"
+  },
+  {
+    "id": "santo-antonio",
+    "nome": "Comunidade Santo Antônio",
+    "imagemCard": "https://picsum.photos/id/44/800/600",
+    "imagemBanner": "https://picsum.photos/id/044/1200/800",
+    "bairro": "Aponiã",
+    "resumo": "Uma comunidade vibrante e acolhedora no bairro da Aponiã.",
+    "historia": "A comunidade Santo Antônio foi fundada em 1985 por um grupo de fiéis devotos. Sua festa do padroeiro em junho é uma das mais tradicionais e aguardadas da região.",
+    "horarios": [
+      { "dia": "Domingo", "descricao": "Missa às 10h" },
+      { "dia": "Sábado", "descricao": "Celebração da Palavra às 19h" }
+    ],
+    "endereco": "Rua Exemplo, 456 - Bairro Aponiã, Porto Velho (RO)",
+    "googleMapsUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3942.923811818276!2d-63.90566868521504!3d-8.79198089373908!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x92325e4af235bc6d%3A0x7e34b3f619e859a1!2sAv.%20Carlos%20Gomes%2C%20964%20-%20Centro%2C%20Porto%20Velho%20-%20RO%2C%2076801-150!5e0!3m2!1spt-BR!2sbr!4v1660000000002"
+  },
+  {
+    "id": "nossa-senhora-aparecida",
+    "nome": "Comunidade N. Sra. Aparecida",
+    "imagemCard": "https://picsum.photos/id/59/800/600",
+    "imagemBanner": "https://picsum.photos/id/059/1200/800",
+    "bairro": "Nova Porto Velho",
+    "resumo": "A casa da Mãe Aparecida em nossa paróquia, no bairro Nova Porto Velho.",
+    "historia": "Dedicada à padroeira do Brasil, esta comunidade é conhecida por sua grandiosa festa em outubro e por suas fortes obras de caridade e assistência social.",
+    "horarios": [
+      { "dia": "Domingo", "descricao": "Missa às 7h30 e 18h" },
+      { "dia": "Todo dia 12 do mês", "descricao": "Missa Votiva às 19h" }
+    ],
+    "endereco": "Rua Exemplo, 789 - Nova Porto Velho, Porto Velho (RO)",
+    "googleMapsUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3942.923811818276!2d-63.90566868521504!3d-8.79198089373908!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x92325e4af235bc6d%3A0x7e34b3f619e859a1!2sAv.%20Carlos%20Gomes%2C%20964%20-%20Centro%2C%20Porto%20Velho%20-%20RO%2C%2076801-150!5e0!3m2!1spt-BR!2sbr!4v1660000000003"
+  },
+  {
+    "id": "sao-francisco",
+    "nome": "Comunidade São Francisco de Assis",
+    "imagemCard": "https://picsum.photos/id/6/800/600",
+    "imagemBanner": "https://picsum.photos/id/06/1200/800",
+    "bairro": "Caiari",
+    "resumo": "Inspirada no carisma franciscano, um refúgio de paz no bairro Caiari.",
+    "historia": "Esta comunidade segue os ensinamentos de São Francisco, com forte atuação na pastoral da ecologia e no cuidado com os animais e os mais necessitados.",
+    "horarios": [
+      { "dia": "Sábado", "descricao": "Missa às 18h" },
+      { "dia": "Terça-feira", "descricao": "Terço dos Homens às 20h" }
+    ],
+    "endereco": "Rua Exemplo, 101 - Bairro Caiari, Porto Velho (RO)",
+    "googleMapsUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3942.923811818276!2d-63.90566868521504!3d-8.79198089373908!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x92325e4af235bc6d%3A0x7e34b3f619e859a1!2sAv.%20Carlos%20Gomes%2C%20964%20-%20Centro%2C%20Porto%20Velho%20-%20RO%2C%2076801-150!5e0!3m2!1spt-BR!2sbr!4v1660000000004"
+  },
+  {
+    "id": "santa-luzia",
+    "nome": "Comunidade Santa Luzia",
+    "imagemCard": "https://picsum.photos/id/11/800/600",
+    "imagemBanner": "https://picsum.photos/id/11/1200/800",
+    "bairro": "Embratel",
+    "resumo": "A protetora dos olhos tem sua casa em nossa paróquia, no bairro Embratel.",
+    "historia": "Conhecida pela tradicional bênção dos olhos em sua festa no dia 13 de dezembro, a comunidade atrai devotos de toda a cidade em busca de fé e cura.",
+    "horarios": [
+      { "dia": "Domingo", "descricao": "Missa às 9h" },
+      { "dia": "Todo dia 13 do mês", "descricao": "Bênção dos Olhos às 18h" }
+    ],
+    "endereco": "Rua Exemplo, 222 - Bairro Embratel, Porto Velho (RO)",
+    "googleMapsUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3942.923811818276!2d-63.90566868521504!3d-8.79198089373908!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x92325e4af235bc6d%3A0x7e34b3f619e859a1!2sAv.%20Carlos%20Gomes%2C%20964%20-%20Centro%2C%20Porto%20Velho%20-%20RO%2C%2076801-150!5e0!3m2!1spt-BR!2sbr!4v1660000000005"
+  },
+  {
+    "id": "sao-joao-batista",
+    "nome": "Comunidade São João Batista",
+    "imagemCard": "https://picsum.photos/id/37/800/600",
+    "imagemBanner": "https://picsum.photos/id/37/1200/800",
+    "bairro": "Jardim Eldorado",
+    "resumo": "Uma comunidade jovem e com forte presença da pastoral da juventude.",
+    "historia": "Com uma das maiores festas juninas da região, a comunidade São João Batista é um ponto de encontro para jovens e famílias, com atividades e missas dinâmicas.",
+    "horarios": [
+      { "dia": "Sábado", "descricao": "Missa Jovem às 19h30" },
+      { "dia": "Quinta-feira", "descricao": "Adoração ao Santíssimo às 19h" }
+    ],
+    "endereco": "Rua Exemplo, 333 - Jardim Eldorado, Porto Velho (RO)",
+    "googleMapsUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3942.923811818276!2d-63.90566868521504!3d-8.79198089373908!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x92325e4af235bc6d%3A0x7e34b3f619e859a1!2sAv.%20Carlos%20Gomes%2C%20964%20-%20Centro%2C%20Porto%20Velho%20-%20RO%2C%2076801-150!5e0!3m2!1spt-BR!2sbr!4v1660000000006"
+  }
+]

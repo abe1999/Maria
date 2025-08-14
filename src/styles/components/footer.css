@@ -1,0 +1,138 @@
+/* =================================================================
+   ESTILOS DO RODAPÉ (FOOTER) - VERSÃO COMPLETA E RESPONSIVA
+================================================================= */
+
+/* --- Estrutura Principal (Desktop) --- */
+.main-footer {
+  background-color: #f8f9fa;
+  padding: 60px 0 0 0;
+  color: var(--color-text-light);
+  font-size: 15px;
+}
+
+.main-footer a {
+  color: var(--color-text-light);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.main-footer a:hover {
+  color: var(--color-primary);
+}
+
+/* --- Caixa de Informações (Desktop) --- */
+.footer-info-box {
+  display: flex; /* Cria o layout de colunas lado a lado */
+  justify-content: space-between;
+  gap: 30px;
+  padding: 30px;
+  border: 1px solid var(--color-border, #e0e0e0);
+  border-radius: 12px;
+  margin-bottom: 50px;
+}
+
+.footer-column {
+  flex: 1; /* Faz as colunas dividirem o espaço igualmente */
+}
+
+.footer-column h4 {
+  font-family: var(--font-primary);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--color-primary);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.footer-column p {
+  line-height: 1.7;
+  margin-bottom: 10px;
+}
+
+.footer-column .fa-solid,
+.footer-column .fa-brands {
+  margin-right: 8px;
+  color: var(--color-primary);
+}
+
+.footer-logo {
+  max-height: 100px;
+  margin-bottom: 20px;
+}
+
+/* --- Barra Inferior (Desktop) --- */
+.footer-bottom-bar {
+  background-color: #e9ecef;
+  padding: 20px 0;
+  font-size: 14px;
+}
+
+.footer-bottom-bar .container {
+  display: flex; /* Coloca o copyright e o "desenvolvido por" lado a lado */
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-bottom-bar a {
+  font-weight: bold;
+  color: var(--color-primary);
+}
+
+.footer-bottom-bar .fa-heart {
+  color: #e74c3c;
+}
+
+/* =================================================================
+   AJUSTES RESPONSIVOS PARA CELULAR E TABLET
+================================================================= */
+
+/* Breakpoint para tablets e celulares maiores */
+@media (max-width: 992px) {
+
+  /* Adicione esta nova regra dentro da @media (max-width: 992px) */
+
+  .footer-logo {
+    display: block;      /* Trata a imagem como um bloco */
+    margin-left: auto;   /* Margem esquerda automática */
+    margin-right: auto;  /* Margem direita automática */
+  }
+  /*
+    Força as colunas a ficarem uma sobre a outra.
+  */
+  .footer-info-box {
+    flex-direction: column; /* Empilha as colunas verticalmente */
+    align-items: center; /* Centraliza o conteúdo de cada coluna */
+    text-align: center; /* Centraliza o texto dentro de cada coluna */
+  }
+
+  .footer-column {
+    min-width: 100%; /* Garante que cada coluna ocupe a largura total */
+    margin-bottom: 30px; /* Adiciona um espaço entre as colunas empilhadas */
+  }
+
+  .footer-column:last-child {
+    margin-bottom: 0; /* Remove o espaço do último item */
+  }
+
+  /* ===== NOVAS REGRAS ADICIONADAS AQUI ===== */
+  .footer-column .fa-solid,
+  .footer-column .fa-brands {
+    display: block;      /* Faz o ícone ocupar sua própria linha */
+    margin-right: 0;     /* Remove a margem da direita que existia no desktop */
+    margin-bottom: 10px; /* Adiciona um espaço abaixo do ícone */
+    font-size: 2rem;     /* Aumenta um pouco o ícone para dar mais destaque */
+  }
+
+  .footer-column p {
+    line-height: 1.5; /* Ajusta a altura da linha para o texto do e-mail */
+  }
+}
+
+/* Breakpoint para celulares menores */
+@media (max-width: 768px) {
+  .footer-bottom-bar .container {
+    flex-direction: column; /* Empilha o copyright e o "desenvolvido por" */
+    gap: 10px; /* Adiciona um pequeno espaço entre eles */
+    text-align: center;
+  }
+}

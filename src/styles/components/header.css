@@ -1,0 +1,257 @@
+/* =================================================================
+   ESTILOS DO CABEÇALHO (VERSÃO REFINADA)
+================================================================= */
+
+/* --- Cabeçalho Principal --- */
+.main-header {
+  background-color: var(--color-primary); /* Azul Sereno */
+  padding: 15px 0;
+  border-bottom: 1px solid var(--color-secondary); /* Dourado Sóbrio */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  transition: padding 0.4s ease-in-out;
+}
+
+.main-header .container,
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.main-header .logo img {
+  height: 75px;
+  width: auto;
+  margin-top: -7.5px;
+  margin-bottom: -7.5px;
+
+  transition: height 0.4s ease-in-out, margin 0.4s ease-in-out;
+}
+
+/* --- Navegação Principal (Desktop) --- */
+.main-nav {
+  flex-grow: 1;
+}
+.main-nav ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+.main-nav ul li a {
+  font-family: var(--font-secondary); /* Merriweather - Fonte mais clássica */
+  font-size: 15px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+  padding: 10px 0;
+  position: relative;
+  transition: color 0.3s ease;
+}
+.main-nav ul li a:hover {
+  color: var(--color-secondary-hover);
+}
+
+.main-nav ul li a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--color-secondary-hover);
+  transition: width 0.3s ease;
+}
+.main-nav ul li a:hover::after {
+  width: 100%;
+}
+
+/* --- Redes Sociais --- */
+.social-media {
+  display: flex;
+  gap: 18px;
+}
+.social-media a {
+  font-size: 18px;
+  color: var(--color-secondary);
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+.social-media a:hover {
+  color: var(--color-secondary-hover);
+  transform: scale(1.1);
+}
+
+/* --- Menu Dropdown (REFINADO) --- */
+.main-nav .dropdown {
+  position: relative;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: var(--color-primary);
+  min-width: 240px; /* Um pouco mais largo */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--color-secondary);
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.dropdown-content a {
+  font-family: var(--font-primary);
+  font-size: 15px;
+  font-weight: 500;
+  text-transform: none;
+  color: var(--color-secondary);
+  padding: 15px 25px; /* Aumentamos o padding esquerdo para compensar */
+  display: block;
+  transition: all 0.3s ease;
+}
+
+/* O resto do seu CSS continua igual... */
+.dropdown-content a::after {
+  display: none;
+}
+
+.dropdown-content a:hover {
+  background-color: var(--color-primary-dark);
+  color: var(--color-secondary-hover);
+  gap: 15px; /* Efeito sutil no hover */
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.drop-btn .fa-caret-down {
+  color: var(--color-secondary);
+  margin-left: 6px;
+  font-size: 0.8em;
+  transition: transform 0.3s ease;
+}
+.dropdown:hover .drop-btn .fa-caret-down {
+  transform: rotate(180deg);
+}
+
+/* --- Header Rolado --- */
+.main-header.scrolled {
+  padding: 5px 0;
+}
+.main-header.scrolled .logo img {
+  height: 45px;
+}
+
+/* =================================================================
+   ESTILOS RESPONSIVOS DO CABEÇALHO
+================================================================= */
+.hamburger-menu,
+.close-menu-button {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: var(--color-secondary);
+}
+body.menu-open {
+  overflow: hidden;
+}
+
+@media (max-width: 992px) {
+  .main-nav ul,
+  .social-media {
+    display: none;
+  }
+  .hamburger-menu {
+    display: block;
+  }
+
+  .header-right {
+    flex-grow: 1; 
+    display: flex; 
+    justify-content: flex-end; /
+  }
+
+  .main-nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 300px;
+    max-width: 80%;
+    height: 100vh;
+    background-color: var(--color-primary);
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+    z-index: 2000;
+    transition: right 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+    padding: 60px 20px 20px 20px;
+    flex-grow: 0;
+  }
+
+  .menu-open .main-nav {
+    right: 0;
+  }
+  .menu-open .main-header {
+    z-index: 2001;
+  }
+
+  .close-menu-button {
+    display: block;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 28px;
+  }
+  .main-nav ul {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+  }
+  .main-nav ul li {
+    width: 100%;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .main-nav ul li a {
+    /* Retorna para a fonte principal no menu mobile para melhor leitura */
+    font-family: var(--font-primary);
+    font-size: 18px;
+    display: block;
+    width: 100%;
+    padding: 20px 10px;
+  }
+
+  .dropdown-content {
+    position: static;
+    display: none;
+    box-shadow: none;
+    border: none;
+    background-color: var(--color-primary-dark);
+    padding-left: 20px; /* Adiciona um recuo para os sub-itens */
+  }
+  .dropdown-content a {
+    gap: 10px;
+    padding: 12px 15px;
+    font-size: 16px;
+  }
+  .dropdown.active .dropdown-content {
+    display: block;
+  }
+
+  body.menu-open::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1999;
+    transition: opacity 0.4s ease;
+  }
+}

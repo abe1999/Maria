@@ -1,0 +1,102 @@
+[
+  {
+    "id": "senior",
+    "nome": "Acampamento Sênior",
+    "classeCor": "cor-senior",
+    "icone": "fa-solid fa-crown",
+    "descricao": "A experiência fundamental para quem busca um encontro profundo e verdadeiro com o amor de Deus. Um fim de semana que redefine caminhos e renova a esperança.",
+    "detalhes": [
+      { "icone": "fa-solid fa-users", "titulo": "Idade", "valor": "A partir de 25 anos" },
+      { "icone": "fa-solid fa-calendar-days", "titulo": "Data", "valor": "15 a 17 de Agosto, 2025" },
+      { "icone": "fa-solid fa-dollar-sign", "titulo": "Valor", "valor": "R$ 120,00" }
+    ],
+    "fotos": [
+      "https://picsum.photos/id/237/400/300",
+      "https://picsum.photos/id/10/400/300"
+    ],
+    "video": {
+      "titulo": "Depoimento que Transforma",
+      "url": "/assets/video/pessoas.mp4"
+    }
+  },
+  {
+    "id": "juvenil",
+    "nome": "Acampamento Juvenil",
+    "classeCor": "cor-juvenil",
+    "icone": "fa-solid fa-child-reaching",
+    "descricao": "Energia, louvor e amizade! Um acampamento para jovens que desejam descobrir seu lugar na Igreja e no mundo, vivendo a fé com alegria e intensidade.",
+    "detalhes": [
+      { "icone": "fa-solid fa-users", "titulo": "Idade", "valor": "De 18 a 24 anos" },
+      { "icone": "fa-solid fa-calendar-days", "titulo": "Data", "valor": "26 a 28 de Setembro, 2025" },
+      { "icone": "fa-solid fa-dollar-sign", "titulo": "Valor", "valor": "R$ 100,00" }
+    ],
+    "fotos": [
+      "https://picsum.photos/id/1043/400/300",
+      "https://picsum.photos/id/1059/400/300"
+    ],
+    "video": {
+      "titulo": "A Melhor Experiência da Minha Vida",
+      "url": "/assets/video/pessoas.mp4"
+    }
+  },
+  {
+    "id": "casais",
+    "nome": "Acampamento de Casais",
+    "classeCor": "cor-casais",
+    "icone": "fa-solid fa-heart",
+    "descricao": "Um momento para reconectar, dialogar e fortalecer os laços matrimoniais sob o olhar de Deus. Uma oportunidade para redescobrir o amor e a vocação da família.",
+    "detalhes": [
+        { "icone": "fa-solid fa-users", "titulo": "Público", "valor": "Casais (casados ou não)" },
+        { "icone": "fa-solid fa-calendar-days", "titulo": "Data", "valor": "17 a 19 de Outubro, 2025" },
+        { "icone": "fa-solid fa-dollar-sign", "titulo": "Valor", "valor": "R$ 250,00 (por casal)" }
+    ],
+    "fotos": [
+      "https://picsum.photos/id/367/400/300",
+      "https://picsum.photos/id/163/400/300"
+    ],
+    "video": {
+      "titulo": "Restaurou Nosso Casamento",
+      "url": "/assets/video/pessoas.mp4"
+    }
+  },
+  {
+    "id": "fac",
+    "nome": "Acampamento FAC",
+    "classeCor": "cor-fac",
+    "icone": "fa-solid fa-fire",
+    "descricao": "Formação de Adolescentes Cristãos. Uma imersão para os adolescentes encontrarem sua identidade em Cristo, com muita dinâmica, música e partilha.",
+    "detalhes": [
+      { "icone": "fa-solid fa-users", "titulo": "Idade", "valor": "De 13 a 17 anos" },
+      { "icone": "fa-solid fa-calendar-days", "titulo": "Data", "valor": "14 a 16 de Novembro, 2025" },
+      { "icone": "fa-solid fa-dollar-sign", "titulo": "Valor", "valor": "R$ 90,00" }
+    ],
+    "fotos": [
+      "https://picsum.photos/id/1/400/300",
+      "https://picsum.photos/id/2/400/300"
+    ],
+    "video": {
+      "titulo": "Fiz Amigos para a Vida Toda",
+      "url": "/assets/video/pessoas.mp4"
+    }
+  },
+  {
+    "id": "mirim",
+    "nome": "Acampamento Mirim",
+    "classeCor": "cor-mirim",
+    "icone": "fa-solid fa-shapes",
+    "descricao": "A primeira semente da fé plantada com muita diversão, música e brincadeiras. Um dia inesquecível para as crianças aprenderem sobre o amor de Jesus.",
+    "detalhes": [
+      { "icone": "fa-solid fa-users", "titulo": "Idade", "valor": "De 7 a 12 anos" },
+      { "icone": "fa-solid fa-calendar-days", "titulo": "Data", "valor": "08 de Novembro, 2025 (Sábado)" },
+      { "icone": "fa-solid fa-dollar-sign", "titulo": "Valor", "valor": "R$ 50,00" }
+    ],
+    "fotos": [
+      "https://picsum.photos/id/1073/400/300",
+      "https://picsum.photos/id/1080/400/300"
+    ],
+    "video": {
+      "titulo": "Meu Filho Amou!",
+      "url": "/assets/video/pessoas.mp4"
+    }
+  }
+]

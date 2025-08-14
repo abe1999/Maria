@@ -1,0 +1,99 @@
+/* =================================================================
+   ESTILOS DA PÁGINA DE DETALHE DA PASTORAL
+================================================================= */
+
+/* --- Layout Geral da Página --- */
+.pastoral-detail-page {
+    padding: 40px 0;
+    background-color: var(--color-white);
+}
+
+.pastoral-detail-page .page-header {
+    margin-top: 0; /* Remove a margem superior extra */
+}
+
+/* --- Imagem Principal --- */
+.main-pastoral-image {
+    display: block;
+    width: 100%;
+    max-width: 800px; /* Limita a largura em telas grandes */
+    height: auto;
+    margin: 0 auto 50px auto; /* Centraliza e adiciona espaço abaixo */
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    border: 5px solid var(--color-white);
+    outline: 1px solid var(--color-border);
+}
+
+/* --- Conteúdo do Texto (Subtítulos e Listas) --- */
+.pastoral-content h2 {
+    font-family: var(--font-secondary);
+    color: var(--color-primary); /* Azul Sereno */
+    font-size: 1.8rem;
+    margin-top: 40px; /* Espaço acima de cada subtítulo */
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.pastoral-content p,
+.pastoral-content ul {
+    font-family: var(--font-primary);
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--color-text);
+}
+
+.pastoral-content ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+/* Estiliza a lista de atividades com um ícone */
+.pastoral-content ul li {
+    padding-left: 30px;
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.pastoral-content ul li::before {
+    content: '\f00c'; /* Código do ícone de "check" do Font Awesome */
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    color: var(--color-secondary); /* Dourado Sóbrio */
+    position: absolute;
+    left: 0;
+    top: 5px;
+}
+
+/* --- Caixa de Destaque da Coordenação --- */
+.pastoral-coordinator {
+    margin-top: 50px;
+    padding: 30px;
+    background-color: #f8f9fa; /* Um cinza bem clarinho */
+    border-left: 5px solid var(--color-secondary); /* Destaque dourado na esquerda */
+    border-radius: 0 8px 8px 0;
+}
+
+.pastoral-coordinator h3 {
+    font-family: var(--font-secondary);
+    color: var(--color-primary);
+    margin-top: 0;
+    font-size: 1.5rem;
+}
+
+.pastoral-coordinator p {
+    margin-bottom: 5px;
+    font-size: 1rem;
+}
+
+/* --- Ajustes Finais para Celular --- */
+@media (max-width: 768px) {
+    .pastoral-content h2 {
+        font-size: 1.5rem;
+    }
+    .pastoral-content p,
+    .pastoral-content ul {
+        font-size: 1rem;
+    }
+}

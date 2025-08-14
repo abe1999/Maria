@@ -1,0 +1,121 @@
+[
+  {
+    "id": "catequese",
+    "name": "Pastoral da Catequese",
+    "image": "https://picsum.photos/id/212/800/600",
+    "excerpt": "Acompanhando crianças e jovens na jornada de fé, preparando-os para os sacramentos da Eucaristia e Crisma.",
+    "objective": "Instruir crianças, jovens e adultos na fé católica, preparando-os para uma participação consciente e ativa na comunidade e nos sacramentos.",
+    "activities": [
+      "Encontros semanais em turmas.",
+      "Retiros espirituais.",
+      "Participação em missas e eventos da comunidade.",
+      "Formação continuada para catequistas."
+    ],
+    "howToParticipate": "As inscrições abrem anualmente no início do ano. Os pais ou responsáveis devem procurar a secretaria paroquial com os documentos necessários.",
+    "whoCanJoin": "Crianças a partir dos 9 anos para a Primeira Eucaristia, jovens a partir dos 14 anos para a Crisma, e adultos que desejam receber os sacramentos.",
+    "schedule": "Os encontros ocorrem aos sábados, das 9h às 10h30 para turmas de Eucaristia, e das 10h30 às 12h para turmas de Crisma.",
+    "coordinator": {
+      "name": "Maria Lúcia",
+      "contact": "catequese@paroquiadeexemplo.com"
+    }
+  },
+  {
+    "id": "dizimo",
+    "name": "Pastoral do Dízimo",
+    "image": "https://picsum.photos/id/312/800/600",
+    "excerpt": "Conscientizando a comunidade sobre a importância da partilha e da contribuição para a manutenção da casa de Deus.",
+    "objective": "Promover a compreensão do Dízimo como um ato de fé, gratidão e partilha, garantindo os recursos para a ação evangelizadora e social da paróquia.",
+    "activities": [
+      "Plantão do Dízimo nas missas do segundo fim de semana do mês.",
+      "Campanhas de conscientização.",
+      "Visitas a novos membros da comunidade."
+    ],
+    "howToParticipate": "Procure a equipe da pastoral no Plantão do Dízimo durante as missas ou na secretaria paroquial a qualquer momento para fazer seu cadastro.",
+    "whoCanJoin": "Todos os membros da comunidade que desejam contribuir de forma consciente e regular, ou que queiram atuar como agentes da pastoral.",
+    "schedule": "Plantões aos sábados, às 19h, e domingos, às 10h e 19h (segundo fim de semana de cada mês).",
+    "coordinator": {
+      "name": "José Carlos",
+      "contact": "dizimo@paroquiadeexemplo.com"
+    }
+  },
+  {
+    "id": "liturgia",
+    "name": "Pastoral da Liturgia",
+    "image": "https://picsum.photos/id/320/800/600",
+    "excerpt": "Zelando pela beleza e dignidade de nossas celebrações, tornando a liturgia um verdadeiro encontro com Deus.",
+    "objective": "Organizar e preparar todos os aspectos das celebrações litúrgicas da paróquia, incluindo missas, adorações e outros sacramentos, para promover a participação ativa dos fiéis.",
+    "activities": [
+      "Escala de leitores, salmistas e comentaristas.",
+      "Formação para equipes de canto litúrgico.",
+      "Organização das procissões e ritos especiais.",
+      "Cuidado com os objetos e vestes litúrgicas."
+    ],
+    "howToParticipate": "Participe de uma de nossas equipes (canto, leitura, etc.). Procure o coordenador após a missa ou na secretaria para mais informações.",
+    "whoCanJoin": "Pessoas com boa vontade, disponibilidade para servir e, para certas funções como canto ou leitura, aptidões específicas que podem ser desenvolvidas.",
+    "schedule": "Reuniões gerais na primeira terça-feira de cada mês, às 20h. As equipes específicas (canto, etc.) têm seus próprios horários de ensaio.",
+    "coordinator": {
+      "name": "Sônia Regina",
+      "contact": "liturgia@paroquiadeexemplo.com"
+    }
+  },
+  {
+    "id": "acolhida",
+    "name": "Pastoral da Acolhida",
+    "image": "https://picsum.photos/id/133/800/600",
+    "excerpt": "Sendo o primeiro sorriso e o abraço fraterno da nossa comunidade, acolhendo a todos na casa do Pai.",
+    "objective": "Acolher com alegria e carinho todas as pessoas que chegam à igreja para as celebrações, fazendo com que se sintam bem-vindas e parte da nossa família paroquial.",
+    "activities": [
+      "Recepção dos fiéis na porta da igreja.",
+      "Entrega de folhetos litúrgicos e informativos.",
+      "Orientação de visitantes sobre os espaços da paróquia.",
+      "Auxílio na organização dos assentos e durante as coletas."
+    ],
+    "howToParticipate": "Se você é uma pessoa comunicativa e gosta de servir, esta é a sua pastoral! Fale com um dos membros da equipe na entrada da igreja.",
+    "whoCanJoin": "Qualquer membro da comunidade com espírito de serviço, simpatia e disponibilidade para chegar um pouco antes das missas.",
+    "schedule": "A pastoral atua em todas as missas. A escala é organizada mensalmente em uma reunião curta após a missa das 10h do último domingo do mês.",
+    "coordinator": {
+      "name": "Roberto e Fátima",
+      "contact": "acolhida@paroquiadeexemplo.com"
+    }
+  },
+  {
+    "id": "familiar",
+    "name": "Pastoral Familiar",
+    "image": "https://picsum.photos/id/345/800/600",
+    "excerpt": "Apoiando e evangelizando as famílias, que são a base da nossa sociedade e da nossa Igreja.",
+    "objective": "Atuar na evangelização e amparo das famílias em todas as suas fases e realidades, defendendo e promovendo os valores cristãos do matrimônio e da vida.",
+    "activities": [
+      "Realização do Encontro de Casais com Cristo (ECC).",
+      "Grupos de partilha e oração para casais.",
+      "Preparação para o Sacramento do Matrimônio (Curso de Noivos).",
+      "Eventos e celebrações voltados para a valorização da família."
+    ],
+    "howToParticipate": "Casais que já participaram do ECC ou que desejam se engajar podem entrar em contato com o casal coordenador para conhecer os grupos e atividades.",
+    "whoCanJoin": "Casais e famílias de todas as idades que buscam fortalecer sua caminhada na fé e viver em uma comunidade de apoio mútuo.",
+    "schedule": "As atividades variam. O Curso de Noivos é semestral e os grupos de partilha se reúnem quinzenalmente nas casas dos membros.",
+    "coordinator": {
+      "name": "Fernando e Cláudia",
+      "contact": "familiar@paroquiadeexemplo.com"
+    }
+  },
+  {
+    "id": "pascom",
+    "name": "Pastoral da Comunicação (PASCOM)",
+    "image": "https://picsum.photos/id/357/800/600",
+    "excerpt": "Levando a Boa Nova a todos os cantos, através dos meios de comunicação digitais e impressos.",
+    "objective": "Ser a ponte entre a paróquia e a comunidade, utilizando as ferramentas de comunicação para evangelizar, informar e promover a unidade entre todas as pastorais e movimentos.",
+    "activities": [
+      "Gerenciamento das redes sociais da paróquia (Facebook, Instagram, etc.).",
+      "Fotografia e filmagem de eventos e missas.",
+      "Criação do boletim paroquial impresso e digital.",
+      "Manutenção e atualização do site da paróquia."
+    ],
+    "howToParticipate": "Se você tem habilidades com fotografia, vídeo, design, redação ou mídias sociais, sua ajuda é muito bem-vinda! Participe de nossa reunião mensal.",
+    "whoCanJoin": "Jovens e adultos com afinidade pela área de comunicação e que desejam dedicar seus talentos à evangelização na era digital.",
+    "schedule": "Reunião de pauta na primeira segunda-feira do mês, às 19h30. A cobertura dos eventos é feita conforme o calendário paroquial.",
+    "coordinator": {
+      "name": "Juliana Santos",
+      "contact": "pascom@paroquiadeexemplo.com"
+    }
+  }
+]

@@ -1,0 +1,76 @@
+/* =================================================================
+ESTILOS DA SEÇÃO DE LINKS RÁPIDOS
+================================================================= */
+
+.quick-links {
+  /* Adiciona um espaçamento generoso e uma cor de fundo suave */
+  padding: 80px 0;
+  background-color: var(--color-light-gray);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.quick-links .container {
+  /* Usamos Flexbox para alinhar os itens facilmente */
+  display: flex;
+  justify-content: space-around; /* Distribui os itens com espaço igual ao redor deles */
+  align-items: flex-start; /* Alinha os itens pelo topo */
+  flex-wrap: wrap; /* Permite que os itens quebrem para a linha de baixo em telas menores */
+  gap: 20px; /* Espaçamento entre os itens, útil para quando eles quebram a linha */
+}
+
+.link-item {
+  /* Define a largura de cada item. 
+     calc(20% - 20px) é um truque para 5 itens com um pouco de espaço.
+     Mas vamos deixar mais flexível por enquanto. */
+  width: 150px; 
+  text-align: center;
+}
+
+.link-item a {
+  /* Garante que o link se comporte bem e tenha transições suaves */
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.link-item a:hover {
+  /* Efeito de levantar o card ao passar o mouse */
+  transform: translateY(-5px);
+}
+
+.icon-circle {
+  /* Estilos para criar o círculo */
+  width: 110px;
+  height: 110px;
+  background-color: var(--color-primary); /* Fundo azul primário */
+  border-radius: 50%; /* Isso transforma o quadrado em um círculo perfeito */
+  
+  /* Centraliza o círculo no seu container e adiciona espaço abaixo */
+  margin: 0 auto 15px auto; 
+
+  /* Essas 3 linhas centralizam o ícone DENTRO do círculo */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* Estilos do ícone */
+  color: var(--color-white);
+  font-size: 45px;
+
+  /* Sombra sutil para dar profundidade */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+.link-item a:hover .icon-circle {
+  /* Muda a cor do círculo quando o mouse passa sobre o LINK */
+  background-color: var(--color-primary-dark);
+}
+
+.link-item span {
+  /* Estilo do texto abaixo do ícone */
+  font-family: var(--font-secondary); /* Fonte com serifa para um toque clássico */
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-headings);
+  padding: 0 5px; /* Evita que o texto encoste nas bordas em telas pequenas */
+}

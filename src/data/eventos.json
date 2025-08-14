@@ -1,0 +1,122 @@
+[
+  {
+    "id": 10,
+    "image": "https://picsum.photos/id/212/800/600",
+    "date": "2025-08-28",
+    "title": "Missa de Cura e Libertação com Padre Convidado",
+    "excerpt": "Participe de uma noite especial de oração e bênçãos em nossa comunidade. Traga seus pedidos e seu coração aberto.",
+    "category": "missa",
+    "link": "/pages/evento-detalhe.html?id=10",
+    "fullText": "<p>Na última quinta-feira do mês, teremos a graça de receber um padre convidado para uma Missa de Cura e Libertação. Será um momento forte de espiritualidade, louvor e intercessão. Convidamos a todos para participarem.</p>",
+    "galleryImages": [],
+    "driveLink": null
+  },
+  {
+    "id": 9,
+    "image": "https://picsum.photos/id/237/800/600",
+    "date": "2025-08-05",
+    "title": "Inscrições Abertas para a Catequese 2025/2026",
+    "excerpt": "É tempo de iniciar uma nova jornada na fé! As inscrições para a Primeira Eucaristia e Crisma já estão abertas na secretaria.",
+    "category": "noticia",
+    "link": "/pages/evento-detalhe.html?id=9",
+    "fullText": "<p>Pais e responsáveis, as matrículas para os novos grupos de catequese para a Primeira Eucaristia e Crisma estão oficialmente abertas. Procure a secretaria paroquial para mais informações sobre documentos e horários das turmas.</p>",
+    "galleryImages": [],
+    "driveLink": null
+  },
+  {
+    "id": 8,
+    "image": "https://picsum.photos/id/188/800/600",
+    "date": "2025-09-01",
+    "title": "Vem aí a nossa Festa da Padroeira!",
+    "excerpt": "Prepare-se para o evento mais esperado do ano! Nossa tradicional Festa da Padroeira vem aí com muitas novidades, comidas típicas e shows.",
+    "category": "festa",
+    "link": "/pages/evento-detalhe.html?id=8",
+    "fullText": "<p>Em setembro, nossa comunidade se une para celebrar nossa padroeira, Nossa Senhora de Nazaré. A programação contará com novenas, missas solenes e, claro, a nossa grande festa social com barracas, leilões e muita música. Participe conosco!</p>",
+    "galleryImages": [],
+    "driveLink": null
+  },
+  {
+    "id": 7,
+    "image": "https://picsum.photos/id/190/800/600",
+    "date": "2025-08-15",
+    "title": "Missa Solene em Honra a São Tarcísio",
+    "excerpt": "Celebraremos o padroeiro dos coroinhas e acólitos com uma missa especial. Convidamos todos os servos do altar e suas famílias.",
+    "category": "missa",
+    "link": "/pages/evento-detalhe.html?id=7",
+    "fullText": "<p>No dia de São Tarcísio, teremos uma celebração eucarística dedicada a todos os coroinhas, acólitos e cerimoniários de nossa paróquia, agradecendo pelo seu serviço e dedicação ao altar do Senhor. Será às 19h.</p>",
+    "galleryImages": [],
+    "driveLink": null
+  },
+  {
+    "id": 6,
+    "image": "https://picsum.photos/id/48/800/600",
+    "date": "2025-07-28",
+    "title": "Inscrições Abertas para o Retiro de Casais",
+    "excerpt": "Um momento especial para fortalecer os laços matrimoniais à luz da fé. Vagas limitadas, garanta a sua participação!",
+    "category": "noticia",
+    "link": "/pages/evento-detalhe.html?id=6",
+    "fullText": "<p>Estão abertas as inscrições para o nosso Retiro Anual de Casais. Será um fim de semana de profunda reflexão, partilha e renovação dos votos matrimoniais. As inscrições podem ser feitas na secretaria paroquial.</p>",
+    "galleryImages": ["https://picsum.photos/id/101/800/600"],
+    "driveLink": "https://drive.google.com/drive/folders/PASTA_RETIRO_CASAIS"
+  },
+  {
+    "id": 5,
+    "image": "https://picsum.photos/id/54/800/600",
+    "date": "2025-07-23",
+    "title": "Nossa Festa Julina foi um Sucesso de Arrecadação",
+    "excerpt": "Agradecemos a todos que participaram e ajudaram na nossa tradicional Festa Julina. Os fundos serão destinados às obras de caridade.",
+    "category": "noticia",
+    "link": "/pages/evento-detalhe.html?id=5",
+    "fullText": "<p>Com grande alegria, anunciamos que nossa Festa Julina deste ano foi um verdadeiro sucesso! Graças à participação da comunidade e ao trabalho dos voluntários, conseguimos arrecadar um valor recorde.</p>",
+    "galleryImages": ["https://picsum.photos/id/111/800/600"],
+    "driveLink": "https://drive.google.com/drive/folders/PASTA_FESTA_JULINA"
+  },
+  {
+    "id": 4,
+    "image": "https://picsum.photos/id/61/800/600",
+    "date": "2025-07-24",
+    "title": "Formação para Novos Ministros da Eucaristia",
+    "excerpt": "No último sábado, realizamos um encontro de formação para os novos Ministros Extraordinários da Sagrada Comunhão.",
+    "category": "noticia",
+    "link": "/pages/evento-detalhe.html?id=4",
+    "fullText": "<p>A formação de novos servos para o altar é sempre um momento de grande graça para nossa paróquia. O encontro foi um sucesso e em breve os novos ministros estarão servindo em nossas celebrações.</p>",
+    "galleryImages": ["https://picsum.photos/id/121/800/600"],
+    "driveLink": null
+  },
+  {
+    "id": 3,
+    "image": "https://picsum.photos/id/33/800/600",
+    "date": "2025-07-25",
+    "title": "Campanha do Agasalho Supera Expectativas",
+    "excerpt": "Com a sua ajuda, arrecadamos mais de mil peças de roupa que aquecerão o inverno de muitas famílias em nossa cidade.",
+    "category": "noticia",
+    "link": "/pages/evento-detalhe.html?id=3",
+    "fullText": "<p>A generosidade de nossa comunidade falou mais alto mais uma vez! A Campanha do Agasalho de 2025 foi um sucesso. As doações já foram triadas e começarão a ser distribuídas nesta semana.</p>",
+    "galleryImages": ["https://picsum.photos/id/131/800/600"],
+    "driveLink": "https://drive.google.com/drive/folders/PASTA_CAMPANHA_AGASALHO"
+  },
+  {
+    "id": 2,
+    "image": "https://picsum.photos/id/22/800/600",
+    "date": "2025-07-26",
+    "title": "Grupo de Oração Jovem Convida Novos Membros",
+    "excerpt": "Todas as sextas-feiras, nosso grupo de jovens se reúne para um momento de louvor, oração e partilha. Venha participar!",
+    "category": "noticia",
+    "link": "/pages/evento-detalhe.html?id=2",
+    "fullText": "<p>Se você é jovem e busca um espaço de amizade e aprofundamento na fé, nosso Grupo de Oração Jovem é o seu lugar! Os encontros acontecem toda sexta-feira, às 19h30, no salão paroquial.</p>",
+    "galleryImages": ["https://picsum.photos/id/141/800/600"],
+    "driveLink": null
+  },
+  {
+    "id": 1,
+    "image": "https://picsum.photos/id/18/800/600",
+    "date": "2025-07-27",
+    "title": "Celebração de Batizados Comunitários Emociona Fiéis",
+    "excerpt": "Mais de 20 crianças receberam o sacramento do Batismo em uma bela cerimônia comunitária no último domingo.",
+    "category": "noticia",
+    "link": "/pages/evento-detalhe.html?id=1",
+    "fullText": "<p>O último domingo foi de festa em nossa paróquia com a celebração do Batismo Comunitário. A cerimônia foi um momento de grande emoção para pais, padrinhos e toda a comunidade presente.</p>",
+    "galleryImages": ["https://picsum.photos/id/151/800/600"],
+    "driveLink": "https://drive.google.com/drive/folders/PASTA_BATIZADOS"
+  }
+]

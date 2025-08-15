@@ -57,7 +57,7 @@ export function renderHeader() {
             <i class="fa-solid fa-xmark"></i>
           </button>
           <ul>
-            <li><a href="pages/comunidades.html">Comunidades</a></li>
+            <li><a href="./comunidades.html">Comunidades</a></li>
             <li><a href="pages/pastorais.html">Pastorais</a></li>
             <li><a href="horarios.html">Horários</a></li>
             <li class="dropdown">

@@ -1,43 +1,44 @@
-// --- Importações Essenciais ---
-import "/src/styles/base/reset.css";
-import "/src/styles/base/variables.css";
-import "/src/styles/base/typography.css";
-import "/src/styles/components/header.css";
-import "/src/styles/components/footer.css";
-import "/src/styles/pages/comunidade-detalhe.css"; // Seu novo CSS
+// Local do arquivo: src/pages/comunidade-detalhe.js
 
-import { renderHeader } from "/src/components/Header.js";
-import { renderFooter } from "/src/components/Footer.js";
-import comunidades from "/src/data/comunidades.json";
+// --- Importações de Estilos ---
+// Caminhos corrigidos com um único "../"
+import "../styles/base/reset.css";
+import "../styles/base/variables.css";
+import "../styles/base/typography.css";
+import "../styles/components/header.css";
+import "../styles/components/footer.css";
+import "../styles/pages/comunidade-detalhe.css";
+
+// --- Importações de Módulos e Dados ---
+// Caminhos corrigidos com um único "../"
+import { renderHeader } from "../components/Header.js";
+import { renderFooter } from "../components/Footer.js";
+import comunidades from "../data/comunidades.json";
 
 // --- Lógica da Página ---
-
 function renderDetalhesComunidade() {
   const params = new URLSearchParams(window.location.search);
   const comunidadeId = params.get("id");
-  const container = document.querySelector("main"); // Vamos injetar dentro do <main>
+  const container = document.querySelector("main");
   if (!container) return;
 
   const comunidade = comunidades.find((c) => c.id === comunidadeId);
 
   if (!comunidade) {
-    // ... (código de erro) ...
+    container.innerHTML = `<p class="container">Comunidade não encontrada.</p>`;
     return;
   }
 
   document.title = `${comunidade.nome} | Paróquia N. S. de Nazaré`;
 
   const horariosHtml = comunidade.horarios
-    .map(
-      (h) => `
-    <li><strong>${h.dia}:</strong> ${h.descricao}</li>
-  `
-    )
+    .map((h) => `<li><strong>${h.dia}:</strong> ${h.descricao}</li>`)
     .join("");
 
-  // ATUALIZAÇÃO PRINCIPAL: Este HTML agora corresponde 100% ao seu CSS.
   const pageHtml = `
-    <div class="hero-comunidade" style="background-image: url('${comunidade.imagemBanner}')">
+    <div class="hero-comunidade" style="background-image: url('${
+      import.meta.env.BASE_URL
+    }${comunidade.imagemBanner}')">
       <h1 id="comunidade-nome">${comunidade.nome}</h1>
     </div>
 

@@ -1,4 +1,5 @@
 // Local do arquivo: src/components/Footer.js
+import logoImage from "/img/logo/Nazare-logo.png";
 
 /**
  * Função principal que desenha o footer.
@@ -13,7 +14,7 @@ export function renderFooter() {
       <div class="container">
         <div class="footer-info-box">
           <div class="footer-column">
-<img class="footer-logo "src="img/logo/Nazare-logo.png" alt="Logo da Paróquia Nossa Senhora de Nazaré" />
+<img class="footer-logo" src="${logoImage}" alt="Logo da Paróquia Nossa Senhora de Nazaré" />        </a>
             <div class="address-details">
               <h4>Nossa Paróquia</h4>
               <p>

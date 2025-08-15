@@ -1,0 +1,54 @@
+# Nome do seu fluxo de trabalho
+name: Deploy to GitHub Pages
+
+# Gatilho: Este workflow vai rodar toda vez que houver um 'push' na branch 'main'
+on:
+  push:
+    branches:
+      - main
+
+# Permissões necessárias para que o workflow possa publicar no GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Tarefas (jobs) a serem executadas
+jobs:
+  # A única tarefa que temos se chama 'deploy'
+  deploy:
+    runs-on: ubuntu-latest # O trabalho será executado em uma máquina virtual Ubuntu
+    steps:
+      # 1. Baixa o código do seu repositório para a máquina virtual
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # 2. Configura o ambiente Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20" # Usa uma versão recente do Node.js
+          cache: "npm"
+
+      # 3. Instala todas as dependências do projeto (como Vite, Swiper, etc.)
+      - name: Install dependencies
+        run: npm install
+
+      # 4. Constrói o site (roda 'npm run build')
+      - name: Build
+        run: npm run build
+
+      # 5. Configura o GitHub Pages para o deploy
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      # 6. Faz o upload da pasta 'dist' (a versão construída do site)
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: "./dist"
+
+      # 7. Publica o site no GitHub Pages
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

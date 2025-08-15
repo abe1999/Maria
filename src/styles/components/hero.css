@@ -1,116 +1,219 @@
-/* =================================================================
-   VERSÃO FINAL E RESPONSIVA DO HERO CAROUSEL
-================================================================= */
+/* hero.css - ATUALIZADO COM O TEMA "MANTO DE MARIA" */
 
-.hero-carousel {
+/* ==================================================
+   ESTILOS PARA A SEÇÃO DO SLIDER
+================================================== */
+
+.slider-container {
   width: 100%;
-  height: 90vh;
-  max-height: 750px;
-  min-height: 500px;
-  position: relative;
+  height: 70vh; /* Aumentei um pouco para dar mais impacto, mas ajuste se precisar */
+  background-color: var(
+    --color-light-gray
+  ); /* Cor de fundo sutil caso as imagens falhem */
 }
 
-.hero-carousel .swiper,
-.hero-carousel .swiper-wrapper,
-.hero-carousel .swiper-slide {
+/* Garante que o Swiper ocupe todo o espaço do container */
+.swiper {
   width: 100%;
   height: 100%;
 }
 
-/* Regra geral para todos os slides */
+/* ==================================================
+   ESTILOS PARA OS SLIDES INDIVIDUAIS
+================================================== */
+
 .swiper-slide {
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   text-align: center;
-  color: #fff;
+  color: var(--color-white); /* Texto branco como padrão para slides */
 }
 
-/* === CAMINHO DAS IMAGENS CORRIGIDO E FINAL === */
-
-/* =================================================================
-   TESTE DEFINITIVO COM IMAGENS EMBUTIDAS NO CÓDIGO
-================================================================= */
-
-.slide-bg-1 {
-  background-image: url("../../img/image/banner.jpg");
+/* Caixa de conteúdo dentro do slide */
+.slide-content {
+  padding: 2rem 3rem;
+  /* Usando o azul primário com transparência para garantir a legibilidade do texto */
+  background-color: rgba(
+    13,
+    84,
+    151,
+    0.6
+  ); /* Cor --color-primary com 60% de opacidade */
+  border-radius: 8px;
+  max-width: 80%;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Sombra sutil para destacar a caixa */
 }
 
-.slide-bg-2 {
-  background-image: url("../../img/image/banner2.jpg");
+/* Estilizando o título dentro do slide */
+.slide-content h2 {
+  font-family: var(
+    --font-secondary
+  ); /* "Merriweather", para um toque clássico */
+  color: var(--color-white);
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  font-weight: 400;
 }
 
-.slide-bg-3 {
-  background-image: url("../../img/image/banner3.jpg");
-}
-/* Overlay (filtro escuro) para legibilidade */
-.hero-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 2; /* Fica entre a imagem e o texto */
+/* Estilizando o parágrafo dentro do slide */
+.slide-content p {
+  font-family: var(--font-primary); /* "Roboto", para leitura fácil */
+  font-size: 1.1rem;
+  line-height: 1.6;
 }
 
-/* Estilos para o conteúdo de texto */
-.hero-content {
-  position: relative;
-  z-index: 3; /* Fica na frente de tudo */
-  max-width: 800px;
-  padding: 20px;
-  animation: fadeIn 1s ease-in-out;
+/* ==================================================
+   IMAGENS DE FUNDO (SUAS IMAGENS)
+================================================== */
+
+.swiper-slide.slide-1 {
+  background: url("/img/image/banner.jpg") center/cover no-repeat;
 }
 
-.hero-content .hero-title {
-  font-size: 3.5rem;
-  font-weight: 700;
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
-  margin: 10px 0 20px;
+.swiper-slide.slide-2 {
+  background: url("/img/image/banner2.jpg") center/cover no-repeat;
 }
 
-.hero-content .hero-text {
-  font-size: 1.3rem;
-  margin-bottom: 30px;
+.swiper-slide.slide-3 {
+  background: url("/img/image/banner3.jpg") center/cover no-repeat;
 }
 
-/* Estilos para a navegação do Swiper */
-:root {
-  --swiper-navigation-color: #fff;
-  --swiper-pagination-color: #fff;
-  --swiper-pagination-bullet-inactive-color: #fff;
-  --swiper-pagination-bullet-inactive-opacity: 0.5;
+/* ==================================================
+   NAVEGAÇÃO DO SWIPER (SETAS E BOLINHAS)
+================================================== */
+
+/* As setas terão a cor Dourado Divino */
+.swiper-button-prev,
+.swiper-button-next {
+  color: var(--color-secondary);
+  transition: color 0.3s ease, transform 0.3s ease;
+
+  /* Sombra para garantir que as setas fiquem visíveis em qualquer fundo */
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+  color: var(--color-secondary-hover); /* Dourado mais claro no hover */
+  transform: scale(1.1);
 }
 
-/* =================================================================
-   AJUSTES RESPONSIVOS PARA CELULAR
-================================================================= */
+/* As bolinhas da paginação */
+.swiper-pagination-bullet {
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.7
+  ); /* Bolinhas inativas brancas e semi-transparentes */
+  width: 12px;
+  height: 12px;
+  transition: background-color 0.3s ease;
+  opacity: 1;
+}
+
+/* A bolinha ativa terá a cor Dourado Divino */
+.swiper-pagination-bullet-active {
+  background-color: var(--color-secondary);
+}
+
+/* hero.css */
+
+/* ==================================================
+   ESTILO PARA O BOTÃO DENTRO DO SLIDE
+================================================== */
+
+.btn-slide {
+  /* Usando o Dourado Divino como destaque */
+  background-color: var(--color-secondary);
+  color: var(--color-primary-dark); /* Texto azul escuro para bom contraste */
+
+  /* Espaçamento e aparência */
+  display: inline-block; /* Para que o padding e margin funcionem corretamente */
+  padding: 12px 28px;
+  margin-top: 20px; /* Distância do parágrafo acima */
+  border-radius: 50px; /* Bordas arredondadas */
+
+  /* Tipografia */
+  font-family: var(--font-primary); /* Fonte Roboto, para consistência */
+  font-weight: bold;
+  text-decoration: none; /* Remove o sublinhado do link */
+  text-transform: uppercase; /* Deixa o texto em maiúsculas */
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+
+  /* Efeito de transição suave */
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-slide:hover {
+  /* Dourado mais claro no hover */
+  background-color: var(--color-secondary-hover);
+  transform: translateY(-2px); /* Efeito sutil de "levantar" */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* hero.css */
+
+/* ... (todo o seu código CSS anterior fica aqui) ... */
+
+/* ==================================================
+   CSS RESPONSIVO (Media Queries)
+================================================== */
+
+/* Ajustes para TABLETS e telas menores */
 @media (max-width: 768px) {
-  .hero-carousel {
-    height: 70vh;
-    min-height: 450px;
+  /* Reduz a altura do slider em telas menores */
+  .slider-container {
+    height: 65vh;
   }
 
-  .hero-content .hero-title {
-    font-size: 2.2rem;
+  /* Diminui o espaçamento interno da caixa de conteúdo */
+  .slide-content {
+    padding: 1.5rem 2rem;
   }
 
-  .hero-content .hero-text {
-    font-size: 1.1rem;
+  /* Reduz o tamanho da fonte do título principal */
+  .slide-content h2 {
+    font-size: 2rem;
+  }
+
+  /* Reduz um pouco a fonte do parágrafo */
+  .slide-content p {
+    font-size: 1rem;
+  }
+}
+
+/* Ajustes para CELULARES */
+@media (max-width: 480px) {
+  /* Reduz ainda mais a altura do slider em celulares */
+  .slider-container {
+    height: 60vh;
+  }
+
+  /* Garante que a caixa de conteúdo não fique colada nas bordas */
+  .slide-content {
+    padding: 1.5rem;
+    max-width: 90%;
+  }
+
+  /* Reduz drasticamente a fonte do título para caber na tela */
+  .slide-content h2 {
+    font-size: 1.6rem;
+  }
+
+  /* Oculta as setas de navegação em celulares para uma interface mais limpa. */
+  /* O usuário ainda pode arrastar com o dedo. */
+  .swiper-button-prev,
+  .swiper-button-next {
+    display: none;
+  }
+
+  /* Ajusta o tamanho e o espaçamento do botão */
+  .btn-slide {
+    padding: 10px 22px;
+    font-size: 0.8rem;
+    margin-top: 15px;
   }
 }

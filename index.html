@@ -3,17 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <title>Paróquia Nossa Senhora de Nazaré</title>
 
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
-    />
-    <link
-      rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     />
-
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -25,39 +21,105 @@
     <header id="header-container"></header>
 
     <main>
-      <section class="hero-carousel">
+      <section class="slider-container">
         <div class="swiper">
           <div class="swiper-wrapper">
-            <div class="swiper-slide slide-bg-1">
-              <div class="hero-overlay"></div>
-              <div class="container">
-                <div class="hero-content">
-                  <p class="hero-subtitle">Nossa Maior Experiência de Fé</p>
-                  <h1 class="hero-title">Acampamentos 2025</h1>
-                  <p class="hero-text">
-                    Uma jornada de renovação e encontro com Deus que vai
-                    transformar sua vida.
-                  </p>
-                  <a href="/pages/acampamento.html" class="btn btn-main"
-                    >Conheça e Participe</a
-                  >
-                </div>
+            <div class="swiper-slide slide-1">
+              <div class="slide-content">
+                <h2>Acampamento Jovem "Luz do Mundo"</h2>
+                <p>
+                  Uma jornada de fé, amizade e renovação espiritual. Inscrições
+                  abertas!
+                </p>
+                <a href="#" class="btn-slide">Inscreva-se Agora</a>
+              </div>
+            </div>
+
+            <div class="swiper-slide slide-2">
+              <div class="slide-content">
+                <h2>Participe de Nossos Grupos de Oração</h2>
+                <p>
+                  Fortaleça sua fé e encontre apoio em nossa comunidade.
+                  Encontros semanais para todas as idades.
+                </p>
+                <a href="#" class="btn-slide">Ver Horários</a>
+              </div>
+            </div>
+
+            <div class="swiper-slide slide-3">
+              <div class="slide-content">
+                <h2>Missa Solene em Honra à Padroeira</h2>
+                <p>
+                  Celebre conosco um momento de devoção e gratidão. Venha com
+                  sua família.
+                </p>
+                <a href="#" class="btn-slide">Detalhes do Evento</a>
               </div>
             </div>
           </div>
+
+          <div class="swiper-pagination"></div>
           <div class="swiper-button-prev"></div>
           <div class="swiper-button-next"></div>
-          <div class="swiper-pagination"></div>
         </div>
       </section>
 
-      <section class="quick-links"></section>
+      <section class="quick-links">
+        <div class="container">
+          <div class="link-item">
+            <a href="#">
+              <div class="icon-circle">
+                <i class="fa-solid fa-person-praying"></i>
+              </div>
+              <span>Intenções de Missa</span>
+            </a>
+          </div>
+
+          <div class="link-item">
+            <a href="#">
+              <div class="icon-circle">
+                <i class="fa-solid fa-hand-holding-dollar"></i>
+              </div>
+              <span>Dízimo e Ofertas</span>
+            </a>
+          </div>
+
+          <div class="link-item">
+            <a href="#">
+              <div class="icon-circle">
+                <i class="fa-solid fa-bullhorn"></i>
+              </div>
+              <span>Avisos</span>
+            </a>
+          </div>
+
+          <div class="link-item">
+            <a href="/pages/eventos.html">
+              <div class="icon-circle">
+                <i class="fa-solid fa-calendar-days"></i>
+              </div>
+              <span>Agenda</span>
+            </a>
+          </div>
+
+          <div class="link-item">
+            <a href="#">
+              <div class="icon-circle">
+                <i class="fa-solid fa-book-bible"></i>
+              </div>
+              <span>Liturgia Diária</span>
+            </a>
+          </div>
+        </div>
+      </section>
 
       <section class="latest-news">
         <div class="container">
-          <h2 class="section-title">Últimos Eventos</h2>
+          <h2 class="section-title">Últimas Notícias e Eventos</h2>
+
           <div class="news-grid" id="latest-news-grid"></div>
-          <div class="text-center">
+
+          <div class="text-center" style="margin-top: 40px">
             <a href="/pages/eventos.html" class="btn btn-secondary"
               >Ver Todos os Eventos</a
             >
@@ -68,7 +130,6 @@
 
     <footer id="footer-container"></footer>
 
-    <script type="module" src="/src/main.js"></script>
     <script type="module" src="/main.js"></script>
   </body>
 </html>

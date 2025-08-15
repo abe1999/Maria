@@ -13,7 +13,7 @@ export function renderFooter() {
       <div class="container">
         <div class="footer-info-box">
           <div class="footer-column">
-            <img src="/Nazaré-logo.png" alt="Brasão da Paróquia" class="footer-logo">
+            <img src="/img/logo/Nazare-logo.png" alt="Brasão da Paróquia" class="footer-logo">
             <div class="address-details">
               <h4>Nossa Paróquia</h4>
               <p>

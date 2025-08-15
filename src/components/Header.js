@@ -46,7 +46,7 @@ export function renderHeader() {
     <header class="main-header" id="main-header">
       <div class="container">
         <a href="/" class="logo">
-          <img src="/img/logo/Nazare-logo.png" alt="Logo da Paróquia Nossa Senhora de Nazaré" />
+<img src="img/logo/Nazare-logo.png" alt="Logo da Paróquia Nossa Senhora de Nazaré" />
         </a>
         <nav class="main-nav" id="main-nav">
           <button class="close-menu-button" id="close-menu-button" aria-label="Fechar menu">

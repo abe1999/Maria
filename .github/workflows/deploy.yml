@@ -7,7 +7,7 @@ on:
     branches:
       - main
 
-# Permissões necessárias para que o workflow possa publicar no GitHub Pages
+# Permissões necessárias
 permissions:
   contents: read
   pages: write
@@ -15,11 +15,15 @@ permissions:
 
 # Tarefas (jobs) a serem executadas
 jobs:
-  # A única tarefa que temos se chama 'deploy'
   deploy:
-    runs-on: ubuntu-latest # O trabalho será executado em uma máquina virtual Ubuntu
+    # ✅ CORREÇÃO ADICIONADA AQUI
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    runs-on: ubuntu-latest
     steps:
-      # 1. Baixa o código do seu repositório para a máquina virtual
+      # 1. Baixa o código do seu repositório
       - name: Checkout
         uses: actions/checkout@v4
 
@@ -27,22 +31,22 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20" # Usa uma versão recente do Node.js
+          node-version: "20"
           cache: "npm"
 
-      # 3. Instala todas as dependências do projeto (como Vite, Swiper, etc.)
+      # 3. Instala todas as dependências
       - name: Install dependencies
         run: npm install
 
-      # 4. Constrói o site (roda 'npm run build')
+      # 4. Constrói o site
       - name: Build
         run: npm run build
 
-      # 5. Configura o GitHub Pages para o deploy
+      # 5. Configura o GitHub Pages
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
-      # 6. Faz o upload da pasta 'dist' (a versão construída do site)
+      # 6. Faz o upload da pasta 'dist'
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

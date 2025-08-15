@@ -50,27 +50,42 @@ export function renderHeader() {
   const headerHTML = `
     <header class="main-header" id="main-header">
       <div class="container">
-        <a href="/" class="logo">
-<img src="${logoImage}" alt="Logo da Paróquia Nossa Senhora de Nazaré" />        </a>
+        <a href="${import.meta.env.BASE_URL}" class="logo">
+          <img src="${logoImage}" alt="Logo da Paróquia Nossa Senhora de Nazaré" />
+        </a>
         <nav class="main-nav" id="main-nav">
           <button class="close-menu-button" id="close-menu-button" aria-label="Fechar menu">
             <i class="fa-solid fa-xmark"></i>
           </button>
           <ul>
-            <li><a href="./comunidades.html">Comunidades</a></li>
-            <li><a href="pages/pastorais.html">Pastorais</a></li>
-            <li><a href="horarios.html">Horários</a></li>
+            <li><a href="${
+              import.meta.env.BASE_URL
+            }comunidades.html">Comunidades</a></li>
+            <li><a href="${
+              import.meta.env.BASE_URL
+            }pastorais.html">Pastorais</a></li>
+            <li><a href="${
+              import.meta.env.BASE_URL
+            }horarios.html">Horários</a></li>
             <li class="dropdown">
               <a href="javascript:void(0);" class="drop-btn">
                 Eventos <i class="fa-solid fa-caret-down"></i>
               </a>
               <div class="dropdown-content">
-                <a href="eventos.html?categoria=evento-geral">Eventos Gerais</a>
-                <a href="eventos.html?categoria=missa">Missas</a>
-                <a href="proximos-eventos.html">Próximos Eventos</a>
+                <a href="${
+                  import.meta.env.BASE_URL
+                }eventos.html?categoria=evento-geral">Eventos Gerais</a>
+                <a href="${
+                  import.meta.env.BASE_URL
+                }eventos.html?categoria=missa">Missas</a>
+                <a href="${
+                  import.meta.env.BASE_URL
+                }proximos-eventos.html">Próximos Eventos</a>
               </div>
             </li>
-            <li><a href="acampamento.html">Acampamento</a></li>
+            <li><a href="${
+              import.meta.env.BASE_URL
+            }acampamento.html">Acampamento</a></li>
           </ul>
         </nav>
         <div class="header-right">

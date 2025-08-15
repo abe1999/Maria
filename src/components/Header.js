@@ -50,7 +50,7 @@ export function renderHeader() {
   const headerHTML = `
     <header class="main-header" id="main-header">
       <div class="container">
-        <a href="${import.meta.env.BASE_URL}" class="logo">
+        <a href="${import.meta.env.VITE_BASE_URL}" class="logo">
           <img src="${logoImage}" alt="Logo da Paróquia Nossa Senhora de Nazaré" />
         </a>
         <nav class="main-nav" id="main-nav">
@@ -59,13 +59,13 @@ export function renderHeader() {
           </button>
           <ul>
             <li><a href="${
-              import.meta.env.BASE_URL
+              import.meta.env.VITE_BASE_URL
             }comunidades.html">Comunidades</a></li>
             <li><a href="${
-              import.meta.env.BASE_URL
+              import.meta.env.VITE_BASE_URL
             }pastorais.html">Pastorais</a></li>
             <li><a href="${
-              import.meta.env.BASE_URL
+              import.meta.env.VITE_BASE_URL
             }horarios.html">Horários</a></li>
             <li class="dropdown">
               <a href="javascript:void(0);" class="drop-btn">
@@ -73,18 +73,18 @@ export function renderHeader() {
               </a>
               <div class="dropdown-content">
                 <a href="${
-                  import.meta.env.BASE_URL
+                  import.meta.env.VITE_BASE_URL
                 }eventos.html?categoria=evento-geral">Eventos Gerais</a>
                 <a href="${
-                  import.meta.env.BASE_URL
+                  import.meta.env.VITE_BASE_URL
                 }eventos.html?categoria=missa">Missas</a>
                 <a href="${
-                  import.meta.env.BASE_URL
+                  import.meta.env.VITE_BASE_URL
                 }proximos-eventos.html">Próximos Eventos</a>
               </div>
             </li>
             <li><a href="${
-              import.meta.env.BASE_URL
+              import.meta.env.VITE_BASE_URL
             }acampamento.html">Acampamento</a></li>
           </ul>
         </nav>

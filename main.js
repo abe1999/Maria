@@ -19,7 +19,7 @@ import { renderHeader } from "/src/components/Header.js";
 import { renderFooter } from "/src/components/Footer.js";
 import Swiper from "swiper";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
-import { initializeNewsLoader } from "/src/pages/news-loader.js"; // <-- 2. JS DAS NOTÍCIAS
+import { initializeNewsLoader } from "/src/pages/eventos.js";
 
 function inicializarCarrossel() {
   const swiper = new Swiper(".swiper", {

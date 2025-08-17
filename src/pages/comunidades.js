@@ -1,45 +1,47 @@
-// --- Importações Essenciais ---
-import "/src/styles/base/reset.css";
-import "/src/styles/base/variables.css";
-import "/src/styles/base/typography.css";
-import "/src/styles/components/header.css";
-import "/src/styles/components/footer.css";
-import "/src/styles/pages/comunidades.css";
+// Local do arquivo: src/pages/comunidades.js
 
-// Componentes de Header e Footer
-import { renderHeader } from "/src/components/Header.js";
-import { renderFooter } from "/src/components/Footer.js";
+// --- 1. Importações Essenciais ---
+import "../styles/base/reset.css";
+import "../styles/base/variables.css";
+import "../styles/base/typography.css";
+import "../styles/components/header.css";
+import "../styles/components/footer.css";
+import "../styles/pages/comunidades.css";
 
-// Nossos dados do novo JSON
-import comunidades from "/src/data/comunidades.json";
+import { renderHeader } from "../components/Header.js";
+import { renderFooter } from "../components/Footer.js";
+import comunidades from "../data/comunidades.json";
 
-// --- Lógica da Página ---
+// --- 2. Lógica da Página ---
 
+// Função para criar o card de comunidade
+function createComunidadeCard(comunidade) {
+  return `
+    <div class="comunidade-card-avatar">
+      <a href="${import.meta.env.BASE_URL}comunidade-detalhe.html?id=${
+    comunidade.id
+  }">
+        <div class="avatar-container">
+          <img src="${comunidade.imagemCard}" alt="Foto da ${comunidade.nome}">
+        </div>
+        <h3 class="comunidade-titulo">${comunidade.nome}</h3>
+        <p class="comunidade-descricao">${comunidade.resumo}</p>
+      </a>
+    </div>
+  `;
+}
+
+// Função para renderizar as comunidades
 function renderComunidades() {
   const container = document.getElementById("comunidades-grid");
   if (!container) return;
 
-  // O HTML gerado agora usa "imagemCard" e "resumo"
-  const html = comunidades
-    .map(
-      (comunidade) => `
-      <div class="comunidade-card-avatar">
-        <a href="/pages/comunidade.html?id=${comunidade.id}">
-          <div class="avatar-container">
-            <img src="${comunidade.imagemCard}" alt="Foto da ${comunidade.nome}">
-          </div>
-          <h3 class="comunidade-titulo">${comunidade.nome}</h3>
-          <p class="comunidade-descricao">${comunidade.resumo}</p>
-        </a>
-      </div>
-    `
-    )
-    .join("");
+  const html = comunidades.map(createComunidadeCard).join("");
 
   container.innerHTML = html;
 }
 
-// --- Execução ---
+// --- 3. Execução ---
 document.addEventListener("DOMContentLoaded", () => {
   renderHeader();
   renderFooter();

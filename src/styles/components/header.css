@@ -173,9 +173,9 @@ body.menu-open {
   }
 
   .header-right {
-    flex-grow: 1; 
-    display: flex; 
-    justify-content: flex-end; /
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end;
   }
 
   .main-nav {

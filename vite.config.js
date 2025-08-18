@@ -2,7 +2,7 @@ import { defineConfig } from "vite";
 import { resolve } from "path";
 
 export default defineConfig({
-  base: "/Maria/", // Seu repositório
+  base: "/", // Seu repositório
   build: {
     rollupOptions: {
       input: {

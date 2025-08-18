@@ -23,26 +23,40 @@
 ================================================== */
 
 .swiper-slide {
+  position: relative; /* Essencial para o posicionamento do pseudo-elemento */
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-  color: var(--color-white); /* Texto branco como padrão para slides */
+  color: var(--color-white);
+}
+
+.swiper-slide::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Cria um gradiente escuro e semi-transparente por cima da imagem */
+  background-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.3),
+    rgba(0, 0, 0, 0.7)
+  );
+  z-index: 1; /* Garante que o gradiente fique acima da imagem */
 }
 
 /* Caixa de conteúdo dentro do slide */
 .slide-content {
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+  z-index: 2;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
   padding: 2rem 3rem;
-  /* Usando o azul primário com transparência para garantir a legibilidade do texto */
-  background-color: rgba(
-    13,
-    84,
-    151,
-    0.6
-  ); /* Cor --color-primary com 60% de opacidade */
   border-radius: 8px;
   max-width: 80%;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Sombra sutil para destacar a caixa */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); /* Sombra sutil para destacar a caixa */
 }
 
 /* Estilizando o título dentro do slide */
@@ -51,16 +65,16 @@
     --font-secondary
   ); /* "Merriweather", para um toque clássico */
   color: var(--color-white);
-  font-size: 2.5rem;
+  font-size: 3rem;
   margin-bottom: 0.5rem;
-  font-weight: 400;
+  font-weight: 700;
 }
 
 /* Estilizando o parágrafo dentro do slide */
 .slide-content p {
   font-family: var(--font-primary); /* "Roboto", para leitura fácil */
-  font-size: 1.1rem;
-  line-height: 1.6;
+  font-size: 1.2rem;
+  line-height: 1.7;
 }
 
 /* ==================================================
@@ -68,11 +82,13 @@
 ================================================== */
 
 .swiper-slide.slide-1 {
-  background: url("/img/image/banner.jpg") center/cover no-repeat;
+  background: url("/img/eventos/2025/08/2025-08-30-cirio-1.jpg") center/cover
+    no-repeat;
 }
 
 .swiper-slide.slide-2 {
-  background: url("/img/image/banner2.jpg") center/cover no-repeat;
+  background: url("/img/eventos/2025/09/2025-09-07-costelao-1.jpg") center/cover
+    no-repeat;
 }
 
 .swiper-slide.slide-3 {

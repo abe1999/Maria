@@ -1,122 +1,61 @@
 [
   {
-    "id": 10,
-    "image": "https://picsum.photos/id/212/800/600",
-    "date": "2025-08-28",
-    "title": "Missa de Cura e Libertação com Padre Convidado",
-    "excerpt": "Participe de uma noite especial de oração e bênçãos em nossa comunidade. Traga seus pedidos e seu coração aberto.",
-    "category": "missa",
-    "link": "/pages/evento-detalhe.html?id=10",
-    "fullText": "<p>Na última quinta-feira do mês, teremos a graça de receber um padre convidado para uma Missa de Cura e Libertação. Será um momento forte de espiritualidade, louvor e intercessão. Convidamos a todos para participarem.</p>",
-    "galleryImages": [],
-    "driveLink": null
-  },
-  {
-    "id": 9,
-    "image": "https://picsum.photos/id/237/800/600",
-    "date": "2025-08-05",
-    "title": "Inscrições Abertas para a Catequese 2025/2026",
-    "excerpt": "É tempo de iniciar uma nova jornada na fé! As inscrições para a Primeira Eucaristia e Crisma já estão abertas na secretaria.",
-    "category": "noticia",
-    "link": "/pages/evento-detalhe.html?id=9",
-    "fullText": "<p>Pais e responsáveis, as matrículas para os novos grupos de catequese para a Primeira Eucaristia e Crisma estão oficialmente abertas. Procure a secretaria paroquial para mais informações sobre documentos e horários das turmas.</p>",
-    "galleryImages": [],
-    "driveLink": null
-  },
-  {
-    "id": 8,
-    "image": "https://picsum.photos/id/188/800/600",
-    "date": "2025-09-01",
-    "title": "Vem aí a nossa Festa da Padroeira!",
-    "excerpt": "Prepare-se para o evento mais esperado do ano! Nossa tradicional Festa da Padroeira vem aí com muitas novidades, comidas típicas e shows.",
-    "category": "festa",
-    "link": "/pages/evento-detalhe.html?id=8",
-    "fullText": "<p>Em setembro, nossa comunidade se une para celebrar nossa padroeira, Nossa Senhora de Nazaré. A programação contará com novenas, missas solenes e, claro, a nossa grande festa social com barracas, leilões e muita música. Participe conosco!</p>",
-    "galleryImages": [],
-    "driveLink": null
-  },
-  {
-    "id": 7,
-    "image": "https://picsum.photos/id/190/800/600",
-    "date": "2025-08-15",
-    "title": "Missa Solene em Honra a São Tarcísio",
-    "excerpt": "Celebraremos o padroeiro dos coroinhas e acólitos com uma missa especial. Convidamos todos os servos do altar e suas famílias.",
-    "category": "missa",
-    "link": "/pages/evento-detalhe.html?id=7",
-    "fullText": "<p>No dia de São Tarcísio, teremos uma celebração eucarística dedicada a todos os coroinhas, acólitos e cerimoniários de nossa paróquia, agradecendo pelo seu serviço e dedicação ao altar do Senhor. Será às 19h.</p>",
-    "galleryImages": [],
-    "driveLink": null
-  },
-  {
-    "id": 6,
-    "image": "https://picsum.photos/id/48/800/600",
-    "date": "2025-07-28",
-    "title": "Inscrições Abertas para o Retiro de Casais",
-    "excerpt": "Um momento especial para fortalecer os laços matrimoniais à luz da fé. Vagas limitadas, garanta a sua participação!",
-    "category": "noticia",
-    "link": "/pages/evento-detalhe.html?id=6",
-    "fullText": "<p>Estão abertas as inscrições para o nosso Retiro Anual de Casais. Será um fim de semana de profunda reflexão, partilha e renovação dos votos matrimoniais. As inscrições podem ser feitas na secretaria paroquial.</p>",
-    "galleryImages": ["https://picsum.photos/id/101/800/600"],
-    "driveLink": "https://drive.google.com/drive/folders/PASTA_RETIRO_CASAIS"
-  },
-  {
-    "id": 5,
-    "image": "https://picsum.photos/id/54/800/600",
-    "date": "2025-07-23",
-    "title": "Nossa Festa Julina foi um Sucesso de Arrecadação",
-    "excerpt": "Agradecemos a todos que participaram e ajudaram na nossa tradicional Festa Julina. Os fundos serão destinados às obras de caridade.",
-    "category": "noticia",
-    "link": "/pages/evento-detalhe.html?id=5",
-    "fullText": "<p>Com grande alegria, anunciamos que nossa Festa Julina deste ano foi um verdadeiro sucesso! Graças à participação da comunidade e ao trabalho dos voluntários, conseguimos arrecadar um valor recorde.</p>",
-    "galleryImages": ["https://picsum.photos/id/111/800/600"],
-    "driveLink": "https://drive.google.com/drive/folders/PASTA_FESTA_JULINA"
-  },
-  {
     "id": 4,
-    "image": "https://picsum.photos/id/61/800/600",
-    "date": "2025-07-24",
-    "title": "Formação para Novos Ministros da Eucaristia",
-    "excerpt": "No último sábado, realizamos um encontro de formação para os novos Ministros Extraordinários da Sagrada Comunhão.",
+    "image": "/img/eventos/2025/09/2025-09-07-costelao-1.jpg",
+    "date": "2025-09-07",
+    "title": "Costelão da Nazaré",
+    "excerpt": "A festa do Círio continua! Participe da tradicional Costelá da Nazaré, um delicioso almoço de confraternização no dia 07 de setembro, com muita alegria e solidariedade para as obras da nossa paróquia.",
     "category": "noticia",
     "link": "/pages/evento-detalhe.html?id=4",
-    "fullText": "<p>A formação de novos servos para o altar é sempre um momento de grande graça para nossa paróquia. O encontro foi um sucesso e em breve os novos ministros estarão servindo em nossas celebrações.</p>",
-    "galleryImages": ["https://picsum.photos/id/121/800/600"],
-    "driveLink": null
+    "fullText": "<p>Depois da procissão e missa do Círio… a festa continua! 🔥✨</p><p>No dia <strong>07 de setembro</strong>, prepare-se para saborear o nosso delicioso Costelão da Nazaré! 🥩❤️</p><p>O evento será realizado na <strong>Paróquia Nossa Senhora de Nazaré</strong>, na Rua Pau Ferro, nº 640. Reúna a família, traga seu prato e talheres, e venha viver mais esse momento de confraternização e alegria! 🙌🎉</p><h3>Valores e Lotes</h3><ul><li><strong>1º Lote:</strong> R$ 45,00 (Até 31 de agosto)</li><li><strong>2º Lote:</strong> R$ 50,00 (De 01 a 04 de setembro)</li><li><strong>3º Lote:</strong> R$ 60,00 (De 05 a 06 de setembro)</li></ul><p>Garanta já o seu ingresso antecipado e aproveite! Para mais informações, entre em contato pelo número: <strong>(69) 99600-7098</strong>.</p>",
+    "galleryImages": [],
+    "driveLink": "https://photos.google.com/share/AF1QipPLtnDApccsjhYXqWP0qRSIjTHjgt8aauKBB7jRuryOI2R5YMGSrTsC-p0ENBjopg?key=cE9lMkduZ2Z1TU1NOFhsTXZTZEppMVJlb2dWTkpn"
   },
+
   {
     "id": 3,
-    "image": "https://picsum.photos/id/33/800/600",
-    "date": "2025-07-25",
-    "title": "Campanha do Agasalho Supera Expectativas",
-    "excerpt": "Com a sua ajuda, arrecadamos mais de mil peças de roupa que aquecerão o inverno de muitas famílias em nossa cidade.",
+    "image": "/img/eventos/2025/08/2025-08-30-cirio-1.jpg",
+    "date": "2025-08-30",
+    "title": "Círio de Nazaré 2025",
+    "excerpt": "Nossa paróquia se prepara para o grande Círio de Nazaré 2025! Convidamos a todos a participarem de sete dias de novena, missas diárias, procissões e um almoço de confraternização, em um momento único de fé e união.",
     "category": "noticia",
     "link": "/pages/evento-detalhe.html?id=3",
-    "fullText": "<p>A generosidade de nossa comunidade falou mais alto mais uma vez! A Campanha do Agasalho de 2025 foi um sucesso. As doações já foram triadas e começarão a ser distribuídas nesta semana.</p>",
-    "galleryImages": ["https://picsum.photos/id/131/800/600"],
-    "driveLink": "https://drive.google.com/drive/folders/PASTA_CAMPANHA_AGASALHO"
+    "fullText": "<p>Preparem seus corações! O Círio de Nazaré 2025 se aproxima, trazendo um momento único e abençoado de intensa fé para toda a comunidade paroquial.</p><h2>Programação Detalhada</h2><ul><li><strong>Novena:</strong> De <strong>30 de agosto a 07 de setembro</strong>, com missa todos os dias às 19h.</li><li><strong>Procissão de Nossa Senhora de Nazaré:</strong> A grande procissão sairá da Catedral de Porto Velho no dia <strong>30 de agosto</strong>.</li><li><strong>Chegada na Paróquia NS das Graças:</strong> No dia <strong>06 de setembro</strong>, a imagem de Nossa Senhora de Nazaré chegará à Paróquia Nossa Senhora das Graças, onde será realizada uma missa festiva às 19h.</li><li><strong>Procissão do Círio e Almoço:</strong> O ponto alto da celebração será no dia <strong>07 de setembro</strong>, com a grande procissão do Círio, seguida de um almoço de confraternização para toda a comunidade.</li></ul><p>Convidamos todos os fiéis a participarem dessa jornada de fé e renovação espiritual, fortalecendo a nossa comunidade e a nossa devoção à padroeira.</p>",
+    "galleryImages": ["/img/eventos/2025/08/2025-08-30-cirio-2.jpg"],
+    "driveLink": []
   },
+
   {
     "id": 2,
-    "image": "https://picsum.photos/id/22/800/600",
-    "date": "2025-07-26",
-    "title": "Grupo de Oração Jovem Convida Novos Membros",
-    "excerpt": "Todas as sextas-feiras, nosso grupo de jovens se reúne para um momento de louvor, oração e partilha. Venha participar!",
+    "image": "/img/eventos/2025/07/2025-07-21-cerco-1.jpg",
+    "date": "2025-07-21",
+    "title": "Cerco de Jericó",
+    "excerpt": "Nossa paróquia viveu sete dias de oração e fé no Cerco de Jericó, um momento de profunda renovação espiritual guiado pela presença inspiradora do Padre Ênio.",
     "category": "noticia",
     "link": "/pages/evento-detalhe.html?id=2",
-    "fullText": "<p>Se você é jovem e busca um espaço de amizade e aprofundamento na fé, nosso Grupo de Oração Jovem é o seu lugar! Os encontros acontecem toda sexta-feira, às 19h30, no salão paroquial.</p>",
-    "galleryImages": ["https://picsum.photos/id/141/800/600"],
-    "driveLink": null
+    "fullText": "<p>Com imensa alegria, nossa paróquia viveu um momento único e abençoado com a realização do Cerco de Jericó, que aconteceu ao longo de sete dias de oração, fé e louvor.</p><p>Tivemos a honra de contar com a presença do Padre Ênio, que nos guiou espiritualmente durante toda essa jornada de clamor e entrega ao Senhor.</p><p>Foram dias verdadeiramente maravilhosos, marcados pela presença viva de Deus, adoração ao Santíssimo, missas, meditações e momentos de profunda renovação espiritual. Foram noites inesquecíveis, onde cada oração elevou nossa fé e fortaleceu nossa comunidade. Que tudo o que vivemos nesse Cerco continue frutificando em nossas vidas, com corações mais confiantes, esperançosos e cheios da graça de Deus.</p>",
+    "galleryImages": [
+      "/img/eventos/2025/07/2025-07-21-cerco-2.jpg",
+      "/img/eventos/2025/07/2025-07-21-cerco-3.jpg",
+      "/img/eventos/2025/07/2025-07-21-cerco-4.jpg"
+    ],
+    "driveLink": "https://photos.app.goo.gl/n34vzH2fVvLXDExQA"
   },
+
   {
     "id": 1,
-    "image": "https://picsum.photos/id/18/800/600",
-    "date": "2025-07-27",
-    "title": "Celebração de Batizados Comunitários Emociona Fiéis",
-    "excerpt": "Mais de 20 crianças receberam o sacramento do Batismo em uma bela cerimônia comunitária no último domingo.",
+    "image": "/img/eventos/2025/07/2025-07-11-eucaristia-1.jpg",
+    "date": "2025-07-11",
+    "title": "Primeira Eucaristia",
+    "excerpt": "A Paróquia Nossa Senhora de Nazaré celebra mais uma etapa na vida de fé de seus jovens. Após uma jornada de preparação catequética, eles receberam pela primeira vez o Corpo e Sangue de Cristo na Eucaristia.",
     "category": "noticia",
     "link": "/pages/evento-detalhe.html?id=1",
-    "fullText": "<p>O último domingo foi de festa em nossa paróquia com a celebração do Batismo Comunitário. A cerimônia foi um momento de grande emoção para pais, padrinhos e toda a comunidade presente.</p>",
-    "galleryImages": ["https://picsum.photos/id/151/800/600"],
-    "driveLink": "https://drive.google.com/drive/folders/PASTA_BATIZADOS"
+    "fullText": "<p>A Primeira Eucaristia é um momento especial na vida cristã, quando a criança ou adolescente recebe, pela primeira vez, o Corpo e Sangue de Cristo. Na Paróquia Nossa Senhora de Nazaré, a preparação é feita com fé, amor e formação catequética, ajudando os catequizandos a entenderem o valor da Missa e a presença real de Jesus na Eucaristia.</p>",
+    "galleryImages": [
+      "/img/eventos/2025/07/2025-07-11-eucaristia-2.jpg",
+      "/img/eventos/2025/07/2025-07-11-eucaristia-3.jpg",
+      "/img/eventos/2025/07/2025-07-11-eucaristia-4.jpg"
+    ],
+    "driveLink": "https://photos.google.com/share/AF1QipPLtnDApccsjhYXqWP0qRSIjTHjgt8aauKBB7jRuryOI2R5YMGSrTsC-p0ENBjopg?key=cE9lMkduZ2Z1TU1NOFhsTXZTZEppMVJlb2dWTkpn"
   }
 ]

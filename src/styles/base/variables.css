@@ -44,6 +44,15 @@
   /* ==================================================
      FONTES (MANTIDAS, SÃO BOAS ESCOLHAS)
   ================================================== */
+
+  /* ==================================================
+     ESPAÇAMENTO E TAMANHOS
+  ================================================== */
+  --spacing-small: 8px;
+  --spacing-medium: 16px;
+  --spacing-large: 32px;
+  --border-radius: 8px; /* Para consistência em cards, botões, etc. */
+
   --font-primary: "Roboto", sans-serif;
   --font-secondary: "Merriweather", serif;
 }

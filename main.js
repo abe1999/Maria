@@ -1,4 +1,4 @@
-// main.js - VERSÃO FINAL COMPLETA
+// Local: /main.js
 
 // --- IMPORTS DE CSS ---
 import "swiper/css";
@@ -19,10 +19,10 @@ import { renderHeader } from "/src/components/Header.js";
 import { renderFooter } from "/src/components/Footer.js";
 import Swiper from "swiper";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
-import { initializeNewsLoader } from "/src/pages/eventos.js";
+import { initializeHomepageNews } from "/src/components/homepage-loader.js"; // Caminho correto
 
 function inicializarCarrossel() {
-  const swiper = new Swiper(".swiper", {
+  new Swiper(".swiper", {
     modules: [Navigation, Pagination, Autoplay],
     loop: true,
     pagination: { el: ".swiper-pagination", clickable: true },
@@ -38,5 +38,5 @@ document.addEventListener("DOMContentLoaded", () => {
   renderHeader();
   renderFooter();
   inicializarCarrossel();
-  initializeNewsLoader(); // <-- 3. CHAMADA DA FUNÇÃO
+  initializeHomepageNews();
 });

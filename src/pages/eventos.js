@@ -1,9 +1,19 @@
-// src/pages/news-loader.js - VERSÃO FINAL E CORRIGIDA
+// --- 1. IMPORTAÇÕES ESSENCIAIS ---
+// Estilos
+import "/src/styles/base/reset.css";
+import "/src/styles/base/variables.css";
+import "/src/styles/base/typography.css";
+import "/src/styles/components/header.css";
+import "/src/styles/components/footer.css";
+import "/src/styles/components/page-header.css";
+import "/src/styles/pages/eventos.css";
 
+// Componentes e Dados
+import { renderHeader } from "/src/components/Header.js";
+import { renderFooter } from "/src/components/Footer.js";
 import allEvents from "/src/data/eventos.json";
 
-// --- FUNÇÕES AUXILIARES ---
-
+// --- 2. FUNÇÕES AUXILIARES ---
 function formatarData(dateString) {
   const data = new Date(dateString + "T00:00:00");
   return data.toLocaleDateString("pt-BR", {
@@ -13,11 +23,18 @@ function formatarData(dateString) {
   });
 }
 
-// Função para criar o card completo (para a página de eventos)
 function createFullEventCard(evento) {
+  const linkURL = evento.link.startsWith("http")
+    ? evento.link
+    : `${import.meta.env.BASE_URL}${evento.link.replace(/^\//, "")}`;
+  const imageURL = evento.image.startsWith("http")
+    ? evento.image
+    : `${import.meta.env.BASE_URL}${evento.image.replace(/^\//, "")}`;
+
+  // Corrigido: class/="evento-card" para class="evento-card"
   return `
-    <a href="${evento.link}" class="evento-card">
-      <img src="${evento.image}" alt="Imagem do evento: ${evento.title}">
+    <a href="${linkURL}" class="evento-card">
+      <img src="${imageURL}" alt="Imagem do evento: ${evento.title}">
       <div class="evento-conteudo">
         <p class="evento-data">${formatarData(evento.date)}</p>
         <h3 class="evento-titulo">${evento.title}</h3>
@@ -28,55 +45,18 @@ function createFullEventCard(evento) {
   `;
 }
 
-// Função para criar o card da homepage (usando seu CSS mais novo)
-function createHomeEventCard(evento) {
-  return `
-    <div class="home-news-card">
-      <a href="${evento.link}">
-        <img src="${evento.image}" alt="Imagem do evento: ${evento.title}">
-        <div class="home-news-content">
-          <span class="home-news-date">${formatarData(evento.date)}</span>
-          <h3 class="home-news-title">${evento.title}</h3>
-        </div>
-      </a>
-    </div>
-  `;
-}
-
-// --- FUNÇÃO PRINCIPAL (APENAS UMA VEZ) ---
-
-export function initializeNewsLoader() {
-  const homeNewsContainer = document.getElementById("latest-news-grid");
+// --- 3. FUNÇÃO PRINCIPAL ---
+function initializePage() {
+  renderHeader();
+  renderFooter();
   const eventosPageContainer = document.querySelector(".eventos-grid");
-
-  if (!homeNewsContainer && !eventosPageContainer) {
-    return;
-  }
-
-  try {
-    let eventosParaExibir = [...allEvents];
-    eventosParaExibir.sort((a, b) => new Date(b.date) - new Date(a.date));
-
-    // Lógica para a HOMEPAGE
-    if (homeNewsContainer) {
-      const latestEvents = eventosParaExibir.slice(0, 3);
-      homeNewsContainer.innerHTML = latestEvents
-        .map(createHomeEventCard)
-        .join("");
-    }
-
-    // Lógica para a PÁGINA DE EVENTOS
-    if (eventosPageContainer) {
-      // (aqui vai a lógica de filtros que você tinha, se precisar)
-      eventosPageContainer.innerHTML = eventosParaExibir
-        .map(createFullEventCard)
-        .join("");
-    }
-  } catch (error) {
-    console.error("Falha ao carregar eventos:", error);
-    const errorMessage =
-      "<p>Não foi possível carregar os eventos no momento.</p>";
-    if (homeNewsContainer) homeNewsContainer.innerHTML = errorMessage;
-    if (eventosPageContainer) eventosPageContainer.innerHTML = errorMessage;
-  }
+  if (!eventosPageContainer) return;
+  let eventosParaExibir = [...allEvents];
+  eventosParaExibir.sort((a, b) => new Date(b.date) - new Date(a.date));
+  eventosPageContainer.innerHTML = eventosParaExibir
+    .map(createFullEventCard)
+    .join("");
 }
+
+// --- 4. EXECUÇÃO ---
+document.addEventListener("DOMContentLoaded", initializePage);

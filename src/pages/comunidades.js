@@ -6,6 +6,7 @@ import "../styles/base/variables.css";
 import "../styles/base/typography.css";
 import "../styles/components/header.css";
 import "../styles/components/footer.css";
+import "../styles/components/page-header.css";
 import "../styles/pages/comunidades.css";
 
 import { renderHeader } from "../components/Header.js";
@@ -18,7 +19,7 @@ import comunidades from "../data/comunidades.json";
 function createComunidadeCard(comunidade) {
   return `
     <div class="comunidade-card-avatar">
-      <a href="${import.meta.env.BASE_URL}comunidade-detalhe.html?id=${
+      <a href="${import.meta.env.BASE_URL}pages/comunidade-detalhe.html?id=${
     comunidade.id
   }">
         <div class="avatar-container">

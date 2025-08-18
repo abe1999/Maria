@@ -1,101 +1,130 @@
-document.addEventListener("DOMContentLoaded", () => {
+// --- Importações Essenciais ---
+import "/src/styles/base/reset.css";
+import "/src/styles/base/variables.css";
+import "/src/styles/base/typography.css";
+import "/src/styles/components/header.css";
+import "/src/styles/components/footer.css";
+import "/src/styles/components/page-header.css";
+import "/src/styles/pages/acampamento.css"; // Seu novo CSS
+
+import { renderHeader } from "/src/components/Header.js";
+import { renderFooter } from "/src/components/Footer.js";
+import acampamentos from "/src/data/acampamentos.json";
+
+/** Cria o HTML para um único botão de aba */
+function createTabButton(acampamento, index) {
+  const isActive = index === 0 ? "active" : "";
+  const nomeAba = acampamento.nome.replace("Acampamento ", "");
+  return `
+    <button class="tab-link ${isActive} ${acampamento.classeCor}" data-tab="tab-${acampamento.id}">
+      ${nomeAba}
+    </button>
+  `;
+}
+
+/** Cria o HTML para um único painel de conteúdo */
+function createContentPanel(acampamento, index) {
+  const isActive = index === 0 ? "active" : "";
+
+  // Lógica inteligente para os caminhos das FOTOS
+  const fotosHTML = acampamento.fotos
+    .map((fotoUrl) => {
+      // Se a URL já for completa (começar com http), use-a como está.
+      // Senão, monte o caminho completo com o BASE_URL.
+      const imageURL = fotoUrl.startsWith("http")
+        ? fotoUrl
+        : `${import.meta.env.BASE_URL}${fotoUrl.replace(/^\//, "")}`;
+
+      return `<img src="${imageURL}" alt="Foto do ${acampamento.nome}" />`;
+    })
+    .join("");
+
+  // Lógica inteligente para o caminho do VÍDEO
+  let videoHTML = "";
+  if (acampamento.video && acampamento.video.url) {
+    let videoUrl = acampamento.video.url;
+
+    // Só adiciona o BASE_URL se a URL não for externa (http ou youtube)
+    if (!videoUrl.startsWith("http")) {
+      videoUrl = `${import.meta.env.BASE_URL}${videoUrl.replace(/^\//, "")}`;
+    }
+
+    const videoTag = videoUrl.includes("youtube.com")
+      ? `<iframe src="${videoUrl}" title="Depoimento de Campista" frameborder="0" allowfullscreen></iframe>`
+      : `<video src="${videoUrl}" controls width="100%"></video>`;
+
+    videoHTML = `
+      <div class="video-depoimento">
+        <h4>${acampamento.video.titulo}</h4>
+        ${videoTag}
+      </div>
+    `;
+  }
+
+  // Cria a lista de detalhes
+  const detalhesHTML = acampamento.detalhes
+    .map(
+      (detalhe) =>
+        `<li><i class="${detalhe.icone}"></i> <strong>${detalhe.titulo}:</strong> ${detalhe.valor}</li>`
+    )
+    .join("");
+
+  return `
+    <div class="tab-content ${isActive}" id="tab-${acampamento.id}">
+      <div class="content-column">
+        <div class="acampamento-titulo ${acampamento.classeCor}">
+          <i class="${acampamento.icone}"></i>
+          <h3>${acampamento.nome}</h3>
+        </div>
+        <p class="descricao">${acampamento.descricao}</p>
+        <ul class="acampamento-detalhes">${detalhesHTML}</ul>
+        ${videoHTML}
+      </div>
+      <div class="photos-column">
+        ${fotosHTML}
+      </div>
+    </div>
+  `;
+}
+
+/** Adiciona os listeners de clique para as abas funcionarem */
+function addTabListeners() {
+  const tabLinks = document.querySelectorAll(".tab-link");
+  if (tabLinks.length === 0) return;
+
+  tabLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      document.querySelector(".tab-link.active")?.classList.remove("active");
+      document.querySelector(".tab-content.active")?.classList.remove("active");
+      link.classList.add("active");
+      document.getElementById(link.dataset.tab).classList.add("active");
+    });
+  });
+}
+
+// --- 3. FUNÇÃO PRINCIPAL ---
+function initializePage() {
+  renderHeader();
+  renderFooter();
+
   const tabsContainer = document.getElementById("acampamento-tabs");
   const contentContainer = document.getElementById("acampamento-content");
 
-  // Se os containers não existirem na página, o script para.
-  if (!tabsContainer || !contentContainer) return;
+  if (
+    !tabsContainer ||
+    !contentContainer ||
+    !acampamentos ||
+    acampamentos.length === 0
+  )
+    return;
 
-  fetch("/data/acampamentos.json")
-    .then((response) => response.json())
-    .then((acampamentos) => {
-      if (!acampamentos || acampamentos.length === 0) return;
+  // Gera e insere o HTML na página
+  tabsContainer.innerHTML = acampamentos.map(createTabButton).join("");
+  contentContainer.innerHTML = acampamentos.map(createContentPanel).join("");
 
-      let tabsHTML = "";
-      let contentHTML = "";
+  // Ativa a funcionalidade das abas
+  addTabListeners();
+}
 
-      acampamentos.forEach((acampamento, index) => {
-        const isActive = index === 0 ? "active" : "";
-
-        // Cria o botão da aba
-        tabsHTML += `<button class="tab-link ${isActive} ${
-          acampamento.classeCor
-        }" data-tab="tab-${acampamento.id}">${acampamento.nome.replace(
-          "Acampamento ",
-          ""
-        )}</button>`;
-
-        // Cria a lista de detalhes
-        let detalhesHTML = acampamento.detalhes
-          .map(
-            (detalhe) =>
-              `<li><i class="${detalhe.icone}"></i> <strong>${detalhe.titulo}:</strong> ${detalhe.valor}</li>`
-          )
-          .join("");
-
-        // Cria a galeria de fotos
-        let fotosHTML = acampamento.fotos
-          .map(
-            (fotoUrl) =>
-              `<img src="${fotoUrl}" alt="Foto do ${acampamento.nome}" />`
-          )
-          .join("");
-
-        // Cria o player de vídeo
-        let videoHTML = "";
-        if (acampamento.video && acampamento.video.url) {
-          const videoTag = acampamento.video.url.includes("youtube.com")
-            ? `<iframe src="${acampamento.video.url}" title="Depoimento de Campista" frameborder="0" allowfullscreen></iframe>`
-            : `<video src="${acampamento.video.url}" controls width="100%"></video>`;
-          videoHTML = `
-                        <div class="video-depoimento">
-                            <h4>${acampamento.video.titulo}</h4>
-                            ${videoTag}
-                        </div>
-                    `;
-        }
-
-        // =============================================================
-        // CRIA O PAINEL DE CONTEÚDO COM A NOVA LÓGICA DE 2 COLUNAS
-        // =============================================================
-        contentHTML += `
-                    <div class="tab-content ${isActive}" id="tab-${acampamento.id}">
-                        <div class="content-column">
-                            <div class="acampamento-titulo ${acampamento.classeCor}">
-                                <i class="${acampamento.icone}"></i>
-                                <h3>${acampamento.nome}</h3>
-                            </div>
-                            <p class="descricao">${acampamento.descricao}</p>
-                            <ul class="acampamento-detalhes">${detalhesHTML}</ul>
-                            ${videoHTML}
-                        </div>
-
-                        <div class="photos-column">
-                            ${fotosHTML}
-                        </div>
-                    </div>
-                `;
-      });
-
-      // Insere o HTML gerado na página
-      tabsContainer.innerHTML = tabsHTML;
-      contentContainer.innerHTML = contentHTML;
-
-      // --- Lógica de clique para fazer as abas funcionarem ---
-      const tabLinks = document.querySelectorAll(".tab-link");
-
-      tabLinks.forEach((link) => {
-        link.addEventListener("click", () => {
-          document.querySelector(".tab-link.active").classList.remove("active");
-          document
-            .querySelector(".tab-content.active")
-            .classList.remove("active");
-
-          link.classList.add("active");
-          document.getElementById(link.dataset.tab).classList.add("active");
-        });
-      });
-    })
-    .catch((error) =>
-      console.error("Erro ao carregar dados dos acampamentos:", error)
-    );
-});
+// --- 4. EXECUÇÃO ---
+document.addEventListener("DOMContentLoaded", initializePage);

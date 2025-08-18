@@ -56,6 +56,8 @@ export function renderHeader() {
             <i class="fa-solid fa-xmark"></i>
           </button>
           <ul>
+            <li><a href="${import.meta.env.BASE_URL}">Início</a></li>
+            
             <li><a href="${
               import.meta.env.BASE_URL
             }pages/comunidades.html">Comunidades</a></li>

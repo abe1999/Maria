@@ -43,7 +43,7 @@ function initializePage() {
   if (!eventIdStr) return;
 
   // O ID no JSON pode ser número ou string, então comparamos de forma flexível (==)
-  const eventItem = allEvents.find((item) => item.id === eventIdStr);
+  const eventItem = allEvents.find((item) => item.id == eventIdStr);
 
   if (!eventItem) {
     container.innerHTML = `<h1>Evento não encontrado.</h1>`;

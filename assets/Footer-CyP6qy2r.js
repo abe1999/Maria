@@ -1,14 +1,16 @@
-const t="/Maria/img/logo/Nazare-logo.png",n=()=>{const a=document.querySelector("#main-header");a&&window.addEventListener("scroll",()=>{window.scrollY>50?a.classList.add("scrolled"):a.classList.remove("scrolled")})},l=()=>{const a=document.body,e=document.getElementById("hamburger-menu-button"),o=document.getElementById("close-menu-button"),r=document.getElementById("main-nav");if(!a||!e||!o||!r)return;e.addEventListener("click",()=>{a.classList.add("menu-open")}),o.addEventListener("click",()=>{a.classList.remove("menu-open")}),r.querySelectorAll(".dropdown").forEach(s=>{s.querySelector(".drop-btn").addEventListener("click",i=>{window.innerWidth<=992&&(i.preventDefault(),s.classList.toggle("active"))})})};function m(){const a=document.getElementById("header-container");if(!a)return;const e=`
+(function(){const r=document.createElement("link").relList;if(r&&r.supports&&r.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))t(e);new MutationObserver(e=>{for(const o of e)if(o.type==="childList")for(const i of o.addedNodes)i.tagName==="LINK"&&i.rel==="modulepreload"&&t(i)}).observe(document,{childList:!0,subtree:!0});function s(e){const o={};return e.integrity&&(o.integrity=e.integrity),e.referrerPolicy&&(o.referrerPolicy=e.referrerPolicy),e.crossOrigin==="use-credentials"?o.credentials="include":e.crossOrigin==="anonymous"?o.credentials="omit":o.credentials="same-origin",o}function t(e){if(e.ep)return;e.ep=!0;const o=s(e);fetch(e.href,o)}})();const n="/Maria/img/logo/Nazare-logo.png",c=()=>{const a=document.querySelector("#main-header");a&&window.addEventListener("scroll",()=>{window.scrollY>50?a.classList.add("scrolled"):a.classList.remove("scrolled")})},d=()=>{const a=document.body,r=document.getElementById("hamburger-menu-button"),s=document.getElementById("close-menu-button"),t=document.getElementById("main-nav");if(!a||!r||!s||!t)return;r.addEventListener("click",()=>{a.classList.add("menu-open")}),s.addEventListener("click",()=>{a.classList.remove("menu-open")}),t.querySelectorAll(".dropdown").forEach(o=>{o.querySelector(".drop-btn").addEventListener("click",l=>{window.innerWidth<=992&&(l.preventDefault(),o.classList.toggle("active"))})})};function u(){const a=document.getElementById("header-container");if(!a)return;const r=`
     <header class="main-header" id="main-header">
       <div class="container">
         <a href="/Maria/" class="logo">
-          <img src="${t}" alt="Logo da Paróquia Nossa Senhora de Nazaré" />
+          <img src="${n}" alt="Logo da Paróquia Nossa Senhora de Nazaré" />
         </a>
         <nav class="main-nav" id="main-nav">
           <button class="close-menu-button" id="close-menu-button" aria-label="Fechar menu">
             <i class="fa-solid fa-xmark"></i>
           </button>
           <ul>
+            <li><a href="/Maria/">Início</a></li>
+            
             <li><a href="/Maria/pages/comunidades.html">Comunidades</a></li>
             <li><a href="/Maria/pages/pastorais.html">Pastorais</a></li>
             <li><a href="/Maria/pages/horarios.html">Horários</a></li>
@@ -33,12 +35,13 @@ const t="/Maria/img/logo/Nazare-logo.png",n=()=>{const a=document.querySelector(
         </div>
       </div>
     </header>
-  `;a.innerHTML=e,n(),l()}function u(){const a=document.getElementById("footer-container");if(!a)return;const e=`
+  `;a.innerHTML=r,c(),d()}function m(){const a=document.getElementById("footer-container");if(!a)return;const r=`
     <footer class="main-footer">
       <div class="container">
         <div class="footer-info-box">
           <div class="footer-column">
-            <img src="/img/logo/Nazare-logo.png" alt="Brasão da Paróquia" class="footer-logo">
+            <a href="/Maria/" class="logo">
+                      <img class="footer-logo" src="${n}" alt="Logo da Paróquia Nossa Senhora de Nazaré" />
             <div class="address-details">
               <h4>Nossa Paróquia</h4>
               <p>
@@ -80,4 +83,4 @@ const t="/Maria/img/logo/Nazare-logo.png",n=()=>{const a=document.querySelector(
         </div>
       </div>
     </footer>
-  `;a.innerHTML=e}export{u as a,m as r};
+  `;a.innerHTML=r}export{m as a,u as r};

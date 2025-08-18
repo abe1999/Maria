@@ -1,4 +1,4 @@
-import"./modulepreload-polyfill-B5Qt9EMX.js";import{r as n,a as s}from"./Footer-CNMLIBf2.js";import{c}from"./comunidades-Cu2MY4Cn.js";function t(){const r=new URLSearchParams(window.location.search).get("id"),a=document.querySelector("main");if(!a)return;const e=c.find(o=>o.id===r);if(!e)return;document.title=`${e.nome} | Paróquia N. S. de Nazaré`;const i=e.horarios.map(o=>`
+import{r as n,a as s}from"./Footer-CyP6qy2r.js";import{c}from"./comunidades-Cu2MY4Cn.js";function t(){const r=new URLSearchParams(window.location.search).get("id"),a=document.querySelector("main");if(!a)return;const e=c.find(o=>o.id===r);if(!e)return;document.title=`${e.nome} | Paróquia N. S. de Nazaré`;const i=e.horarios.map(o=>`
     <li><strong>${o.dia}:</strong> ${o.descricao}</li>
   `).join(""),d=`
     <div class="hero-comunidade" style="background-image: url('${e.imagemBanner}')">

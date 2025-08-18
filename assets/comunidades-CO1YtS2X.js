@@ -1,6 +1,6 @@
-import"./modulepreload-polyfill-B5Qt9EMX.js";import{r,a as d}from"./Footer-CNMLIBf2.js";import{c as n}from"./comunidades-Cu2MY4Cn.js";function t(e){return`
+import{r,a as d}from"./Footer-CyP6qy2r.js";/* empty css                    */import{c as n}from"./comunidades-Cu2MY4Cn.js";function t(e){return`
     <div class="comunidade-card-avatar">
-      <a href="/Maria/comunidade-detalhe.html?id=${e.id}">
+      <a href="/Maria/pages/comunidade-detalhe.html?id=${e.id}">
         <div class="avatar-container">
           <img src="${e.imagemCard}" alt="Foto da ${e.nome}">
         </div>

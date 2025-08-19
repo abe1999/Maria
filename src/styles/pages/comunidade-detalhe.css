@@ -115,6 +115,37 @@
   height: 100%;
 }
 
+/* ======================================================
+   ESTILOS PARA A SEÇÃO DE REDES SOCIAIS
+   ====================================================== */
+
+.redes-sociais-lista {
+  list-style: none; /* Remove as bolinhas da lista */
+  padding: 0;
+  margin: 0;
+  display: flex; /* Alinha os ícones horizontalmente */
+  flex-wrap: wrap; /* Permite quebrar a linha em telas pequenas */
+  gap: 20px; /* Espaçamento entre os ícones */
+}
+
+.redes-sociais-lista li a {
+  /* Tamanho dos ícones */
+  font-size: 2rem;
+  /* Cor padrão dos ícones */
+  color: var(--color-text-light);
+  /* Efeito suave de transição */
+  transition: color 0.3s ease, transform 0.3s ease;
+  display: inline-block; /* Necessário para a transformação funcionar */
+}
+
+/* Efeito ao passar o mouse */
+.redes-sociais-lista li a:hover {
+  /* Muda para a cor primária do site */
+  color: var(--color-primary);
+  /* Efeito de leve crescimento */
+  transform: scale(1.1);
+}
+
 /* --- Media Query para Telas Pequenas --- */
 @media (max-width: 768px) {
   .hero-comunidade h1 {

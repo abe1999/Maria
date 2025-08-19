@@ -4,7 +4,7 @@ import "/src/styles/base/variables.css";
 import "/src/styles/base/typography.css";
 import "/src/styles/components/header.css";
 import "/src/styles/components/footer.css";
-import "/src/styles/pages/comunidade-detalhe.css"; // Seu novo CSS
+import "/src/styles/pages/comunidade-detalhe.css";
 
 import { renderHeader } from "/src/components/Header.js";
 import { renderFooter } from "/src/components/Footer.js";
@@ -15,7 +15,7 @@ import comunidades from "/src/data/comunidades.json";
 function renderDetalhesComunidade() {
   const params = new URLSearchParams(window.location.search);
   const comunidadeId = params.get("id");
-  const container = document.querySelector("main"); // Vamos injetar dentro do <main>
+  const container = document.querySelector("main");
   if (!container) return;
 
   const comunidade = comunidades.find((c) => c.id === comunidadeId);
@@ -35,9 +35,40 @@ function renderDetalhesComunidade() {
     )
     .join("");
 
-  // ATUALIZAÇÃO PRINCIPAL: Este HTML agora corresponde 100% ao seu CSS.
+  // --- NOVO: Lógica para renderizar as redes sociais ---
+  let redesSociaisHtml = ""; // Começa vazio
+  if (
+    comunidade.redesSociais &&
+    Object.keys(comunidade.redesSociais).length > 0
+  ) {
+    // Mapeia o nome da rede para o ícone do Font Awesome
+    const iconMap = {
+      instagram: "fa-instagram",
+      facebook: "fa-facebook",
+      whatsapp: "fa-whatsapp",
+      youtube: "fa-youtube", // Adicione mais se precisar
+    };
+
+    redesSociaisHtml = Object.entries(comunidade.redesSociais)
+      .map(([rede, url]) => {
+        const iconClass = iconMap[rede];
+        if (!url || !iconClass) return ""; // Ignora se não tiver URL ou ícone
+        return `
+          <li>
+            <a href="${url}" target="_blank" rel="noopener noreferrer" aria-label="${rede}">
+              <i class="fa-brands ${iconClass}"></i>
+            </a>
+          </li>
+        `;
+      })
+      .join("");
+  }
+  // --- FIM DA NOVA LÓGICA ---
+
   const pageHtml = `
-    <div class="hero-comunidade" style="background-image: url('${comunidade.imagemBanner}')">
+    <div class="hero-comunidade" style="background-image: url('${
+      comunidade.imagemBanner
+    }')">
       <h1 id="comunidade-nome">${comunidade.nome}</h1>
     </div>
 
@@ -48,6 +79,16 @@ function renderDetalhesComunidade() {
 
         <h2>Horários de Missas e Celebrações</h2>
         <ul id="comunidade-horarios">${horariosHtml}</ul>
+        
+        ${
+          redesSociaisHtml
+            ? `
+          <h2>Nossas Redes</h2>
+          <ul class="redes-sociais-lista">${redesSociaisHtml}</ul>
+        `
+            : ""
+        }
+        
       </div>
 
       <div class="mapa-coluna">
@@ -62,7 +103,7 @@ function renderDetalhesComunidade() {
             style="border: 0"
             allowfullscreen=""
             loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
+             referrerpolicy="no-referrer-when-downgrade"
           ></iframe>
         </div>
       </div>

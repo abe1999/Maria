@@ -1,0 +1,91 @@
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: #f4f8ff;
+  margin: 0;
+  color: #333;
+}
+.dashboard-container {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 20px;
+}
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+.dashboard-header h1 {
+  font-family: "Merriweather", serif;
+  color: var(--color-primary, #0d5497);
+  margin: 0;
+}
+.btn-logout {
+  background: none;
+  border: none;
+  color: var(--color-text-light, #555);
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.actions-bar {
+  margin-bottom: 30px;
+}
+.btn {
+  text-decoration: none;
+  padding: 12px 20px;
+  border-radius: 5px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: background-color 0.3s ease;
+}
+.btn-primary {
+  background-color: var(--color-primary, #0d5497);
+  color: white;
+}
+.btn-primary:hover {
+  background-color: var(--color-primary-dark, #07335b);
+}
+#events-list-container {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+  padding: 20px;
+}
+.event-item {
+  display: flex;
+  align-items: center;
+  padding: 15px 0;
+  border-bottom: 1px solid var(--color-border, #eee);
+}
+.event-item:last-child {
+  border-bottom: none;
+}
+.event-item-title {
+  flex-grow: 1;
+  font-weight: 500;
+}
+.event-item-actions a,
+.event-item-actions button {
+  text-decoration: none;
+  margin-left: 15px;
+  padding: 8px 12px;
+  border-radius: 5px;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+.btn-edit {
+  background-color: #f0f0f0;
+  color: #333;
+}
+.btn-delete {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  cursor: pointer;
+}

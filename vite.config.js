@@ -19,6 +19,11 @@ export default defineConfig({
           __dirname,
           "pages/comunidade-detalhe.html"
         ),
+
+        // --- PÁGINAS DO PAINEL ADMINISTRATIVO ADICIONADAS AQUI ---
+        login: resolve(__dirname, "src/admin/login.html"),
+        dashboard: resolve(__dirname, "src/admin/dashboard.html"),
+        editor: resolve(__dirname, "src/admin/editor.html"),
       },
     },
   },

@@ -1,47 +1,41 @@
-// Local: /src/components/homepage-loader.js
+// Importa as funções do Firebase
+import { db } from "/src/firebase-config.js";
+import { collection, getDocs, orderBy, query, limit } from "firebase/firestore";
 
-// Usa o caminho absoluto para consistência total
-import allEvents from "/src/data/eventos.json";
+// Importa nossa nova função centralizada de criar o card
+import { createEventCard } from "/src/utils/helpers.js";
 
-function formatarData(dateString) {
-  const data = new Date(dateString + "T00:00:00");
-  return data.toLocaleDateString("pt-BR", {
-    day: "2-digit",
-    month: "long",
-    year: "numeric",
-  });
-}
+// A função que o main.js chama, agora conectada ao Firebase
+export async function initializeHomepageNews() {
+  const container = document.getElementById("latest-news-grid");
+  if (!container) return;
 
-function createHomeEventCard(evento) {
-  const linkURL = evento.link.startsWith("http")
-    ? evento.link
-    : `${import.meta.env.BASE_URL}${evento.link.replace(/^\//, "")}`;
+  container.innerHTML = "<p>Carregando as últimas notícias...</p>";
 
-  const imageURL = evento.image.startsWith("http")
-    ? evento.image
-    : `${import.meta.env.BASE_URL}${evento.image.replace(/^\//, "")}`;
+  try {
+    // Cria a consulta: busca na coleção "eventos", ordena por data (desc) e LIMITA o resultado aos 3 mais recentes.
+    const q = query(
+      collection(db, "eventos"),
+      orderBy("date", "desc"),
+      limit(3)
+    );
 
-  return `
-    <div class="home-news-card">
-      <a href="${linkURL}">
-        <img src="${imageURL}" alt="Imagem do evento: ${evento.title}">
-        <div class="home-news-content">
-          <span class="home-news-date">${formatarData(evento.date)}</span>
-          <h3 class="home-news-title">${evento.title}</h3>
-        </div>
-      </a>
-    </div>
-  `;
-}
+    const querySnapshot = await getDocs(q);
 
-// A função é exportada corretamente
-export function initializeHomepageNews() {
-  const homeNewsContainer = document.getElementById("latest-news-grid");
-  if (!homeNewsContainer) return;
+    const latestEvents = querySnapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
 
-  let eventosParaExibir = [...allEvents];
-  eventosParaExibir.sort((a, b) => new Date(b.date) - new Date(a.date));
+    if (latestEvents.length === 0) {
+      container.innerHTML = "<p>Nenhuma notícia encontrada.</p>";
+      return;
+    }
 
-  const latestEvents = eventosParaExibir.slice(0, 3);
-  homeNewsContainer.innerHTML = latestEvents.map(createHomeEventCard).join("");
+    // Renderiza os 3 cards na tela usando a função importada
+    container.innerHTML = latestEvents.map(createEventCard).join("");
+  } catch (error) {
+    console.error("Erro ao buscar últimas notícias:", error);
+    container.innerHTML = "<p>Não foi possível carregar as notícias.</p>";
+  }
 }

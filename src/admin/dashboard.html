@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard - Painel Administrativo</title>
+
+    <script type="module" src="auth-guard.js"></script>
+
+    <link rel="stylesheet" href="../styles/base/variables.css" />
+    <link rel="stylesheet" href="dashboard.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="dashboard-container">
+      <header class="dashboard-header">
+        <h1>Painel de Eventos</h1>
+        <button id="logout-button" class="btn-logout">
+          <i class="fa-solid fa-right-from-bracket"></i> Sair
+        </button>
+      </header>
+
+      <main>
+        <div class="actions-bar">
+          <a href="/src/admin/editor.html" class="btn btn-primary">
+            <i class="fa-solid fa-plus"></i> Adicionar Novo Evento
+          </a>
+        </div>
+
+        <h2>Eventos Cadastrados</h2>
+        <div id="events-list-container">
+          <p>Carregando eventos...</p>
+        </div>
+      </main>
+    </div>
+
+    <script type="module" src="dashboard.js"></script>
+  </body>
+</html>

@@ -1,90 +1,89 @@
-// Local do arquivo: /src/pages/eventos-detalhe.js - VERSÃO CORRIGIDA E PADRONIZADA
+// Local do arquivo: /src/pages/eventos-detalhe.js - VERSÃO FIREBASE
 
 // --- 1. IMPORTAÇÕES ESSENCIAIS ---
+// Estilos
 import "/src/styles/base/reset.css";
 import "/src/styles/base/variables.css";
 import "/src/styles/base/typography.css";
 import "/src/styles/components/header.css";
 import "/src/styles/components/footer.css";
-import "/src/styles/pages/eventos-detalhe.css"; // Crie este arquivo para os estilos desta página
+import "/src/styles/pages/eventos-detalhe.css";
 
+// Componentes, Funções Úteis e Firebase
 import { renderHeader } from "/src/components/Header.js";
 import { renderFooter } from "/src/components/Footer.js";
-import allEvents from "/src/data/eventos.json"; // Carrega os dados diretamente da pasta 'src'
+import { formatarData, buildSafeURL } from "/src/utils/helpers.js"; // Importa do arquivo central
+import { db } from "/src/firebase-config.js";
+import { doc, getDoc } from "firebase/firestore"; // Funções para buscar um único documento
 
-// --- 2. FUNÇÕES AUXILIARES ---
-function formatarData(dateString) {
-  const data = new Date(dateString + "T00:00:00");
-  return data.toLocaleDateString("pt-BR", {
-    day: "2-digit",
-    month: "long",
-    year: "numeric",
-  });
-}
-
-/** Constrói uma URL segura, considerando o BASE_URL para caminhos internos */
-function buildSafeURL(path) {
-  if (!path || typeof path !== "string") return "";
-  return path.startsWith("http")
-    ? path
-    : `${import.meta.env.BASE_URL}${path.replace(/^\//, "")}`;
-}
-
-// --- 3. FUNÇÃO PRINCIPAL ---
-function initializePage() {
+// --- 2. FUNÇÃO PRINCIPAL ---
+async function initializePage() {
   renderHeader();
   renderFooter();
 
   const container = document.querySelector(".event-detail-page");
   if (!container) return;
 
-  const params = new URLSearchParams(window.location.search);
-  const eventIdStr = params.get("id"); // O ID da URL vem como string
-  if (!eventIdStr) return;
+  try {
+    const params = new URLSearchParams(window.location.search);
+    const eventId = params.get("id"); // O ID do documento Firebase
+    if (!eventId) {
+      container.innerHTML = `<h1>ID do evento não fornecido.</h1>`;
+      return;
+    }
 
-  // O ID no JSON pode ser número ou string, então comparamos de forma flexível (==)
-  const eventItem = allEvents.find((item) => item.id == eventIdStr);
+    // 1. Cria uma referência direta ao documento na coleção "eventos"
+    const docRef = doc(db, "eventos", eventId);
 
-  if (!eventItem) {
-    container.innerHTML = `<h1>Evento não encontrado.</h1>`;
-    return;
-  }
+    // 2. Busca os dados desse documento específico
+    const docSnap = await getDoc(docRef);
 
-  // --- Preenche a página com os dados ---
-  document.title = `${eventItem.title} - Paróquia N. S. de Nazaré`;
-  document.getElementById("event-title-full").textContent = eventItem.title;
-  document.getElementById(
-    "event-date-full"
-  ).textContent = `Data: ${formatarData(eventItem.date)}`;
-  document.getElementById("event-text-full").innerHTML = eventItem.fullText;
+    // 3. Verifica se o documento realmente existe no banco de dados
+    if (docSnap.exists()) {
+      const eventItem = { id: docSnap.id, ...docSnap.data() };
 
-  // Corrige o caminho da imagem principal
-  const mainImage = document.getElementById("event-image-large");
-  mainImage.src = buildSafeURL(eventItem.image);
-  mainImage.alt = eventItem.title;
+      // --- Preenche a página com os dados ---
+      document.title = `${eventItem.title} - Paróquia N. S. de Nazaré`;
+      document.getElementById("event-title-full").textContent = eventItem.title;
+      document.getElementById(
+        "event-date-full"
+      ).textContent = `Data: ${formatarData(eventItem.date)}`;
+      document.getElementById("event-text-full").innerHTML = eventItem.fullText;
 
-  // Monta a galeria de fotos com caminhos corrigidos
-  if (eventItem.galleryImages && eventItem.galleryImages.length > 0) {
-    document.getElementById("event-gallery-container").style.display = "block";
-    const gallery = document.getElementById("event-gallery");
-    gallery.innerHTML = eventItem.galleryImages
-      .map((imgUrl) => {
-        const safeImgUrl = buildSafeURL(imgUrl);
-        return `<a href="${safeImgUrl}" target="_blank" title="Clique para ampliar"><img src="${safeImgUrl}" alt="Foto da galeria do evento"></a>`;
-      })
-      .join("");
-  }
+      const mainImage = document.getElementById("event-image-large");
+      mainImage.src = buildSafeURL(eventItem.image);
+      mainImage.alt = eventItem.title;
 
-  // Monta o link do Google Drive com caminho corrigido
-  if (eventItem.driveLink) {
-    const driveContainer = document.getElementById(
-      "event-drive-link-container"
-    );
-    driveContainer.innerHTML = `<a href="${buildSafeURL(
-      eventItem.driveLink
-    )}" class="btn" target="_blank">Ver álbum completo</a>`;
+      if (eventItem.galleryImages && eventItem.galleryImages.length > 0) {
+        document.getElementById("event-gallery-container").style.display =
+          "block";
+        const gallery = document.getElementById("event-gallery");
+        gallery.innerHTML = eventItem.galleryImages
+          .map((imgUrl) => {
+            const safeImgUrl = buildSafeURL(imgUrl);
+            return `<a href="${safeImgUrl}" target="_blank" title="Clique para ampliar"><img src="${safeImgUrl}" alt="Foto da galeria do evento"></a>`;
+          })
+          .join("");
+      }
+
+      if (eventItem.driveLink) {
+        const driveContainer = document.getElementById(
+          "event-drive-link-container"
+        );
+        driveContainer.innerHTML = `<a href="${buildSafeURL(
+          eventItem.driveLink
+        )}" class="btn" target="_blank">Ver álbum completo</a>`;
+      }
+    } else {
+      // Se o documento com esse ID não for encontrado
+      console.log("Nenhum evento encontrado com o ID:", eventId);
+      container.innerHTML = `<h1>Evento não encontrado.</h1>`;
+    }
+  } catch (error) {
+    console.error("Erro ao buscar detalhes do evento:", error);
+    container.innerHTML = `<h1>Ocorreu um erro ao carregar o evento.</h1>`;
   }
 }
 
-// --- 4. EXECUÇÃO ---
+// --- 3. EXECUÇÃO ---
 document.addEventListener("DOMContentLoaded", initializePage);

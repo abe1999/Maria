@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Editor de Eventos - Painel Administrativo</title>
+
+    <script type="module" src="auth-guard.js"></script>
+
+    <link rel="stylesheet" href="../styles/base/variables.css" />
+    <link rel="stylesheet" href="editor.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="editor-container">
+      <header class="editor-header">
+        <h1 id="editor-title">Adicionar Novo Evento</h1>
+        <a href="/src/admin/dashboard.html" class="btn-back">
+          <i class="fa-solid fa-arrow-left"></i> Voltar ao Painel
+        </a>
+      </header>
+
+      <main>
+        <form id="event-form">
+          <div class="input-group">
+            <label for="title">Título do Evento</label>
+            <input type="text" id="title" required />
+          </div>
+
+          <div class="input-group">
+            <label for="date">Data do Evento</label>
+            <input type="date" id="date" required />
+          </div>
+
+          <div class="input-group">
+            <label for="excerpt">Resumo (aparece nos cards)</label>
+            <textarea id="excerpt" rows="3" required></textarea>
+          </div>
+
+          <div class="input-group">
+            <label for="fullText">Texto Completo (HTML permitido)</label>
+            <textarea id="fullText" rows="10"></textarea>
+          </div>
+
+          <div class="input-group">
+            <label for="imageUpload">Imagem Principal do Evento</label>
+            <input
+              type="file"
+              id="imageUpload"
+              accept="image/png, image/jpeg, image/webp"
+            />
+            <div class="image-preview-container">
+              <img
+                id="image-preview"
+                src=""
+                alt="Pré-visualização da imagem"
+                style="display: none"
+              />
+              <p id="current-image-path"></p>
+            </div>
+            <div id="upload-progress-container" style="display: none">
+              <progress id="upload-progress" value="0" max="100"></progress>
+              <span id="upload-progress-text"></span>
+            </div>
+          </div>
+
+          <div class="input-row">
+            <div class="input-group">
+              <label for="category">Categoria</label>
+              <input type="text" id="category" value="noticia" />
+            </div>
+            <div class="input-group">
+              <label for="link">Link (opcional, ex: /pages/..)</label>
+              <input type="text" id="link" />
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" id="save-button" class="btn btn-primary">
+              Salvar Evento
+            </button>
+          </div>
+        </form>
+      </main>
+    </div>
+
+    <script type="module" src="editor.js"></script>
+  </body>
+</html>

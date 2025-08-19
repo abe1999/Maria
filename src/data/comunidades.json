@@ -2,11 +2,11 @@
   {
     "id": "champagnat",
     "nome": "Comunidade São Marcelino Champagnat",
-    "imagemCard": "/img/comunidades/champagnat.jpg",
+    "imagemCard": "/img/comunidades/champagnat-logo.jpg",
     "imagemBanner": "/img/comunidades/champagnat.jpg",
     "bairro": "Castanheira",
     "resumo": "Comunidade acolhedora no bairro Castanheira, dedicada às obras de São Marcelino Champagnat, com forte atuação junto aos jovens e famílias.",
-    "historia": "A história da Comunidade São Marcelino Champagnat é marcada pela união e dedicação de seus membros na evangelização da juventude, seguindo o carisma marista. [POR FAVOR, ADICIONE AQUI A HISTÓRIA DA COMUNIDADE]",
+    "historia": "A história da Comunidade São Marcelino Champagnat é marcada pela união e dedicação de seus membros na evangelização da juventude, seguindo o carisma marista.",
     "horarios": [
       { "dia": "Sábado", "descricao": "Missas e celebrações às 19h" },
       { "dia": "Todo dia 06 do mês", "descricao": "Missa Devocional às 19h" }
@@ -15,8 +15,7 @@
     "googleMapsUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3942.875773261815!2d-63.874329624983815!3d-8.797740091254651!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x92325c70ec861c97%3A0xa2bceca7aea2f870!2sR.%20Pau%20Ferro%2C%201889%20-%20Castanheira%2C%20Porto%20Velho%20-%20RO%2C%2076811-462!5e0!3m2!1spt-BR!2sbr!4v1755607241273!5m2!1spt-BR!2sbr",
     "redesSociais": {
       "instagram": "https://www.instagram.com/saomchampagnatpvh/",
-      "facebook": "https://www.facebook.com/sua_comunidade",
-      "whatsapp": "https://wa.me/55699XXXXXXXX"
+      "facebook": "https://www.facebook.com/smarcelinochampagnat?mibextid=wwXIfr&rdid=9eMCTOZAS0qDWynK&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F17FfMegDed%2F%3Fmibextid%3DwwXIfr#"
     }
   },
   {

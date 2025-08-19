@@ -1,4 +1,4 @@
-import{r as l,a as m}from"./Footer-BDMERer1.js";import{c as u}from"./comunidades-DV2kg8bF.js";function h(){const d=new URLSearchParams(window.location.search).get("id"),o=document.querySelector("main");if(!o)return;const e=u.find(a=>a.id===d);if(!e)return;document.title=`${e.nome} | Paróquia N. S. de Nazaré`;const c=e.horarios.map(a=>`
+import{r as l,a as m}from"./Footer-BDMERer1.js";import{c as u}from"./comunidades-DHJKb5uK.js";function h(){const d=new URLSearchParams(window.location.search).get("id"),o=document.querySelector("main");if(!o)return;const e=u.find(a=>a.id===d);if(!e)return;document.title=`${e.nome} | Paróquia N. S. de Nazaré`;const c=e.horarios.map(a=>`
     <li><strong>${a.dia}:</strong> ${a.descricao}</li>
   `).join("");let i="";if(e.redesSociais&&Object.keys(e.redesSociais).length>0){const a={instagram:"fa-instagram",facebook:"fa-facebook",whatsapp:"fa-whatsapp",youtube:"fa-youtube"};i=Object.entries(e.redesSociais).map(([r,n])=>{const s=a[r];return!n||!s?"":`
           <li>

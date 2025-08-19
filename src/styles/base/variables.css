@@ -20,10 +20,10 @@
   ================================================== */
 
   /* Cinza Chumbo: Cor principal para parágrafos. É mais suave que o preto puro e harmoniza com o azul. */
-  --color-text: #333333;
+  --color-text: #222222;
 
   /* Cinza Suave: Para textos secundários e descrições. */
-  --color-text-light: #555555;
+  --color-text-light: #444444;
 
   /* A cor dos títulos principais, para manter a identidade. */
   --color-headings: #1c1c1c;

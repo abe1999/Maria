@@ -1,11 +1,11 @@
 /* ==========================================================================
-   Seção de Últimas Notícias (COM TEMA AZUL E DOURADO - VERSÃO CORRIGIDA)
+   Seção de Últimas Notícias (COM TEMA AZUL E DOURADO - VERSÃO CORRIGIDA E RESPONSIVA)
    ========================================================================== */
 
 /* 1. Fundo da seção com um tom sutilmente azulado/neutro */
 .latest-news {
   padding: 80px 20px;
-  background-color: #f4f8ff; /* Um branco com um toque de azul, mais suave que #f9f9f9 */
+  background-color: #f4f8ff;
 }
 
 /* 2. Título da seção com a cor primária e um detalhe dourado */
@@ -13,8 +13,8 @@
   text-align: center;
   font-family: "Merriweather", serif;
   font-size: 2.5rem;
-  color: var(--color-primary); /* Cor principal (Azul) */
-  margin-bottom: 20px; /* Reduzido para aproximar do detalhe */
+  color: var(--color-primary);
+  margin-bottom: 20px;
   position: relative;
 }
 
@@ -24,8 +24,8 @@
   display: block;
   width: 70px;
   height: 3px;
-  background-color: var(--color-secondary); /* Cor secundária (Dourado) */
-  margin: 15px auto 70px auto; /* Espaçamento (topo, horizontal, inferior) */
+  background-color: var(--color-secondary);
+  margin: 15px auto 70px auto;
 }
 
 .latest-news .news-grid {
@@ -34,15 +34,22 @@
   gap: 30px;
 }
 
-/* Card totalmente reprojetado */
+/* Card totalmente reprojetado e CORRIGIDO */
 .home-news-card {
-  position: relative; /* Essencial para posicionar o conteúdo sobre a imagem */
-  background-color: var(--color-primary); /* Cor de fundo caso a imagem falhe */
+  position: relative;
+  background-color: var(--color-primary);
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
   overflow: hidden;
-  height: 380px; /* Altura fixa para todos os cards */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  /* --- AJUSTE PRINCIPAL --- */
+  /* Removemos a altura fixa para que o card possa ser responsivo */
+  /* height: 380px; --- REMOVIDO --- */
+
+  /* Adicionamos a proporção de paisagem (16:9) AQUI, no contêiner principal do card. */
+  /* Isso garante que ele sempre terá o formato retangular correto. */
+  aspect-ratio: 16 / 9;
 }
 
 .home-news-card:hover {
@@ -52,8 +59,9 @@
 
 .home-news-card a {
   text-decoration: none;
-  color: #fff; /* Texto padrão será branco */
+  color: #fff;
   display: block;
+  width: 100%;
   height: 100%;
 }
 
@@ -62,13 +70,16 @@
   height: 100%;
   object-fit: cover;
   transition: transform 0.4s ease;
+
+  /* --- AJUSTE --- */
+  /* Removemos o aspect-ratio daqui, pois ele deve estar no contêiner (.home-news-card) */
+  /* aspect-ratio: 16 / 9; --- REMOVIDO DA IMAGEM --- */
 }
 
 .home-news-card:hover img {
-  transform: scale(1.05) rotate(1deg); /* Efeito sutil de zoom e rotação */
+  transform: scale(1.05) rotate(1deg);
 }
 
-/* Removemos o padding do content e o posicionamos */
 .home-news-content {
   position: absolute;
   bottom: 0;
@@ -76,43 +87,39 @@
   right: 0;
   padding: 25px;
   z-index: 2;
-  /* Gradiente que vai do azul escuro (quase preto) semi-transparente para transparente */
   background: linear-gradient(
     to top,
-    rgba(14, 42, 73, 0.95) 0%,
-    rgba(14, 42, 73, 0) 100%
+    rgba(14, 42, 73, 0.95) 20%,
+    /* Gradiente um pouco mais forte */ rgba(14, 42, 73, 0) 100%
   );
 }
 
 .home-news-date {
-  font-size: 0.8rem;
+  font-size: 0.9rem; /* Ajustado */
   font-weight: 500;
-  color: var(--color-secondary); /* Dourado na data */
+  color: var(--color-secondary);
   text-transform: uppercase;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.9);
 }
 
 .home-news-title {
   font-family: "Merriweather", serif;
-  font-size: 1.25rem;
-  color: #fff; /* Título branco */
-  margin-top: 8px;
+  font-size: 1.35rem; /* Ajustado */
+  color: #fff;
+  margin-top: 10px;
   line-height: 1.4;
 }
 
-/* Ao passar o mouse no card, o título fica dourado */
 .home-news-card:hover .home-news-title {
   color: var(--color-secondary);
 }
 
-/* Centraliza o container do botão */
 .latest-news .text-center {
   text-align: center;
-  margin-top: 60px; /* Aumenta o espaçamento superior */
+  margin-top: 60px;
 }
 
-/* =================================================================
-   ESTILOS DO BOTÃO (OPÇÃO 1 - VAZADO)
-================================================================= */
+/* ... Estilos do botão permanecem os mesmos ... */
 .btn {
   display: inline-block;
   padding: 12px 30px;
@@ -130,13 +137,46 @@
 
 .btn.btn-secondary {
   background-color: transparent;
-  border: 2px solid var(--color-secondary); /* Borda Dourado Sóbrio */
-  color: var(--color-secondary); /* Texto Dourado Sóbrio */
+  border: 2px solid var(--color-secondary);
+  color: var(--color-secondary);
 }
 
 .btn.btn-secondary:hover {
-  background-color: var(--color-secondary); /* Fundo Dourado Sóbrio */
-  color: var(--color-primary); /* Texto Azul Sereno */
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
   transform: translateY(-3px);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* ======================================================
+   ✨ ADIÇÃO DAS REGRAS PARA CELULAR (MEDIA QUERIES)
+   ====================================================== */
+@media (max-width: 768px) {
+  /* Diminui o espaçamento da seção em telas menores */
+  .latest-news {
+    padding: 50px 20px;
+  }
+
+  /* Diminui o tamanho do título da seção */
+  .latest-news .section-title {
+    font-size: 2rem;
+  }
+
+  /* Diminui o espaçamento abaixo do detalhe do título */
+  .latest-news .section-title::after {
+    margin-bottom: 50px;
+  }
+
+  /* Ajusta o padding e o tamanho das fontes dentro do card */
+  .home-news-content {
+    padding: 20px;
+  }
+
+  .home-news-date {
+    font-size: 0.8rem;
+  }
+
+  .home-news-title {
+    font-size: 1.2rem;
+  }
 }

@@ -1,13 +1,7 @@
-/* =================================================================
-   NOVO LAYOUT PROFISSIONAL PARA A PÁGINA DE ACAMPAMENTO
-================================================================= */
-
 .tabs-layout {
   padding-bottom: 60px;
 }
 
-/* --- Estilos das Abas (Botões) --- */
-/* (Mantive os estilos ótimos que você já tinha para os botões) */
 .tabs-container {
   display: flex;
   justify-content: center;
@@ -17,6 +11,7 @@
   border-bottom: 1px solid var(--color-border);
   padding-bottom: 20px;
 }
+
 .tab-link {
   padding: 12px 25px;
   border: 2px solid transparent;
@@ -28,37 +23,42 @@
   cursor: pointer;
   transition: all 0.3s ease;
 }
+
 .tab-link.active,
 .tab-link:hover {
   color: var(--color-white);
 }
+
 .tab-link.active.cor-senior,
 .tab-link:hover.cor-senior {
   background-color: #d4af37;
   border-color: #d4af37;
 }
+
 .tab-link.active.cor-juvenil,
 .tab-link:hover.cor-juvenil {
   background-color: #3498db;
   border-color: #3498db;
 }
+
 .tab-link.active.cor-casais,
 .tab-link:hover.cor-casais {
   background-color: #e74c3c;
   border-color: #e74c3c;
 }
+
 .tab-link.active.cor-mirim,
 .tab-link:hover.cor-mirim {
   background-color: #f39c12;
   border-color: #f39c12;
 }
+
 .tab-link.active.cor-fac,
 .tab-link:hover.cor-fac {
   background-color: #8e44ad;
   border-color: #8e44ad;
 }
 
-/* --- Container Principal do Conteúdo --- */
 .content-container {
   border-radius: 12px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
@@ -72,9 +72,8 @@
 
 .tab-content.active {
   display: grid;
-  /* Layout principal assimétrico: 3 partes para texto, 2 para fotos */
   grid-template-columns: 3fr 2fr;
-  align-items: start; /* Alinha o topo das colunas */
+  align-items: start;
   animation: fadeIn 0.5s ease-in-out;
 }
 
@@ -87,7 +86,6 @@
   }
 }
 
-/* === Coluna da Esquerda (Informações e Vídeo) === */
 .content-column {
   padding: 50px;
 }
@@ -98,14 +96,18 @@
   gap: 20px;
   margin-bottom: 20px;
 }
+
 .acampamento-titulo i {
   font-size: 2.5rem;
 }
+
 .acampamento-titulo h3 {
   font-family: var(--font-secondary);
   font-size: 2.8rem;
   margin: 0;
   line-height: 1.1;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .tab-content p.descricao {
@@ -121,12 +123,14 @@
   margin-top: 30px;
   border-top: 1px solid var(--color-border);
 }
+
 .acampamento-detalhes li {
   display: flex;
   align-items: flex-start;
   margin-bottom: 18px;
   font-size: 1rem;
 }
+
 .acampamento-detalhes .fa-solid {
   font-size: 1.1rem;
   color: var(--color-primary);
@@ -135,6 +139,7 @@
   text-align: center;
   margin-top: 4px;
 }
+
 .acampamento-detalhes li strong {
   color: var(--color-headings);
   margin-right: 8px;
@@ -143,38 +148,38 @@
 .video-depoimento {
   margin-top: 40px;
 }
+
 .video-depoimento h4 {
   font-family: var(--font-secondary);
   font-size: 1.5rem;
   color: var(--color-headings);
   margin-bottom: 15px;
 }
+
 .video-depoimento video,
 .video-depoimento iframe {
-  width: 100%; /* O vídeo agora ocupa 100% da coluna principal (maior) */
+  width: 100%;
   border-radius: 8px;
-  aspect-ratio: 16 / 9; /* Garante a proporção correta */
+  aspect-ratio: 16 / 9;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* === Coluna da Direita (Galeria de Fotos) === */
 .photos-column {
   display: flex;
   flex-direction: column;
   gap: 20px;
   padding: 50px;
   background-color: #f8f9fa;
-  /* Centraliza as fotos verticalmente na coluna */
   justify-content: center;
-  align-self: stretch; /* Faz a coluna se esticar verticalmente */
+  align-self: stretch;
 }
 
 .photos-column img {
   width: 100%;
   border-radius: 8px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  aspect-ratio: 16 / 9; /* Proporção widescreen para as fotos */
-  object-fit: cover; /* Garante que a imagem preencha o espaço sem distorcer */
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
   transition: transform 0.3s ease;
 }
 
@@ -182,39 +187,35 @@
   transform: scale(1.03);
 }
 
-/* --- Cores dos Títulos --- */
 .acampamento-titulo.cor-senior {
   color: #d4af37;
 }
+
 .acampamento-titulo.cor-juvenil {
   color: #3498db;
 }
+
 .acampamento-titulo.cor-casais {
   color: #e74c3c;
 }
+
 .acampamento-titulo.cor-mirim {
   color: #f39c12;
 }
+
 .acampamento-titulo.cor-fac {
   color: #8e44ad;
 }
 
-/* --- AJUSTES RESPONSIVOS --- */
 @media (max-width: 992px) {
   .tab-content.active {
-    grid-template-columns: 1fr; /* Coluna única em tablets e celulares */
+    grid-template-columns: 1fr;
   }
-
   .photos-column {
-    /* ✅ EM MOBILE, AS FOTOS AGORA FICAM EM UMA COLUNA VERTICAL */
     flex-direction: column;
-
-    /* Centraliza as fotos horizontalmente na coluna única */
     align-items: center;
   }
-
   .photos-column img {
-    /* Limita a largura máxima da foto para não ficar gigante no tablet */
     max-width: 350px;
   }
 }
@@ -222,9 +223,12 @@
 @media (max-width: 768px) {
   .content-column,
   .photos-column {
-    padding: 25px; /* Menos espaçamento em celulares */
+    padding: 25px;
+  }
+  .acampamento-titulo {
+    flex-wrap: wrap;
   }
   .acampamento-titulo h3 {
-    font-size: 2.2rem;
+    font-size: 2rem;
   }
 }

@@ -23,6 +23,10 @@ function formatarData(dateString) {
   });
 }
 
+// Local: seu arquivo eventos.js
+
+// Local: seu arquivo eventos.js
+
 function createFullEventCard(evento) {
   const linkURL = evento.link.startsWith("http")
     ? evento.link
@@ -31,17 +35,17 @@ function createFullEventCard(evento) {
     ? evento.image
     : `${import.meta.env.BASE_URL}${evento.image.replace(/^\//, "")}`;
 
-  // Corrigido: class/="evento-card" para class="evento-card"
+  // AGORA USANDO AS CLASSES DO SEU latest-news.css
   return `
-    <a href="${linkURL}" class="evento-card">
-      <img src="${imageURL}" alt="Imagem do evento: ${evento.title}">
-      <div class="evento-conteudo">
-        <p class="evento-data">${formatarData(evento.date)}</p>
-        <h3 class="evento-titulo">${evento.title}</h3>
-        <p class="evento-resumo">${evento.excerpt}</p>
-        <span class="btn">Ver Mais</span>
-      </div>
-    </a>
+    <div class="home-news-card">
+      <a href="${linkURL}">
+        <img src="${imageURL}" alt="Imagem do evento: ${evento.title}">
+        <div class="home-news-content">
+          <p class="home-news-date">${formatarData(evento.date)}</p>
+          <h3 class="home-news-title">${evento.title}</h3>
+        </div>
+      </a>
+    </div>
   `;
 }
 

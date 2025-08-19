@@ -1,0 +1,121 @@
+/* ======================================================
+   ESTILO DA PÁGINA DE HORÁRIOS - TEMA "MANTO DE MARIA"
+   ====================================================== */
+
+/* Fundo principal da seção de horários */
+.horarios-main {
+  /* Usando o Cinza Neblina para um contraste suave com o branco */
+  background-color: var(--color-light-gray);
+  /* Utilizando variáveis de espaçamento para consistência */
+  padding: calc(var(--spacing-large) * 2) 0;
+}
+
+/* Título principal da página (H1) */
+.page-title {
+  /* A fonte secundária, mais elegante, para títulos de destaque */
+  font-family: var(--font-secondary);
+  /* A cor definida para títulos, garantindo legibilidade */
+  color: var(--color-headings);
+  font-size: 2.8rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: calc(var(--spacing-large) * 1.5);
+}
+
+/* Grid que organiza os cards */
+.schedule-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  /* Espaçamento consistente entre os cards */
+  gap: var(--spacing-large);
+}
+
+/* Estilo principal de cada card de horário */
+.schedule-card {
+  background-color: var(--color-white);
+  /* Bordas arredondadas consistentes com o design system */
+  border-radius: var(--border-radius);
+  /* ✨ Destaque Dourado Divino no topo, mais elegante que na lateral */
+  border-top: 4px solid var(--color-secondary);
+  /* Espaçamento interno generoso */
+  padding: var(--spacing-large);
+  /* Sombra sutil para dar profundidade e destacar o card do fundo */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efeito de interatividade ao passar o mouse */
+.schedule-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Título dentro de cada card (H2) */
+.schedule-card h2 {
+  font-family: var(--font-primary);
+  font-weight: 700;
+  font-size: 1.5rem;
+  /* 🎨 Usando o Azul Mariano, a cor principal do site */
+  color: var(--color-primary);
+  margin-top: 0;
+  margin-bottom: var(--spacing-medium);
+  display: flex;
+  align-items: center;
+}
+
+/* Ícone dentro do título do card */
+.schedule-card h2 i {
+  /* 🎨 O ícone recebe o Dourado Divino como destaque */
+  color: var(--color-secondary);
+  font-size: 1.6rem;
+  margin-right: var(--spacing-medium);
+  width: 30px;
+  text-align: center;
+}
+
+/* Cada linha de horário (ex: Domingo --- 08:00) */
+.schedule-entry {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* Espaçamento interno vertical */
+  padding: var(--spacing-medium) 0;
+  /* Borda suave para separar as linhas */
+  border-bottom: 1px solid var(--color-border);
+}
+
+.schedule-entry:last-child {
+  border-bottom: none; /* Remove a borda do último item */
+}
+
+/* Texto dentro de cada linha */
+.schedule-entry p {
+  font-family: var(--font-primary);
+  /* Cor de texto suave para informações */
+  color: var(--color-text-light);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Texto em negrito (dias da semana, etc.) */
+.schedule-entry p strong {
+  /* Cor de texto principal para dar ênfase */
+  color: var(--color-text);
+  font-weight: 500;
+}
+
+/* Notas em letra pequena (ex: Missa da Saúde) */
+.schedule-entry small {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.85em;
+  font-style: italic;
+  color: var(--color-text-light);
+}
+
+/* Media query para telas menores */
+@media (max-width: 768px) {
+  .page-title {
+    font-size: 2.2rem;
+  }
+}

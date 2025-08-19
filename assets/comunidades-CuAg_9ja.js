@@ -1,4 +1,4 @@
-import{r,a as d}from"./Footer-BZh9Zm0S.js";/* empty css                    */import{c as n}from"./comunidades-Cu2MY4Cn.js";function t(e){return`
+import{r,a as d}from"./Footer-BDMERer1.js";/* empty css                    */import{c as n}from"./comunidades-Cu2MY4Cn.js";function t(e){return`
     <div class="comunidade-card-avatar">
       <a href="/pages/comunidade-detalhe.html?id=${e.id}">
         <div class="avatar-container">

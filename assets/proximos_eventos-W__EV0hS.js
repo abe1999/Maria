@@ -1,4 +1,4 @@
-import{r as o,a as i}from"./Footer-BZh9Zm0S.js";/* empty css                    *//* empty css                */import{a as s}from"./eventos-CD9gLwlm.js";function l(t){return new Date(t+"T00:00:00").toLocaleDateString("pt-BR",{day:"2-digit",month:"long",year:"numeric"})}function c(t){const e=t.link.startsWith("http")?t.link:`/${t.link.replace(/^\//,"")}`,a=t.image.startsWith("http")?t.image:`/${t.image.replace(/^\//,"")}`;return`
+import{r as o,a as i}from"./Footer-BDMERer1.js";/* empty css                    *//* empty css                */import{a as s}from"./eventos-CD9gLwlm.js";function l(t){return new Date(t+"T00:00:00").toLocaleDateString("pt-BR",{day:"2-digit",month:"long",year:"numeric"})}function c(t){const e=t.link.startsWith("http")?t.link:`/${t.link.replace(/^\//,"")}`,a=t.image.startsWith("http")?t.image:`/${t.image.replace(/^\//,"")}`;return`
     <a href="${e}" class="evento-card">
       <img src="${a}" alt="Imagem do evento: ${t.title}">
       <div class="evento-conteudo">

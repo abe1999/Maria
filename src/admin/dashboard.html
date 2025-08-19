@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard - Painel Administrativo</title>
+
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <script type="module" crossorigin src="/assets/dashboard-D3YycR5e.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/modulepreload-polyfill-B5Qt9EMX.js">
+    <link rel="modulepreload" crossorigin href="/assets/firebase-config-DO1K0Gcl.js">
+    <link rel="modulepreload" crossorigin href="/assets/auth-guard-Y9PVmm_w.js">
+    <link rel="stylesheet" crossorigin href="/assets/dashboard-DS4jrx2Z.css">
+    <link rel="stylesheet" crossorigin href="/assets/variables-BXRxXzAN.css">
+  </head>
+  <body>
+    <div class="dashboard-container">
+      <header class="dashboard-header">
+        <h1>Painel de Eventos</h1>
+        <button id="logout-button" class="btn-logout">
+          <i class="fa-solid fa-right-from-bracket"></i> Sair
+        </button>
+      </header>
+
+      <main>
+        <div class="actions-bar">
+          <a href="/src/admin/editor.html" class="btn btn-primary">
+            <i class="fa-solid fa-plus"></i> Adicionar Novo Evento
+          </a>
+        </div>
+
+        <h2>Eventos Cadastrados</h2>
+        <div id="events-list-container">
+          <p>Carregando eventos...</p>
+        </div>
+      </main>
+    </div>
+
+  </body>
+</html>

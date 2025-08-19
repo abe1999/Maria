@@ -1,8 +1,8 @@
-(function(){const r=document.createElement("link").relList;if(r&&r.supports&&r.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))t(e);new MutationObserver(e=>{for(const o of e)if(o.type==="childList")for(const i of o.addedNodes)i.tagName==="LINK"&&i.rel==="modulepreload"&&t(i)}).observe(document,{childList:!0,subtree:!0});function s(e){const o={};return e.integrity&&(o.integrity=e.integrity),e.referrerPolicy&&(o.referrerPolicy=e.referrerPolicy),e.crossOrigin==="use-credentials"?o.credentials="include":e.crossOrigin==="anonymous"?o.credentials="omit":o.credentials="same-origin",o}function t(e){if(e.ep)return;e.ep=!0;const o=s(e);fetch(e.href,o)}})();const n="/img/logo/Nazare-logo.png",c=()=>{const a=document.querySelector("#main-header");a&&window.addEventListener("scroll",()=>{window.scrollY>50?a.classList.add("scrolled"):a.classList.remove("scrolled")})},d=()=>{const a=document.body,r=document.getElementById("hamburger-menu-button"),s=document.getElementById("close-menu-button"),t=document.getElementById("main-nav");if(!a||!r||!s||!t)return;r.addEventListener("click",()=>{a.classList.add("menu-open")}),s.addEventListener("click",()=>{a.classList.remove("menu-open")}),t.querySelectorAll(".dropdown").forEach(o=>{o.querySelector(".drop-btn").addEventListener("click",l=>{window.innerWidth<=992&&(l.preventDefault(),o.classList.toggle("active"))})})};function u(){const a=document.getElementById("header-container");if(!a)return;const r=`
+const t="/img/logo/Nazare-logo.png",n=()=>{const a=document.querySelector("#main-header");a&&window.addEventListener("scroll",()=>{window.scrollY>50?a.classList.add("scrolled"):a.classList.remove("scrolled")})},l=()=>{const a=document.body,e=document.getElementById("hamburger-menu-button"),o=document.getElementById("close-menu-button"),s=document.getElementById("main-nav");if(!a||!e||!o||!s)return;e.addEventListener("click",()=>{a.classList.add("menu-open")}),o.addEventListener("click",()=>{a.classList.remove("menu-open")}),s.querySelectorAll(".dropdown").forEach(r=>{r.querySelector(".drop-btn").addEventListener("click",i=>{window.innerWidth<=992&&(i.preventDefault(),r.classList.toggle("active"))})})};function m(){const a=document.getElementById("header-container");if(!a)return;const e=`
     <header class="main-header" id="main-header">
       <div class="container">
         <a href="/" class="logo">
-          <img src="${n}" alt="Logo da Paróquia Nossa Senhora de Nazaré" />
+          <img src="${t}" alt="Logo da Paróquia Nossa Senhora de Nazaré" />
         </a>
         <nav class="main-nav" id="main-nav">
           <button class="close-menu-button" id="close-menu-button" aria-label="Fechar menu">
@@ -35,13 +35,13 @@
         </div>
       </div>
     </header>
-  `;a.innerHTML=r,c(),d()}function m(){const a=document.getElementById("footer-container");if(!a)return;const r=`
+  `;a.innerHTML=e,n(),l()}function u(){const a=document.getElementById("footer-container");if(!a)return;const e=`
     <footer class="main-footer">
       <div class="container">
         <div class="footer-info-box">
           <div class="footer-column">
             <a href="/" class="logo">
-                      <img class="footer-logo" src="${n}" alt="Logo da Paróquia Nossa Senhora de Nazaré" />
+                      <img class="footer-logo" src="${t}" alt="Logo da Paróquia Nossa Senhora de Nazaré" />
             <div class="address-details">
               <h4>Nossa Paróquia</h4>
               <p>
@@ -83,4 +83,4 @@
         </div>
       </div>
     </footer>
-  `;a.innerHTML=r}export{m as a,u as r};
+  `;a.innerHTML=e}export{u as a,m as r};

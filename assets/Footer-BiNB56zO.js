@@ -1,7 +1,7 @@
-const t="/img/logo/Nazare-logo.png",n=()=>{const a=document.querySelector("#main-header");a&&window.addEventListener("scroll",()=>{window.scrollY>50?a.classList.add("scrolled"):a.classList.remove("scrolled")})},l=()=>{const a=document.body,e=document.getElementById("hamburger-menu-button"),o=document.getElementById("close-menu-button"),s=document.getElementById("main-nav");if(!a||!e||!o||!s)return;e.addEventListener("click",()=>{a.classList.add("menu-open")}),o.addEventListener("click",()=>{a.classList.remove("menu-open")}),s.querySelectorAll(".dropdown").forEach(r=>{r.querySelector(".drop-btn").addEventListener("click",i=>{window.innerWidth<=992&&(i.preventDefault(),r.classList.toggle("active"))})})};function m(){const a=document.getElementById("header-container");if(!a)return;const e=`
+const t="/assets/Nazare-logo-JF_76gCq.png",n=()=>{const e=document.querySelector("#main-header");e&&window.addEventListener("scroll",()=>{window.scrollY>50?e.classList.add("scrolled"):e.classList.remove("scrolled")})},l=()=>{const e=document.body,a=document.getElementById("hamburger-menu-button"),o=document.getElementById("close-menu-button"),s=document.getElementById("main-nav");if(!e||!a||!o||!s)return;a.addEventListener("click",()=>{e.classList.add("menu-open")}),o.addEventListener("click",()=>{e.classList.remove("menu-open")}),s.querySelectorAll(".dropdown").forEach(r=>{r.querySelector(".drop-btn").addEventListener("click",i=>{window.innerWidth<=992&&(i.preventDefault(),r.classList.toggle("active"))})})};function m(){const e=document.getElementById("header-container");if(!e)return;const a="/",o=`
     <header class="main-header" id="main-header">
       <div class="container">
-        <a href="/" class="logo">
+        <a href="${a}" class="logo">
           <img src="${t}" alt="Logo da Paróquia Nossa Senhora de Nazaré" />
         </a>
         <nav class="main-nav" id="main-nav">
@@ -9,22 +9,22 @@ const t="/img/logo/Nazare-logo.png",n=()=>{const a=document.querySelector("#main
             <i class="fa-solid fa-xmark"></i>
           </button>
           <ul>
-            <li><a href="/">Início</a></li>
+            <li><a href="${a}">Início</a></li>
             
-            <li><a href="/pages/comunidades.html">Comunidades</a></li>
-            <li><a href="/pages/pastorais.html">Pastorais</a></li>
-            <li><a href="/pages/horarios.html">Horários</a></li>
+            <li><a href="${a}src/pages/comunidades.html">Comunidades</a></li>
+            <li><a href="${a}src/pages/pastorais.html">Pastorais</a></li>
+            <li><a href="${a}src/pages/horarios.html">Horários</a></li>
             <li class="dropdown">
               <a href="javascript:void(0);" class="drop-btn">
                 Eventos <i class="fa-solid fa-caret-down"></i>
               </a>
               <div class="dropdown-content">
-                <a href="/pages/eventos.html?categoria=evento-geral">Eventos Gerais</a>
-                <a href="/pages/eventos.html?categoria=missa">Missas</a>
-                <a href="/pages/proximos-eventos.html">Próximos Eventos</a>
+                <a href="${a}src/pages/eventos.html?categoria=evento-geral">Eventos Gerais</a>
+                <a href="${a}src/pages/eventos.html?categoria=missa">Missas</a>
+                <a href="${a}src/pages/proximos-eventos.html">Próximos Eventos</a>
               </div>
             </li>
-            <li><a href="/pages/acampamento.html">Acampamento</a></li>
+            <li><a href="${a}src/pages/acampamento.html">Acampamento</a></li>
           </ul>
         </nav>
         <div class="header-right">
@@ -35,7 +35,7 @@ const t="/img/logo/Nazare-logo.png",n=()=>{const a=document.querySelector("#main
         </div>
       </div>
     </header>
-  `;a.innerHTML=e,n(),l()}function u(){const a=document.getElementById("footer-container");if(!a)return;const e=`
+  `;e.innerHTML=o,n(),l()}function u(){const e=document.getElementById("footer-container");if(!e)return;const a=`
     <footer class="main-footer">
       <div class="container">
         <div class="footer-info-box">
@@ -83,4 +83,4 @@ const t="/img/logo/Nazare-logo.png",n=()=>{const a=document.querySelector("#main
         </div>
       </div>
     </footer>
-  `;a.innerHTML=e}export{u as a,m as r};
+  `;e.innerHTML=a}export{u as a,m as r};

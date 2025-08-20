@@ -1,5 +1,3 @@
-// Arquivo: src/utils/helpers.js
-
 export function formatarData(timestamp) {
   if (!timestamp || typeof timestamp.toDate !== "function") {
     return "Data indisponível";
@@ -13,7 +11,8 @@ export function formatarData(timestamp) {
 }
 
 export function createEventCard(evento) {
-  const link = evento.link || `/pages/evento-detalhe.html?id=${evento.id}`;
+  // ✨ CORREÇÃO DO LINK: O link padrão agora inclui o /src/
+  const link = evento.link || `/src/pages/evento-detalhe.html?id=${evento.id}`;
   const linkURL = buildSafeURL(link);
 
   const image = evento.image || "/img/placeholder-evento.jpg";
@@ -32,10 +31,10 @@ export function createEventCard(evento) {
   `;
 }
 
-// ✨ FUNÇÃO ADICIONADA
 export function buildSafeURL(path) {
   if (!path || typeof path !== "string") return "";
-  return path.startsWith("http")
-    ? path
-    : `${import.meta.env.BASE_URL}${path.replace(/^\//, "")}`;
+  if (path.startsWith("http")) {
+    return path;
+  }
+  return `/${path.replace(/^\//, "")}`;
 }

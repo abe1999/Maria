@@ -2,18 +2,18 @@
 
 // --- 1. IMPORTAÇÕES ESSENCIAIS ---
 // Estilos
-import "../styles/base/reset.css";
-import "../styles/base/variables.css";
-import "../styles/base/typography.css";
-import "../styles/components/header.css";
-import "../styles/components/footer.css";
-import "../styles/components/page-header.css";
-import "../styles/pages/pastoral-detalhe.css"; // Crie este arquivo para os estilos de detalhe
+import "/src/styles/base/reset.css";
+import "/src/styles/base/variables.css";
+import "/src/styles/base/typography.css";
+import "/src/styles/components/header.css";
+import "/src/styles/components/footer.css";
+import "/src/styles/components/page-header.css";
+import "/src/styles/pages/pastoral-detalhe.css"; // Crie este arquivo para os estilos de detalhe
 
 // Componentes e Dados
-import { renderHeader } from "../components/Header.js";
-import { renderFooter } from "../components/Footer.js";
-import pastorais from "../data/pastorais.json"; // Carrega os dados diretamente
+import { renderHeader } from "/src/components/Header.js";
+import { renderFooter } from "/src/components/Footer.js";
+import pastorais from "..//data/pastorais.json"; // Carrega os dados diretamente
 
 // --- 2. FUNÇÃO PRINCIPAL ---
 function initializePage() {

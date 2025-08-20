@@ -8,7 +8,7 @@ import "/src/styles/pages/comunidade-detalhe.css";
 
 import { renderHeader } from "/src/components/Header.js";
 import { renderFooter } from "/src/components/Footer.js";
-import comunidades from "/src/data/comunidades.json";
+import comunidades from "../data/comunidades.json";
 
 // --- Lógica da Página ---
 

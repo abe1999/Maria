@@ -1,16 +1,16 @@
 // Local do arquivo: src/pages/comunidades.js
 
 // --- 1. Importações Essenciais ---
-import "../styles/base/reset.css";
-import "../styles/base/variables.css";
-import "../styles/base/typography.css";
-import "../styles/components/header.css";
-import "../styles/components/footer.css";
-import "../styles/components/page-header.css";
-import "../styles/pages/comunidades.css";
+import "/src/styles/base/reset.css";
+import "/src/styles/base/variables.css";
+import "/src/styles/base/typography.css";
+import "/src/styles/components/header.css";
+import "/src/styles/components/footer.css";
+import "/src/styles/components/page-header.css";
+import "/src/styles/pages/comunidades.css";
 
-import { renderHeader } from "../components/Header.js";
-import { renderFooter } from "../components/Footer.js";
+import { renderHeader } from "/src/components/Header.js";
+import { renderFooter } from "/src/components/Footer.js";
 import comunidades from "../data/comunidades.json";
 
 // --- 2. Lógica da Página ---
@@ -19,9 +19,7 @@ import comunidades from "../data/comunidades.json";
 function createComunidadeCard(comunidade) {
   return `
     <div class="comunidade-card-avatar">
-      <a href="${import.meta.env.BASE_URL}pages/comunidade-detalhe.html?id=${
-    comunidade.id
-  }">
+      <a href="/src/pages/comunidade-detalhe.html?id=${comunidade.id}">
         <div class="avatar-container">
           <img src="${comunidade.imagemCard}" alt="Foto da ${comunidade.nome}">
         </div>
@@ -32,7 +30,6 @@ function createComunidadeCard(comunidade) {
   `;
 }
 
-// Função para renderizar as comunidades
 function renderComunidades() {
   const container = document.getElementById("comunidades-grid");
   if (!container) return;

@@ -1,16 +1,16 @@
 // Local do arquivo: src/pages/pastorais.js - VERSÃO COM CORREÇÃO DE IMAGEM EXTERNA
 
 // --- 1. Importações Essenciais ---
-import "../styles/base/reset.css";
-import "../styles/base/variables.css";
-import "../styles/base/typography.css";
-import "../styles/components/header.css";
-import "../styles/components/footer.css";
-import "../styles/components/page-header.css";
-import "../styles/pages/pastorais.css";
+import "/src/styles/base/reset.css";
+import "/src/styles/base/variables.css";
+import "/src/styles/base/typography.css";
+import "/src/styles/components/header.css";
+import "/src/styles/components/footer.css";
+import "/src/styles/components/page-header.css";
+import "/src/styles/pages/pastorais.css";
 
-import { renderHeader } from "../components/Header.js";
-import { renderFooter } from "../components/Footer.js";
+import { renderHeader } from "/src/components/Header.js";
+import { renderFooter } from "/src/components/Footer.js";
 import pastorais from "../data/pastorais.json";
 
 // --- 2. Lógica da Página ---
@@ -28,7 +28,7 @@ function initializePage() {
   function createPastoralCard(pastoral) {
     const detailURL = `${
       import.meta.env.BASE_URL
-    }pages/pastoral-detalhe.html?id=${pastoral.id}`;
+    }src/pages/pastoral-detalhe.html?id=${pastoral.id}`;
 
     // ===================================================================
     // LÓGICA INTELIGENTE PARA A IMAGEM: Só adiciona o prefixo se não for uma URL externa

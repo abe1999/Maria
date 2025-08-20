@@ -1,7 +1,7 @@
 // Local do arquivo: src/components/Header.js
 
 // Importe a imagem do logo diretamente para que o Vite gerencie o caminho.
-import logoImage from "/img/logo/Nazare-logo.png";
+import logoImage from "../../public/img/logo/Nazare-logo.png";
 
 const initializeHeaderScrollEffect = () => {
   const header = document.querySelector("#main-header");
@@ -45,10 +45,12 @@ export function renderHeader() {
   const headerPlaceholder = document.getElementById("header-container");
   if (!headerPlaceholder) return;
 
+  const BASE = import.meta.env.BASE_URL;
+
   const headerHTML = `
     <header class="main-header" id="main-header">
       <div class="container">
-        <a href="${import.meta.env.BASE_URL}" class="logo">
+        <a href="${BASE}" class="logo">
           <img src="${logoImage}" alt="Logo da Paróquia Nossa Senhora de Nazaré" />
         </a>
         <nav class="main-nav" id="main-nav">
@@ -56,36 +58,22 @@ export function renderHeader() {
             <i class="fa-solid fa-xmark"></i>
           </button>
           <ul>
-            <li><a href="${import.meta.env.BASE_URL}">Início</a></li>
+            <li><a href="${BASE}">Início</a></li>
             
-            <li><a href="${
-              import.meta.env.BASE_URL
-            }pages/comunidades.html">Comunidades</a></li>
-            <li><a href="${
-              import.meta.env.BASE_URL
-            }pages/pastorais.html">Pastorais</a></li>
-            <li><a href="${
-              import.meta.env.BASE_URL
-            }pages/horarios.html">Horários</a></li>
+            <li><a href="${BASE}src/pages/comunidades.html">Comunidades</a></li>
+            <li><a href="${BASE}src/pages/pastorais.html">Pastorais</a></li>
+            <li><a href="${BASE}src/pages/horarios.html">Horários</a></li>
             <li class="dropdown">
               <a href="javascript:void(0);" class="drop-btn">
                 Eventos <i class="fa-solid fa-caret-down"></i>
               </a>
               <div class="dropdown-content">
-                <a href="${
-                  import.meta.env.BASE_URL
-                }pages/eventos.html?categoria=evento-geral">Eventos Gerais</a>
-                <a href="${
-                  import.meta.env.BASE_URL
-                }pages/eventos.html?categoria=missa">Missas</a>
-                <a href="${
-                  import.meta.env.BASE_URL
-                }pages/proximos-eventos.html">Próximos Eventos</a>
+                <a href="${BASE}src/pages/eventos.html?categoria=evento-geral">Eventos Gerais</a>
+                <a href="${BASE}src/pages/eventos.html?categoria=missa">Missas</a>
+                <a href="${BASE}src/pages/proximos-eventos.html">Próximos Eventos</a>
               </div>
             </li>
-            <li><a href="${
-              import.meta.env.BASE_URL
-            }pages/acampamento.html">Acampamento</a></li>
+            <li><a href="${BASE}src/pages/acampamento.html">Acampamento</a></li>
           </ul>
         </nav>
         <div class="header-right">

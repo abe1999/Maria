@@ -1,5 +1,5 @@
 // Local do arquivo: src/components/Footer.js
-import logoImage from "/img/logo/Nazare-logo.png";
+import logoImage from "../../public/img/logo/Nazare-logo.png";
 
 /**
  * Função principal que desenha o footer.

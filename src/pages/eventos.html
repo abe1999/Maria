@@ -3,8 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Comunidade - Paróquia Nossa Senhora de Nazaré</title>
+    <title>Eventos - Paróquia Nossa Senhora de Nazaré</title>
 
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
@@ -16,13 +20,21 @@
       rel="stylesheet"
     />
   </head>
-  <body>
+  <body id="all-news-page">
     <header id="header-container"></header>
 
-    <main id="comunidade-detalhe-container"></main>
+    <main class="container">
+      <section class="page-section">
+        <div class="page-header">
+          <h1 class="page-title">Últimos Eventos</h1>
+        </div>
+
+        <div class="eventos-grid"></div>
+      </section>
+    </main>
 
     <footer id="footer-container"></footer>
 
-    <script type="module" src="../src/pages/comunidade-detalhe.js"></script>
+    <script type="module" src="../js/eventos.js"></script>
   </body>
 </html>

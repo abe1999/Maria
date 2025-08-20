@@ -1,15 +1,18 @@
-// --- Importações Essenciais ---
+// --- Importações Essenciais (COM CAMINHOS CORRIGIDOS) ---
 import "/src/styles/base/reset.css";
 import "/src/styles/base/variables.css";
 import "/src/styles/base/typography.css";
 import "/src/styles/components/header.css";
 import "/src/styles/components/footer.css";
 import "/src/styles/components/page-header.css";
-import "/src/styles/pages/acampamento.css"; // Seu novo CSS
+import "/src/styles/pages/acampamento.css";
 
 import { renderHeader } from "/src/components/Header.js";
 import { renderFooter } from "/src/components/Footer.js";
-import acampamentos from "/src/data/acampamentos.json";
+// Assumindo que seu JSON está na raiz do projeto, fora de 'src'
+import acampamentos from "../data/acampamentos.json";
+
+// --- O resto do seu código (já estava correto) ---
 
 /** Cria o HTML para um único botão de aba */
 function createTabButton(acampamento, index) {
@@ -25,34 +28,24 @@ function createTabButton(acampamento, index) {
 /** Cria o HTML para um único painel de conteúdo */
 function createContentPanel(acampamento, index) {
   const isActive = index === 0 ? "active" : "";
-
-  // Lógica inteligente para os caminhos das FOTOS
   const fotosHTML = acampamento.fotos
     .map((fotoUrl) => {
-      // Se a URL já for completa (começar com http), use-a como está.
-      // Senão, monte o caminho completo com o BASE_URL.
       const imageURL = fotoUrl.startsWith("http")
         ? fotoUrl
         : `${import.meta.env.BASE_URL}${fotoUrl.replace(/^\//, "")}`;
-
       return `<img src="${imageURL}" alt="Foto do ${acampamento.nome}" />`;
     })
     .join("");
 
-  // Lógica inteligente para o caminho do VÍDEO
   let videoHTML = "";
   if (acampamento.video && acampamento.video.url) {
     let videoUrl = acampamento.video.url;
-
-    // Só adiciona o BASE_URL se a URL não for externa (http ou youtube)
     if (!videoUrl.startsWith("http")) {
       videoUrl = `${import.meta.env.BASE_URL}${videoUrl.replace(/^\//, "")}`;
     }
-
     const videoTag = videoUrl.includes("youtube.com")
       ? `<iframe src="${videoUrl}" title="Depoimento de Campista" frameborder="0" allowfullscreen></iframe>`
       : `<video src="${videoUrl}" controls width="100%"></video>`;
-
     videoHTML = `
       <div class="video-depoimento">
         <h4>${acampamento.video.titulo}</h4>
@@ -61,7 +54,6 @@ function createContentPanel(acampamento, index) {
     `;
   }
 
-  // Cria a lista de detalhes
   const detalhesHTML = acampamento.detalhes
     .map(
       (detalhe) =>
@@ -118,11 +110,8 @@ function initializePage() {
   )
     return;
 
-  // Gera e insere o HTML na página
   tabsContainer.innerHTML = acampamentos.map(createTabButton).join("");
   contentContainer.innerHTML = acampamentos.map(createContentPanel).join("");
-
-  // Ativa a funcionalidade das abas
   addTabListeners();
 }
 

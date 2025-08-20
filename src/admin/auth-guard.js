@@ -1,4 +1,4 @@
-import { auth } from "../firebase-config.js";
+import { auth } from "/src/firebase-config.js";
 import { onAuthStateChanged } from "firebase/auth";
 
 // Mensagem para sabermos que o script começou a rodar

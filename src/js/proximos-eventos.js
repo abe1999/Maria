@@ -1,27 +1,31 @@
-// Importa as funções do Firebase
+// --- 1. IMPORTAÇÕES ESSENCIAIS ---
+// Estilos
+import "/src/styles/base/reset.css";
+import "/src/styles/base/variables.css";
+import "/src/styles/base/typography.css";
+import "/src/styles/components/header.css";
+import "/src/styles/components/footer.css";
+import "/src/styles/components/page-header.css";
+import "/src/styles/pages/eventos.css"; // Reutiliza o estilo da página de eventos
+
+// Componentes, Funções Úteis e Firebase
+import { renderHeader } from "/src/components/Header.js";
+import { renderFooter } from "/src/components/Footer.js";
+import { createEventCard } from "/src/utils/helpers.js";
 import { db } from "/src/firebase-config.js";
 import { collection, getDocs, orderBy, query, where } from "firebase/firestore";
 
-// Importa nossa função centralizada de criar o card
-import { createEventCard } from "/src/utils/helpers.js";
-
-// A função que será exportada e chamada pela página de "Próximos Eventos"
-export async function initializeProximosEventos() {
-  const container = document.querySelector(".eventos-grid"); // Assumindo que o container tem esta classe
+// --- 2. FUNÇÃO PRINCIPAL (Sua lógica de busca) ---
+async function initializeProximosEventos() {
+  const container = document.querySelector(".eventos-grid");
   if (!container) return;
 
   container.innerHTML = "<p>Carregando próximos eventos...</p>";
 
   try {
-    // Pega a data e hora de agora
     const hoje = new Date();
-    // A linha abaixo zera as horas/minutos para pegar eventos de hoje o dia todo
     hoje.setHours(0, 0, 0, 0);
 
-    // ✨ A NOVA CONSULTA INTELIGENTE ✨
-    // 1. Pega a coleção "eventos"
-    // 2. Filtra (where) para pegar apenas onde a data for maior ou igual a hoje
-    // 3. Ordena (orderBy) para que os eventos mais próximos apareçam primeiro
     const q = query(
       collection(db, "eventos"),
       where("date", ">=", hoje),
@@ -41,7 +45,6 @@ export async function initializeProximosEventos() {
       return;
     }
 
-    // Renderiza os cards na tela
     container.innerHTML = proximosEventos.map(createEventCard).join("");
   } catch (error) {
     console.error("Erro ao buscar próximos eventos:", error);
@@ -49,3 +52,10 @@ export async function initializeProximosEventos() {
       "<p>Não foi possível carregar os próximos eventos.</p>";
   }
 }
+
+// --- 3. EXECUÇÃO ---
+document.addEventListener("DOMContentLoaded", () => {
+  renderHeader();
+  renderFooter();
+  initializeProximosEventos(); // Chama a função principal
+});

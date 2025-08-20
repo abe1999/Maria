@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Acampamento - Paróquia Nossa Senhora de Nazaré</title>
+    <title>Evento - Paróquia Nossa Senhora de Nazaré</title>
 
     <link
       rel="stylesheet"
@@ -23,24 +23,30 @@
   <body>
     <header id="header-container"></header>
 
-    <main class="container">
-      <div class="page-header">
-        <h1 class="page-title">Nossos Acampamentos</h1>
-        <p>
-          Cinco experiências únicas de fé, amizade e encontro com Deus. Clique
-          em uma aba para descobrir o acampamento que chama por você.
-        </p>
-      </div>
+    <main class="event-detail-page">
+      <article class="container">
+        <h1 id="event-title-full"></h1>
+        <p id="event-date-full" class="event-meta"></p>
 
-      <section class="tabs-layout">
-        <div class="tabs-container" id="acampamento-tabs"></div>
+        <img
+          id="event-image-large"
+          src=""
+          alt="Imagem principal do evento"
+          class="main-event-image"
+        />
 
-        <div class="content-container" id="acampamento-content"></div>
-      </section>
+        <div id="event-text-full" class="event-content-full"></div>
+
+        <div id="event-gallery-container" style="display: none">
+          <h2 class="gallery-title">Galeria de Fotos</h2>
+          <div id="event-gallery" class="photo-gallery"></div>
+          <div id="event-drive-link-container" class="text-center"></div>
+        </div>
+      </article>
     </main>
 
     <footer id="footer-container"></footer>
 
-    <script type="module" src="../src/pages/acampamento.js"></script>
+    <script type="module" src="../js/eventos-detalhe.js"></script>
   </body>
 </html>

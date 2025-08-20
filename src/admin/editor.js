@@ -8,6 +8,7 @@ import {
   Timestamp,
 } from "firebase/firestore";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import imageCompression from "browser-image-compression";
 
 // --- ELEMENTOS DO DOM ---
 const editorTitle = document.getElementById("editor-title");
@@ -97,9 +98,22 @@ eventForm.addEventListener("submit", async (event) => {
 
   try {
     if (newImageFile) {
-      const filePath = `eventos/${Date.now()}-${newImageFile.name}`;
+      // --- PASSO 1: COMPRESSÃO DA IMAGEM ---
+      const options = {
+        maxSizeMB: 0.5, // Tamanho máximo do arquivo em MB. Ajuste este valor.
+        maxWidthOrHeight: 1200, // Dimensão máxima para a imagem (largura ou altura)
+        useWebWorker: true, // Usa Web Worker para processamento em segundo plano (melhor performance)
+      };
+
+      const compressedFile = await imageCompression(newImageFile, options);
+
+      console.log(`Imagem original: ${newImageFile.size / 1024 / 1024} MB`);
+      console.log(`Imagem comprimida: ${compressedFile.size / 1024 / 1024} MB`);
+
+      // --- PASSO 2: UPLOAD DA IMAGEM COMPRIMIDA ---
+      const filePath = `eventos/${Date.now()}-${compressedFile.name}`;
       const storageRef = ref(storage, filePath);
-      const uploadTask = uploadBytesResumable(storageRef, newImageFile);
+      const uploadTask = uploadBytesResumable(storageRef, compressedFile); // Agora faz o upload do arquivo comprimido
 
       uploadTask.on(
         "state_changed",

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Editor de Destaque - Painel Administrativo</title>
+    <script type="module" src="auth-guard.js"></script>
+    <link rel="stylesheet" href="editor.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="editor-container">
+      <header class="editor-header">
+        <h1 id="editor-title">Adicionar Novo Slide</h1>
+        <a href="gerenciar-destaques.html" class="btn-back">
+          <i class="fa-solid fa-arrow-left"></i> Voltar
+        </a>
+      </header>
+
+      <main>
+        <form id="slide-form">
+          <div class="input-group">
+            <label for="texto">Texto Principal do Slide</label>
+            <input type="text" id="texto" required />
+          </div>
+
+          <div class="input-group">
+            <label for="linkUrl"
+              >Link do Botão (URL completa ou caminho relativo)</label
+            >
+            <input
+              type="text"
+              id="linkUrl"
+              placeholder="Ex: /pages/eventos.html ou https://google.com"
+              required
+            />
+          </div>
+
+          <div class="input-group">
+            <label for="imageUpload"
+              >Imagem de Fundo (1920x1080px recomendado)</label
+            >
+            <input
+              type="file"
+              id="imageUpload"
+              accept="image/png, image/jpeg, image/webp"
+            />
+            <div class="image-preview-container">
+              <img
+                id="image-preview"
+                src=""
+                alt="Pré-visualização da imagem"
+                style="display: none"
+              />
+              <p id="current-image-path"></p>
+            </div>
+          </div>
+
+          <div class="input-row">
+            <div class="input-group">
+              <label for="ordem">Ordem de Exibição (1, 2, 3...)</label>
+              <input type="number" id="ordem" value="1" required />
+            </div>
+            <div
+              class="input-group checkbox-group"
+              style="display: flex; align-items: center; margin-top: 20px"
+            >
+              <input
+                type="checkbox"
+                id="ativo"
+                checked
+                style="width: auto; margin-right: 10px"
+              />
+              <label for="ativo">Slide Ativo (aparecerá no site)</label>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" id="save-button" class="btn btn-primary">
+              Salvar Slide
+            </button>
+          </div>
+        </form>
+      </main>
+    </div>
+    <script type="module" src="editor-destaque.js"></script>
+  </body>
+</html>

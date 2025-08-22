@@ -4,22 +4,26 @@ body {
   margin: 0;
   color: #333;
 }
+
 .dashboard-container {
   max-width: 1000px;
   margin: 40px auto;
   padding: 20px;
 }
+
 .dashboard-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 30px;
 }
+
 .dashboard-header h1 {
   font-family: "Merriweather", serif;
   color: var(--color-primary, #0d5497);
   margin: 0;
 }
+
 .btn-logout {
   background: none;
   border: none;
@@ -31,9 +35,11 @@ body {
   align-items: center;
   gap: 8px;
 }
+
 .actions-bar {
   margin-bottom: 30px;
 }
+
 .btn {
   text-decoration: none;
   padding: 12px 20px;
@@ -44,45 +50,92 @@ body {
   gap: 8px;
   transition: background-color 0.3s ease;
 }
+
 .btn-primary {
   background-color: var(--color-primary, #0d5497);
   color: white;
 }
+
 .btn-primary:hover {
   background-color: var(--color-primary-dark, #07335b);
 }
+
+/* --- NOVO: Estilos para a barra de busca --- */
+.search-bar {
+  margin-bottom: 1.5rem;
+}
+
+#search-input {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box; /* Garante que o padding não aumente a largura total */
+}
+/* --- Fim da seção nova --- */
+
 #events-list-container {
   background-color: white;
   border-radius: 8px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
   padding: 20px;
 }
+
+/* --- AJUSTADO: Estilos para os itens da lista --- */
 .event-item {
   display: flex;
+  justify-content: space-between; /* Adicionado para separar info e ações */
   align-items: center;
   padding: 15px 0;
   border-bottom: 1px solid var(--color-border, #eee);
 }
+
 .event-item:last-child {
   border-bottom: none;
 }
-.event-item-title {
-  flex-grow: 1;
-  font-weight: 500;
+
+/* NOVO: Container para agrupar título e data */
+.event-item-info {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Faz esta seção ocupar o espaço disponível */
 }
+
+.event-item-title {
+  font-weight: bold; /* Aumenta o destaque do título */
+  font-size: 1.1rem;
+  color: #333;
+}
+
+/* NOVO: Estilo para a data do evento */
+.event-item-date {
+  font-size: 0.9rem;
+  color: #666;
+  margin-top: 4px;
+}
+
+/* AJUSTADO: Container dos botões de ação */
+.event-item-actions {
+  display: flex;
+  gap: 0.5rem; /* Melhora o espaçamento entre os botões */
+}
+
 .event-item-actions a,
 .event-item-actions button {
   text-decoration: none;
-  margin-left: 15px;
   padding: 8px 12px;
   border-radius: 5px;
   font-weight: 500;
   font-size: 0.9rem;
 }
+/* --- Fim da seção ajustada --- */
+
 .btn-edit {
   background-color: #f0f0f0;
   color: #333;
 }
+
 .btn-delete {
   background-color: #e74c3c;
   color: white;

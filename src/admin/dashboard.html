@@ -31,8 +31,29 @@
         </div>
 
         <h2>Eventos Cadastrados</h2>
+        <div class="search-bar">
+          <input
+            type="text"
+            id="search-input"
+            placeholder="Buscar evento pelo título..."
+          />
+        </div>
         <div id="events-list-container">
           <p>Carregando eventos...</p>
+        </div>
+
+        <div class="actions-bar" style="display: flex; gap: 1rem">
+          <a href="editor.html" class="btn btn-primary">
+            <i class="fa-solid fa-plus"></i> Adicionar Novo Evento
+          </a>
+
+          <a
+            href="gerenciar-destaques.html"
+            class="btn btn-secondary"
+            style="background-color: #5a6268; color: white"
+          >
+            <i class="fa-solid fa-images"></i> Gerenciar Destaques
+          </a>
         </div>
       </main>
     </div>

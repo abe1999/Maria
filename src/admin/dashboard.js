@@ -11,8 +11,10 @@ import { signOut } from "firebase/auth";
 
 const logoutButton = document.getElementById("logout-button");
 const eventsContainer = document.getElementById("events-list-container");
+// NOVO: Pega o input da barra de busca
+const searchInput = document.getElementById("search-input");
 
-// --- 1. LÓGICA DE LOGOUT ---
+// --- 1. LÓGICA DE LOGOUT (Sem alterações) ---
 logoutButton.addEventListener("click", async () => {
   if (confirm("Tem certeza que deseja sair?")) {
     try {
@@ -26,11 +28,12 @@ logoutButton.addEventListener("click", async () => {
   }
 });
 
-// --- 2. LÓGICA PARA CARREGAR E EXIBIR EVENTOS ---
+// --- 2. LÓGICA PARA CARREGAR E EXIBIR EVENTOS (Com alterações) ---
 async function loadEvents() {
   if (!eventsContainer) return;
 
   try {
+    // Sua consulta já estava perfeita, ordenando por data descendente
     const q = query(collection(db, "eventos"), orderBy("date", "desc"));
     const querySnapshot = await getDocs(q);
 
@@ -44,19 +47,27 @@ async function loadEvents() {
       return;
     }
 
-    // Gera o HTML para cada item da lista
+    // ALTERADO: Agora o HTML inclui a data formatada
     eventsContainer.innerHTML = events
-      .map(
-        (event) => `
-      <div class="event-item" id="event-${event.id}">
-        <span class="event-item-title">${event.title}</span>
-        <div class="event-item-actions">
-          <a href="/src/admin/editor.html?id=${event.id}" class="btn btn-edit">Editar</a>
-          <button class="btn btn-delete" data-id="${event.id}">Excluir</button>
-        </div>
-      </div>
-    `
-      )
+      .map((event) => {
+        // Formata a data para o padrão brasileiro (dd/mm/aaaa)
+        const dataFormatada = event.date
+          .toDate()
+          .toLocaleDateString("pt-BR", { timeZone: "UTC" });
+
+        return `
+          <div class="event-item" id="event-${event.id}">
+            <div class="event-item-info">
+                <span class="event-item-title">${event.title}</span>
+                <span class="event-item-date">${dataFormatada}</span>
+            </div>
+            <div class="event-item-actions">
+              <a href="/src/admin/editor.html?id=${event.id}" class="btn btn-edit">Editar</a>
+              <button class="btn btn-delete" data-id="${event.id}">Excluir</button>
+            </div>
+          </div>
+        `;
+      })
       .join("");
   } catch (error) {
     console.error("Erro ao carregar eventos:", error);
@@ -64,29 +75,23 @@ async function loadEvents() {
   }
 }
 
-// --- 3. LÓGICA PARA DELETAR EVENTOS ---
+// --- 3. LÓGICA PARA DELETAR EVENTOS (Sem alterações) ---
 eventsContainer.addEventListener("click", async (event) => {
-  // Verifica se o clique foi em um botão com a classe 'btn-delete'
   if (event.target.classList.contains("btn-delete")) {
     const eventId = event.target.dataset.id;
     const eventTitle = document.querySelector(
       `#event-${eventId} .event-item-title`
     ).textContent;
 
-    // Pede confirmação antes de deletar
     if (
       confirm(
         `Tem certeza que deseja excluir o evento "${eventTitle}"? Esta ação não pode ser desfeita.`
       )
     ) {
       try {
-        // Pega a referência do documento no Firestore
         const docRef = doc(db, "eventos", eventId);
-        // Deleta o documento
         await deleteDoc(docRef);
-
         alert("Evento excluído com sucesso!");
-        // Remove o item da tela sem precisar recarregar a página
         document.getElementById(`event-${eventId}`).remove();
       } catch (error) {
         console.error("Erro ao excluir evento:", error);
@@ -96,6 +101,25 @@ eventsContainer.addEventListener("click", async (event) => {
   }
 });
 
+// --- 4. NOVO: LÓGICA DO FILTRO DE BUSCA ---
+searchInput.addEventListener("input", () => {
+  const searchTerm = searchInput.value.toLowerCase().trim();
+  const allEvents = document.querySelectorAll(".event-item");
+
+  allEvents.forEach((eventElement) => {
+    const titleElement = eventElement.querySelector(".event-item-title");
+    if (titleElement) {
+      const title = titleElement.textContent.toLowerCase();
+
+      // Se o título do evento incluir o termo de busca, ele é exibido. Se não, é escondido.
+      if (title.includes(searchTerm)) {
+        eventElement.style.display = "flex"; // Use 'flex' para corresponder ao estilo
+      } else {
+        eventElement.style.display = "none";
+      }
+    }
+  });
+});
+
 // --- INICIALIZAÇÃO ---
-// Chama a função para carregar os eventos assim que a página abre
 loadEvents();

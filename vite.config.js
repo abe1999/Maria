@@ -32,6 +32,11 @@ export default defineConfig({
         login: resolve(__dirname, "src/admin/login.html"),
         dashboard: resolve(__dirname, "src/admin/dashboard.html"),
         editor: resolve(__dirname, "src/admin/editor.html"),
+        gerenciarDestaques: resolve(
+          __dirname,
+          "src/admin/gerenciar-destaques.html"
+        ),
+        editorDestaque: resolve(__dirname, "src/admin/editor-destaque.html"),
       },
     },
   },

@@ -8,6 +8,7 @@ const editorTitle = document.getElementById("editor-title");
 const slideForm = document.getElementById("slide-form");
 const textoInput = document.getElementById("texto");
 const linkUrlInput = document.getElementById("linkUrl");
+const textoBotaoInput = document.getElementById("textoBotao");
 const imageUploadInput = document.getElementById("imageUpload");
 const imagePreview = document.getElementById("image-preview");
 const currentImagePath = document.getElementById("current-image-path");
@@ -26,17 +27,21 @@ async function loadSlideData() {
 
   editorTitle.textContent = "Editar Slide";
   try {
-    const docRef = doc(db, "destaques_carrosel", slideId);
+    // CORREÇÃO: Usando a coleção "destaques"
+    const docRef = doc(db, "destaques", slideId);
     const docSnap = await getDoc(docRef);
 
     if (docSnap.exists()) {
       const data = docSnap.data();
       textoInput.value = data.texto || "";
       linkUrlInput.value = data.linkUrl || "";
+      textoBotaoInput.value = data.textoBotao || "";
       ordemInput.value = data.ordem || 1;
       ativoCheckbox.checked = data.ativo;
-      if (data.imagemUrl) {
-        imageUrlToSave = data.imagemUrl;
+
+      // CORREÇÃO: Buscando o campo "imageUrl"
+      if (data.imageUrl) {
+        imageUrlToSave = data.imageUrl;
         imagePreview.src = imageUrlToSave;
         imagePreview.style.display = "block";
         currentImagePath.textContent = `Imagem atual carregada.`;
@@ -46,8 +51,11 @@ async function loadSlideData() {
       window.location.href = "gerenciar-destaques.html";
     }
   } catch (error) {
-    console.error("Erro ao carregar dados do slide:", error);
-    alert("Não foi possível carregar os dados do slide.");
+    console.error("--- OCORREU UM ERRO DETALHADO ---");
+    console.error("Objeto do erro completo:", error);
+    console.error("Mensagem do erro:", error.message);
+    console.error("Rastro do erro (stack):", error.stack);
+    alert(`Ocorreu um erro ao carregar os dados. Verifique o console.`);
   }
 }
 
@@ -84,7 +92,6 @@ slideForm.addEventListener("submit", async (event) => {
       const storageRef = ref(storage, filePath);
       const uploadTask = uploadBytesResumable(storageRef, compressedFile);
 
-      // Aguarda o upload ser concluído para obter a URL
       await uploadTask;
       imageUrlToSave = await getDownloadURL(uploadTask.snapshot.ref);
       console.log("Upload concluído. URL:", imageUrlToSave);
@@ -107,18 +114,22 @@ async function saveData() {
   const slideData = {
     texto: textoInput.value,
     linkUrl: linkUrlInput.value,
-    imagemUrl: imageUrlToSave,
+    textoBotao: textoBotaoInput.value,
+    // CORREÇÃO: Usando "imageUrl" para consistência
+    imageUrl: imageUrlToSave,
     ordem: Number(ordemInput.value),
     ativo: ativoCheckbox.checked,
   };
 
   try {
     if (isEditMode) {
-      const docRef = doc(db, "destaques_carrosel", slideId);
+      // CORREÇÃO: Usando a coleção "destaques"
+      const docRef = doc(db, "destaques", slideId);
       await updateDoc(docRef, slideData);
       alert("Slide atualizado com sucesso!");
     } else {
-      await addDoc(collection(db, "destaques_carrosel"), slideData);
+      // CORREÇÃO: Usando a coleção "destaques"
+      await addDoc(collection(db, "destaques"), slideData);
       alert("Slide cadastrado com sucesso!");
     }
     window.location.href = "gerenciar-destaques.html";

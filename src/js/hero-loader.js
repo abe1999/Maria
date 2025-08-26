@@ -1,14 +1,25 @@
-import { db } from "../firebase-config.js"; // Ajuste o caminho se necessário
+// Local: /src/js/hero-loader.js
+
+// --- IMPORTS ---
+// CORREÇÃO 1: Importar o Swiper e seus módulos para poder usá-los neste arquivo.
+import Swiper from "swiper";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
+
+// Importa a configuração do Firebase e as funções do Firestore
+import { db } from "../firebase-config.js"; // O caminho "../" parece correto
 import { collection, query, where, orderBy, getDocs } from "firebase/firestore";
 
+// --- FUNÇÕES ---
+
 // Função para inicializar o Swiper.js
-// É importante que ela seja chamada DEPOIS que os slides forem carregados
 function inicializarSwiper() {
   const swiper = new Swiper(".swiper", {
-    // Opções do seu Swiper
+    // Registra os módulos que vamos usar
+    modules: [Navigation, Pagination, Autoplay],
+    // Suas opções do Swiper
     loop: true,
     autoplay: {
-      delay: 5000, // 5 segundos
+      delay: 5000,
       disableOnInteraction: false,
     },
     pagination: {
@@ -19,7 +30,7 @@ function inicializarSwiper() {
       nextEl: ".swiper-button-next",
       prevEl: ".swiper-button-prev",
     },
-    effect: "fade", // Exemplo de efeito, ajuste conforme seu gosto
+    effect: "fade",
   });
 }
 
@@ -32,15 +43,14 @@ async function carregarSlides() {
   }
 
   try {
-    // 1. Cria a consulta ao Firestore
-    const slidesRef = collection(db, "destaques_carrosel");
+    // CORREÇÃO 2: Usar a coleção "destaques" para alinhar com as regras e o painel ADM.
+    const slidesRef = collection(db, "destaques");
     const q = query(
       slidesRef,
       where("ativo", "==", true),
       orderBy("ordem", "asc")
     );
 
-    // 2. Executa a consulta
     const querySnapshot = await getDocs(q);
 
     if (querySnapshot.empty) {
@@ -49,26 +59,23 @@ async function carregarSlides() {
       return;
     }
 
-    // 3. Gera o HTML para cada slide
     let slidesHtml = "";
     querySnapshot.forEach((doc) => {
       const slide = doc.data();
 
-      // Note o uso de style="background-image: ..." para a imagem de fundo
       slidesHtml += `
-                <div class="swiper-slide" style="background-image: url('${slide.imagemUrl}')">
-                    <div class="slide-content">
-                        <h2>${slide.texto}</h2>
-                        <a href="${slide.linkUrl}" class="btn-slide" target="_blank">Saiba Mais</a>
-                    </div>
-                </div>
-            `;
+        <div class="swiper-slide" style="background-image: url('${slide.imageUrl}')">
+            <div class="slide-content">
+                <h2>${slide.texto}</h2>
+                <a href="${slide.linkUrl}" class="btn-slide" target="_blank">${slide.textoBotao}</a>
+            </div>
+        </div>
+      `;
     });
 
-    // 4. Insere o HTML gerado no wrapper
     swiperWrapper.innerHTML = slidesHtml;
 
-    // 5. INICIALIZA o Swiper
+    // Inicializa o Swiper DEPOIS que os slides foram adicionados ao HTML
     inicializarSwiper();
   } catch (error) {
     console.error("Erro ao carregar os slides:", error);

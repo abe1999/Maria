@@ -14,10 +14,8 @@ async function loadSlides() {
   if (!slidesContainer) return;
 
   try {
-    const q = query(
-      collection(db, "destaques_carrosel"),
-      orderBy("ordem", "asc")
-    );
+    // CORREÇÃO: Usando a coleção "destaques" para consistência
+    const q = query(collection(db, "destaques"), orderBy("ordem", "asc"));
     const querySnapshot = await getDocs(q);
 
     if (querySnapshot.empty) {
@@ -30,29 +28,32 @@ async function loadSlides() {
         const slide = doc.data();
         const slideId = doc.id;
         return `
-                <div class="event-item" id="slide-${slideId}">
-                    <img src="${
-                      slide.imagemUrl
-                    }" alt="Miniatura" style="width: 100px; height: 50px; object-fit: cover; margin-right: 20px; border-radius: 4px;">
-                    <div class="event-item-info">
-                        <span class="event-item-title">${slide.texto} (Ordem: ${
+          <div class="event-item" id="slide-${slideId}">
+            <img src="${
+              slide.imageUrl
+            }" alt="Miniatura" style="width: 100px; height: 50px; object-fit: cover; margin-right: 20px; border-radius: 4px;">
+
+            <div class="event-item-info">
+              <span class="event-item-title">${slide.texto} (Ordem: ${
           slide.ordem
         })</span>
-                        <span class="event-item-date">${
-                          slide.ativo ? "✔️ Ativo" : "❌ Inativo"
-                        }</span>
-                    </div>
-                    <div class="event-item-actions">
-                        <a href="editor-destaque.html?id=${slideId}" class="btn btn-edit">Editar</a>
-                        <button class="btn btn-delete" data-id="${slideId}">Excluir</button>
-                    </div>
-                </div>
-            `;
+              <span class="event-item-date">${
+                slide.ativo ? "✔️ Ativo" : "❌ Inativo"
+              }</span>
+            </div>
+            <div class="event-item-actions">
+              <a href="editor-destaque.html?id=${slideId}" class="btn btn-edit">Editar</a>
+              <button class="btn btn-delete" data-id="${slideId}">Excluir</button>
+            </div>
+          </div>
+        `;
       })
       .join("");
   } catch (error) {
+    // Esta é a linha que está mostrando o erro agora
     console.error("Erro ao carregar slides:", error);
-    slidesContainer.innerHTML = "<p>Erro ao carregar os slides.</p>";
+    slidesContainer.innerHTML =
+      "<p>Erro ao carregar os slides. Verifique as permissões no Firestore.</p>";
   }
 }
 
@@ -61,7 +62,9 @@ slidesContainer.addEventListener("click", async (event) => {
     const slideId = event.target.dataset.id;
     if (confirm("Tem certeza que deseja excluir este slide?")) {
       try {
-        await deleteDoc(doc(db, "destaques_carrosel", slideId));
+        // CORREÇÃO: Usando a coleção "destaques" aqui também
+        await deleteDoc(doc(db, "destaques", slideId));
+
         alert("Slide excluído com sucesso!");
         document.getElementById(`slide-${slideId}`).remove();
       } catch (error) {
@@ -72,4 +75,5 @@ slidesContainer.addEventListener("click", async (event) => {
   }
 });
 
+// A execução começa aqui
 loadSlides();

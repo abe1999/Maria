@@ -15,7 +15,8 @@ export function renderFooter() {
         <div class="footer-info-box">
           <div class="footer-column">
             <a href="${import.meta.env.BASE_URL}" class="logo">
-                      <img class="footer-logo" src="${logoImage}" alt="Logo da Paróquia Nossa Senhora de Nazaré" />
+              <img class="footer-logo" src="${logoImage}" alt="Logo da Paróquia Nossa Senhora de Nazaré" />
+            </a>
             <div class="address-details">
               <h4>Nossa Paróquia</h4>
               <p>
@@ -29,13 +30,28 @@ export function renderFooter() {
             <p>
               <i class="fa-solid fa-phone"></i> Telefone: <a href="tel:+556932212270">(69) 3221-2270</a>
             </p>
-            <p>
-              <i class="fa-brands fa-whatsapp"></i> WhatsApp: <a href="https://wa.me/556932212270" target="_blank">(69) 3221-2270</a>
-            </p>
+            
             <p>
               <i class="fa-solid fa-envelope"></i> E-mail:<br>
               <a href="mailto:secretaria@suaparoquia.com.br">secretaria@suaparoquia.com.br</a>
             </p>
+
+            <h4 class="social-title">Siga-nos e Contate-nos</h4>
+            <div class="footer-social-icons">
+                <a href="https://api.whatsapp.com/send/?phone=556996007098&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </a>
+                <a href="https://www.instagram.com/seu-usuario-aqui" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="https://www.facebook.com/sua-pagina-aqui" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                    <i class="fa-brands fa-facebook"></i>
+                </a>
+                <a href="https://www.youtube.com/seu-canal-aqui" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                    <i class="fa-brands fa-youtube"></i>
+                </a>
+            </div>
+
           </div>
           <div class="footer-column">
             <h4>Funcionamento</h4>

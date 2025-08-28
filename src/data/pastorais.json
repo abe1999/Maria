@@ -1,121 +1,271 @@
 [
   {
     "id": "catequese",
-    "name": "Pastoral da Catequese",
+    "name": "Pastoral Catequética",
     "image": "https://picsum.photos/id/212/800/600",
-    "excerpt": "Acompanhando crianças e jovens na jornada de fé, preparando-os para os sacramentos da Eucaristia e Crisma.",
-    "objective": "Instruir crianças, jovens e adultos na fé católica, preparando-os para uma participação consciente e ativa na comunidade e nos sacramentos.",
+    "excerpt": "Oferecemos um caminho de iniciação e formação na fé para crianças, jovens e adultos, preparando-os para receber os sacramentos e viver o Evangelho em comunidade.",
+    "objective": "A Pastoral Catequética tem por objetivo o trabalho permanente de iniciação e formação na fé, em apoio às comunidades na preparação das pessoas que pretendem receber os sacramentos católicos e viver o Evangelho.",
     "activities": [
-      "Encontros semanais em turmas.",
-      "Retiros espirituais.",
-      "Participação em missas e eventos da comunidade.",
-      "Formação continuada para catequistas."
+      "Desenvolvimento de um processo permanente de iniciação e formação na fé.",
+      "Fomento do encontro pessoal e comunitário com Jesus Cristo.",
+      "Engajamento dos catequizandos na caminhada da fé, através dos sacramentos.",
+      "Formação continuada dos catequistas, com apoio da Paróquia e Diocese.",
+      "Incentivo às práticas dos ensinamentos do Evangelho e ao compromisso com a vida cristã.",
+      "Animação bíblico-catequética na comunidade.",
+      "Incentivo à construção de uma sociedade mais justa e fraterna."
     ],
-    "howToParticipate": "As inscrições abrem anualmente no início do ano. Os pais ou responsáveis devem procurar a secretaria paroquial com os documentos necessários.",
-    "whoCanJoin": "Crianças a partir dos 9 anos para a Primeira Eucaristia, jovens a partir dos 14 anos para a Crisma, e adultos que desejam receber os sacramentos.",
-    "schedule": "Os encontros ocorrem aos sábados, das 9h às 10h30 para turmas de Eucaristia, e das 10h30 às 12h para turmas de Crisma.",
+    "howToParticipate": {
+      "steps": "Para inscrever um catequizando, é necessário procurar a Secretaria Paroquial em horário comercial ou a Coordenação da Pastoral, apresentando os seguintes documentos:",
+      "documents": [
+        "Certidão de nascimento ou Carteira de Identidade (RG).",
+        "Comprovante de Residência.",
+        "Batistério (documento que certifica o Batismo), caso seja batizado.",
+        "Certidão de Primeira Eucaristia, caso já a tenha recebido (para inscrição na Crisma).",
+        "Autorização de outra Paróquia, caso o catequizando venha de outra comunidade."
+      ]
+    },
+    "whoCanJoin": [
+      {
+        "stage": "1ª Etapa (Eucaristia 1)",
+        "requirement": "Crianças com 10 anos completos ou a completar em 2025."
+      },
+      {
+        "stage": "2ª Etapa (Eucaristia 2)",
+        "requirement": "A partir dos 11 anos, tendo concluído a 1ª etapa."
+      },
+      {
+        "stage": "3ª Etapa (Crisma 1)",
+        "requirement": "A partir dos 12 anos, tendo recebido o sacramento da Eucaristia."
+      },
+      {
+        "stage": "4ª Etapa (Crisma 2)",
+        "requirement": "A partir dos 13 anos, tendo concluído a 3ª etapa."
+      },
+      {
+        "stage": "Catequese de Adultos",
+        "requirement": "A partir dos 17 anos completos ou a completar em 2025."
+      }
+    ],
+    "howToJoinTeam": {
+      "title": "Como fazer parte da equipe de catequistas?",
+      "requirements": [
+        "Ter todos os sacramentos de iniciação cristã (Batismo, Eucaristia e Crisma).",
+        "Ter disposição para servir e participar das formações continuadas."
+      ]
+    },
+    "schedule": "Os encontros da catequese acontecem aos sábados e domingos, tanto na igreja matriz quanto nas demais comunidades. As reuniões e formações da equipe são realizadas em dias e horários variados, conforme agenda pré-definida.",
     "coordinator": {
-      "name": "Maria Lúcia",
-      "contact": "catequese@paroquiadeexemplo.com"
+      "name": "Coordenação da Pastoral Catequética",
+      "contact": ["(69) 92001-7181", "(69) 99372-4545"]
     }
   },
   {
-    "id": "dizimo",
+    "id": "coroinhas",
+    "name": "Pastoral dos Coroinhas e Acólitos",
+    "image": "https://picsum.photos/id/10/800/600",
+    "excerpt": "Formando e acompanhando crianças e adolescentes no serviço ao altar, despertando o amor e o respeito à Sagrada Eucaristia e auxiliando nas celebrações litúrgicas.",
+    "objective": "A Pastoral dos Coroinhas e Acólitos tem como objetivo formar e acompanhar crianças e adolescentes no serviço litúrgico da igreja, despertando o amor e o respeito à Sagrada Eucaristia, destacando a importância da missão como o primeiro engajamento pastoral, envolvendo a família nessa trajetória de evangelização.",
+    "activities": [
+      "Auxiliar o padre e a comunidade nas celebrações litúrgicas e procissões.",
+      "Organizar e zelar pelo altar e pelos objetos sagrados.",
+      "Participar de encontros e formações para o crescimento espiritual e técnico.",
+      "Desenvolver valores como responsabilidade, liderança, trabalho em equipe e compromisso.",
+      "Cultivar o amor e o respeito à Sagrada Eucaristia através do serviço."
+    ],
+    "howToParticipate": {
+      "steps": "Para participar, é preciso ter disponibilidade para servir com alegria, assim como Nossa Senhora. Os interessados devem entrar em contato com a secretaria paroquial ou com a coordenação da pastoral.",
+      "documents": []
+    },
+    "whoCanJoin": [
+      {
+        "stage": "Participantes",
+        "requirement": "Crianças e adolescentes a partir dos 7 anos de idade."
+      }
+    ],
+    "schedule": "Os encontros e formações acontecem aos sábados, às 16h, na Igreja Matriz Nossa Senhora de Nazaré.",
+    "coordinator": {
+      "name": "Nome do Coordenador(a)",
+      "contact": ["(XX) XXXXX-XXXX"]
+    }
+  },
+  {
+    "id": "terco-dos-homens",
+    "name": "Terço dos Homens",
+    "image": "https://picsum.photos/id/30/800/600",
+    "excerpt": "Uma devoção Mariana que reúne homens de todas as idades para a oração do Santo Terço, buscando fortalecer a fé, a família e a presença masculina na Igreja.",
+    "objective": "Reunir homens de todas as idades para a oração do terço, buscando a intercessão de Nossa Senhora e resgatando-os para o seio da Igreja. A pastoral visa evangelizar, motivar a vivência da fé cristã, santificar as famílias e conscientizar sobre a importância da presença masculina na comunidade.",
+    "activities": [
+      "Reunião semanal para a oração do Santo Terço em comunidade.",
+      "Ser exemplo de oração e fé para outros homens.",
+      "Evangelizar amigos e companheiros que estão distantes da Igreja.",
+      "Aprofundar o conhecimento do Evangelho e dos ensinamentos de Cristo.",
+      "Atuar como missionários no dia a dia, servindo à Igreja e santificando a família."
+    ],
+    "howToParticipate": {
+      "steps": "Para participar, basta comparecer às reuniões do grupo, que acontecem toda segunda-feira na Capela do Santíssimo. É fundamental também a participação nas Santas Missas da Paróquia.",
+      "documents": []
+    },
+    "whoCanJoin": [
+      {
+        "stage": "Participantes",
+        "requirement": "Homens de todas as idades que desejam fortalecer sua fé."
+      }
+    ],
+    "schedule": "Toda segunda-feira, às 19:30, na Capela do Santíssimo.",
+    "coordinator": {
+      "name": "Coordenação do Terço dos Homens",
+      "contact": ["(XX) XXXXX-XXXX"]
+    }
+  },
+  {
+    "id": "legiao-de-maria",
+    "name": "Legião de Maria",
+    "image": "https://picsum.photos/id/40/800/600",
+    "excerpt": "Um movimento de leigos católicos que, sob a intercessão de Nossa Senhora, buscam a santidade pessoal e a evangelização da comunidade através da oração e do trabalho apostólico.",
+    "objective": "Buscar a santidade pessoal dos seus membros através da oração e do serviço, e a santificação do próximo por meio do trabalho missionário de evangelização, seguindo o exemplo de Maria.",
+    "activities": [
+      "Reunião semanal para oração do terço e formação.",
+      "Visitas a famílias para a reza do terço e divulgação da mensagem de Deus.",
+      "Oferecer conforto espiritual e orações em velórios.",
+      "Convidar as pessoas à conversão e à vida sacramental.",
+      "Dar orientações religiosas sobre os Sacramentos e a fé católica."
+    ],
+    "howToParticipate": {
+      "steps": "Os interessados em conhecer o trabalho da Legião de Maria devem participar de um dos encontros semanais para entender a espiritualidade e o método do movimento.",
+      "documents": []
+    },
+    "whoCanJoin": [
+      {
+        "stage": "Membros",
+        "requirement": "Todos os católicos que praticam fielmente a sua fé e desejam servir a Deus e ao próximo."
+      }
+    ],
+    "howToJoinTeam": {
+      "title": "Como se tornar um legionário(a)?",
+      "requirements": [
+        "Ter os sacramentos em dia.",
+        "Querer ser missionário(a) dentro do espírito da Legião.",
+        "Participar fielmente das reuniões e trabalhos apostólicos definidos pelo grupo."
+      ]
+    },
+    "schedule": "Os encontros acontecem todos os sábados, às 07:30 da manhã, na Paróquia Nossa Senhora de Nazaré.",
+    "coordinator": {
+      "name": "Presidência da Legião de Maria",
+      "contact": ["(XX) XXXXX-XXXX"]
+    }
+  },
+  {
+    "id": "pastoral-da-musica",
+    "name": "Pastoral da Música Litúrgica",
+    "image": "https://picsum.photos/id/145/800/600",
+    "excerpt": "Responsável por animar as celebrações litúrgicas através do canto e dos instrumentos, ajudando toda a comunidade a rezar e a participar das missas com mais alegria e devoção.",
+    "objective": "Ajudar a comunidade a participar das celebrações religiosas com mais alegria e devoção, preparando os músicos e a assembleia para que possam participar da liturgia de forma plena e ativa.",
+    "activities": [
+      "Servir com o canto e instrumentos nas Santas Missas e celebrações.",
+      "Animar encontros, louvores e outros eventos das diversas pastorais.",
+      "Auxiliar a assembleia na participação das celebrações através de cantos litúrgicos adequados.",
+      "Realizar ensaios semanais para preparação técnica e espiritual das equipes.",
+      "Orientar e formar novos membros sobre a importância e a prática da música na liturgia."
+    ],
+    "howToParticipate": {
+      "steps": "Quem sentir interesse em participar deve procurar um dos membros da pastoral após as missas ou entrar em contato com a coordenação para agendar a participação em um ensaio.",
+      "documents": []
+    },
+    "whoCanJoin": [
+      {
+        "stage": "Membros",
+        "requirement": "Pessoas que cantam ou tocam algum instrumento musical e sentem o chamado para servir a Deus e à comunidade através do dom da música."
+      }
+    ],
+    "howToJoinTeam": {
+      "title": "Como servir na Pastoral da Música?",
+      "requirements": [
+        "Participar fielmente dos ensaios semanais para a preparação das missas.",
+        "Demonstrar aptidão para o canto ou para o instrumento que toca.",
+        "Estar empenhado em desenvolver os conhecimentos técnicos e litúrgicos necessários.",
+        "Trabalhar em alinhamento com a equipe de celebração da paróquia."
+      ]
+    },
+    "schedule": "Os ensaios principais acontecem todos os sábados, às 16h, na Comunidade de Nazaré. Outras participações podem ocorrer em horários flexíveis, conforme as atividades da comunidade.",
+    "coordinator": {
+      "name": "Coordenação da Pastoral da Música",
+      "contact": ["(XX) XXXXX-XXXX"]
+    }
+  },
+  {
+    "id": "pastoral-do-dizimo",
     "name": "Pastoral do Dízimo",
-    "image": "https://picsum.photos/id/312/800/600",
-    "excerpt": "Conscientizando a comunidade sobre a importância da partilha e da contribuição para a manutenção da casa de Deus.",
-    "objective": "Promover a compreensão do Dízimo como um ato de fé, gratidão e partilha, garantindo os recursos para a ação evangelizadora e social da paróquia.",
+    "image": "https://picsum.photos/id/21/800/600",
+    "excerpt": "Responsável por conscientizar os fiéis sobre a importância da contribuição do dízimo como um ato de fé, gratidão e corresponsabilidade com a comunidade paroquial.",
+    "objective": "Conscientizar e esclarecer os católicos sobre a dimensão bíblica e espiritual do dízimo, motivando uma contribuição generosa. A pastoral também busca estar atenta às necessidades dos fiéis, encaminhando-os para o apoio espiritual e material quando necessário.",
     "activities": [
-      "Plantão do Dízimo nas missas do segundo fim de semana do mês.",
-      "Campanhas de conscientização.",
-      "Visitas a novos membros da comunidade."
+      "Realizar o plantão do dízimo, acolhendo e orientando os fiéis antes e após as missas.",
+      "Organizar campanhas de conscientização sobre o dízimo na paróquia.",
+      "Visitar as residências dos fiéis para evangelizar e partilhar sobre a importância do dízimo.",
+      "Servir em outras atividades paroquiais, como no caixa durante as festas da comunidade.",
+      "Participar de reuniões de formação para os agentes da pastoral."
     ],
-    "howToParticipate": "Procure a equipe da pastoral no Plantão do Dízimo durante as missas ou na secretaria paroquial a qualquer momento para fazer seu cadastro.",
-    "whoCanJoin": "Todos os membros da comunidade que desejam contribuir de forma consciente e regular, ou que queiram atuar como agentes da pastoral.",
-    "schedule": "Plantões aos sábados, às 19h, e domingos, às 10h e 19h (segundo fim de semana de cada mês).",
+    "howToParticipate": {
+      "title": "Como se tornar um dizimista?",
+      "steps": "Para se tornar um dizimista e contribuir com a paróquia, você pode procurar o balcão da Pastoral do Dízimo antes ou após as missas para receber orientações e fazer seu cadastro. Se preferir, pode dirigir-se à secretaria paroquial durante o horário comercial.",
+      "documents": []
+    },
+    "whoCanJoin": [
+      {
+        "stage": "Agentes da Pastoral",
+        "requirement": "Qualquer membro da comunidade que sinta no coração o desejo de servir ao Senhor através desta pastoral."
+      }
+    ],
+    "howToJoinTeam": {
+      "title": "Como servir na equipe da Pastoral?",
+      "requirements": [
+        "Ter disponibilidade e assumir o serviço pastoral como uma prioridade.",
+        "Participar das reuniões de formação da equipe.",
+        "Ser uma pessoa acolhedora e com facilidade para dialogar com os fiéis."
+      ]
+    },
+    "schedule": "O plantão do dízimo ocorre em todas as missas. As reuniões da equipe acontecem em horários flexíveis, geralmente na paróquia após as missas ou na residência de um dos agentes.",
     "coordinator": {
-      "name": "José Carlos",
-      "contact": "dizimo@paroquiadeexemplo.com"
+      "name": "Coordenação da Pastoral do Dízimo",
+      "contact": ["(XX) XXXXX-XXXX"]
     }
   },
   {
-    "id": "liturgia",
-    "name": "Pastoral da Liturgia",
-    "image": "https://picsum.photos/id/320/800/600",
-    "excerpt": "Zelando pela beleza e dignidade de nossas celebrações, tornando a liturgia um verdadeiro encontro com Deus.",
-    "objective": "Organizar e preparar todos os aspectos das celebrações litúrgicas da paróquia, incluindo missas, adorações e outros sacramentos, para promover a participação ativa dos fiéis.",
+    "id": "grupo-quem-como-deus",
+    "name": "Grupo de Oração 'Quem como Deus?'",
+    "image": "https://picsum.photos/id/48/800/600",
+    "excerpt": "Grupo de oração voltado para a comunidade, com a missão de levar atendimento de cura e libertação, a Palavra de Deus e a oração do Terço de São Miguel às famílias.",
+    "objective": "Levar a comunidade a uma experiência de fé através do atendimento de oração por cura e libertação. O grupo realiza visitas às famílias, levando a Palavra de Deus, orações, louvor e a devoção do Terço de São Miguel Arcanjo.",
     "activities": [
-      "Escala de leitores, salmistas e comentaristas.",
-      "Formação para equipes de canto litúrgico.",
-      "Organização das procissões e ritos especiais.",
-      "Cuidado com os objetos e vestes litúrgicas."
+      "Realizar visitas missionárias às famílias para momentos de oração, louvor e partilha da Palavra.",
+      "Rezar o Terço de São Miguel Arcanjo com a comunidade e nas casas.",
+      "Oferecer atendimento de oração por cura e libertação aos fiéis.",
+      "Promover momentos de adoração ao Santíssimo Sacramento na paróquia.",
+      "Rezar pelo mundo, pela Igreja e pelas famílias no Cruzeiro do Monte da Cruz, no primeiro domingo de cada mês.",
+      "Participar de reuniões de formação semanal para o aprofundamento da fé dos membros."
     ],
-    "howToParticipate": "Participe de uma de nossas equipes (canto, leitura, etc.). Procure o coordenador após a missa ou na secretaria para mais informações.",
-    "whoCanJoin": "Pessoas com boa vontade, disponibilidade para servir e, para certas funções como canto ou leitura, aptidões específicas que podem ser desenvolvidas.",
-    "schedule": "Reuniões gerais na primeira terça-feira de cada mês, às 20h. As equipes específicas (canto, etc.) têm seus próprios horários de ensaio.",
-    "coordinator": {
-      "name": "Sônia Regina",
-      "contact": "liturgia@paroquiadeexemplo.com"
-    }
-  },
-  {
-    "id": "acolhida",
-    "name": "Pastoral da Acolhida",
-    "image": "https://picsum.photos/id/133/800/600",
-    "excerpt": "Sendo o primeiro sorriso e o abraço fraterno da nossa comunidade, acolhendo a todos na casa do Pai.",
-    "objective": "Acolher com alegria e carinho todas as pessoas que chegam à igreja para as celebrações, fazendo com que se sintam bem-vindas e parte da nossa família paroquial.",
-    "activities": [
-      "Recepção dos fiéis na porta da igreja.",
-      "Entrega de folhetos litúrgicos e informativos.",
-      "Orientação de visitantes sobre os espaços da paróquia.",
-      "Auxílio na organização dos assentos e durante as coletas."
+    "howToParticipate": {
+      "steps": "Os interessados em conhecer o grupo e participar devem procurar os membros na Sala de Adoração da Paróquia de Nazaré, durante o período da tarde (das 14h às 17h), para uma conversa e primeiro contato.",
+      "documents": []
+    },
+    "whoCanJoin": [
+      {
+        "stage": "Participantes",
+        "requirement": "Todos os católicos batizados que gostam de rezar, adorar e sentem o chamado para a missão de ir ao encontro das famílias."
+      }
     ],
-    "howToParticipate": "Se você é uma pessoa comunicativa e gosta de servir, esta é a sua pastoral! Fale com um dos membros da equipe na entrada da igreja.",
-    "whoCanJoin": "Qualquer membro da comunidade com espírito de serviço, simpatia e disponibilidade para chegar um pouco antes das missas.",
-    "schedule": "A pastoral atua em todas as missas. A escala é organizada mensalmente em uma reunião curta após a missa das 10h do último domingo do mês.",
+    "howToJoinTeam": {
+      "title": "Requisitos para servir no grupo",
+      "requirements": [
+        "Ter disponibilidade para as visitas às famílias, que ocorrem durante a noite.",
+        "Participar das formações semanais do grupo.",
+        "Ter um coração aberto para o serviço de oração pelos irmãos."
+      ]
+    },
+    "schedule": "As atividades do grupo possuem uma agenda variada:\n• Visitas às famílias: Quartas-feiras à noite.\n• Formação dos membros: Sextas-feiras, às 19:30, em local combinado.\n• Adoração na Paróquia: De segunda a sexta, das 14h às 17h.\n• Oração no Cruzeiro: Primeiro domingo de cada mês, às 15h.",
     "coordinator": {
-      "name": "Roberto e Fátima",
-      "contact": "acolhida@paroquiadeexemplo.com"
-    }
-  },
-  {
-    "id": "familiar",
-    "name": "Pastoral Familiar",
-    "image": "https://picsum.photos/id/345/800/600",
-    "excerpt": "Apoiando e evangelizando as famílias, que são a base da nossa sociedade e da nossa Igreja.",
-    "objective": "Atuar na evangelização e amparo das famílias em todas as suas fases e realidades, defendendo e promovendo os valores cristãos do matrimônio e da vida.",
-    "activities": [
-      "Realização do Encontro de Casais com Cristo (ECC).",
-      "Grupos de partilha e oração para casais.",
-      "Preparação para o Sacramento do Matrimônio (Curso de Noivos).",
-      "Eventos e celebrações voltados para a valorização da família."
-    ],
-    "howToParticipate": "Casais que já participaram do ECC ou que desejam se engajar podem entrar em contato com o casal coordenador para conhecer os grupos e atividades.",
-    "whoCanJoin": "Casais e famílias de todas as idades que buscam fortalecer sua caminhada na fé e viver em uma comunidade de apoio mútuo.",
-    "schedule": "As atividades variam. O Curso de Noivos é semestral e os grupos de partilha se reúnem quinzenalmente nas casas dos membros.",
-    "coordinator": {
-      "name": "Fernando e Cláudia",
-      "contact": "familiar@paroquiadeexemplo.com"
-    }
-  },
-  {
-    "id": "pascom",
-    "name": "Pastoral da Comunicação (PASCOM)",
-    "image": "https://picsum.photos/id/357/800/600",
-    "excerpt": "Levando a Boa Nova a todos os cantos, através dos meios de comunicação digitais e impressos.",
-    "objective": "Ser a ponte entre a paróquia e a comunidade, utilizando as ferramentas de comunicação para evangelizar, informar e promover a unidade entre todas as pastorais e movimentos.",
-    "activities": [
-      "Gerenciamento das redes sociais da paróquia (Facebook, Instagram, etc.).",
-      "Fotografia e filmagem de eventos e missas.",
-      "Criação do boletim paroquial impresso e digital.",
-      "Manutenção e atualização do site da paróquia."
-    ],
-    "howToParticipate": "Se você tem habilidades com fotografia, vídeo, design, redação ou mídias sociais, sua ajuda é muito bem-vinda! Participe de nossa reunião mensal.",
-    "whoCanJoin": "Jovens e adultos com afinidade pela área de comunicação e que desejam dedicar seus talentos à evangelização na era digital.",
-    "schedule": "Reunião de pauta na primeira segunda-feira do mês, às 19h30. A cobertura dos eventos é feita conforme o calendário paroquial.",
-    "coordinator": {
-      "name": "Juliana Santos",
-      "contact": "pascom@paroquiadeexemplo.com"
+      "name": "Coordenação do Grupo 'Quem como Deus?'",
+      "contact": ["(XX) XXXXX-XXXX"]
     }
   }
 ]

@@ -1,5 +1,5 @@
 /* =================================================================
-   ESTILOS DO RODAPÉ (FOOTER) - VERSÃO COMPLETA E RESPONSIVA
+    ESTILOS DO RODAPÉ (FOOTER) - VERSÃO COMPLETA E RESPONSIVA
 ================================================================= */
 
 /* --- Estrutura Principal (Desktop) --- */
@@ -60,6 +60,35 @@
   margin-bottom: 20px;
 }
 
+/* =================================================================
+    ## NOVOS ESTILOS PARA REDES SOCIAIS ##
+================================================================= */
+
+/* --- Título para a seção de redes sociais --- */
+.social-title {
+  margin-top: 20px; /* Adiciona um espaço acima do "Siga-nos" */
+}
+
+/* --- Container para os ícones --- */
+.footer-social-icons {
+  display: flex; /* Alinha os ícones horizontalmente */
+  align-items: center;
+  gap: 20px; /* Cria um espaço entre os ícones */
+  margin-top: 10px;
+}
+
+/* --- Estilo individual dos ícones --- */
+.footer-social-icons a {
+  color: var(--color-text-light); /* Cor base do ícone */
+  font-size: 1.8rem; /* Tamanho do ícone */
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.footer-social-icons a:hover {
+  color: var(--color-secondary); /* Cor dourada ao passar o mouse */
+  transform: translateY(-2px); /* Efeito de levantar levemente */
+}
+
 /* --- Barra Inferior (Desktop) --- */
 .footer-bottom-bar {
   background-color: #e9ecef;
@@ -83,22 +112,17 @@
 }
 
 /* =================================================================
-   AJUSTES RESPONSIVOS PARA CELULAR E TABLET
+    AJUSTES RESPONSIVOS PARA CELULAR E TABLET
 ================================================================= */
 
 /* Breakpoint para tablets e celulares maiores */
 @media (max-width: 992px) {
-
-  /* Adicione esta nova regra dentro da @media (max-width: 992px) */
-
   .footer-logo {
-    display: block;      /* Trata a imagem como um bloco */
-    margin-left: auto;   /* Margem esquerda automática */
-    margin-right: auto;  /* Margem direita automática */
+    display: block; /* Trata a imagem como um bloco */
+    margin-left: auto; /* Margem esquerda automática */
+    margin-right: auto; /* Margem direita automática */
   }
-  /*
-    Força as colunas a ficarem uma sobre a outra.
-  */
+
   .footer-info-box {
     flex-direction: column; /* Empilha as colunas verticalmente */
     align-items: center; /* Centraliza o conteúdo de cada coluna */
@@ -114,17 +138,21 @@
     margin-bottom: 0; /* Remove o espaço do último item */
   }
 
-  /* ===== NOVAS REGRAS ADICIONADAS AQUI ===== */
   .footer-column .fa-solid,
   .footer-column .fa-brands {
-    display: block;      /* Faz o ícone ocupar sua própria linha */
-    margin-right: 0;     /* Remove a margem da direita que existia no desktop */
+    display: block; /* Faz o ícone ocupar sua própria linha */
+    margin-right: 0; /* Remove a margem da direita que existia no desktop */
     margin-bottom: 10px; /* Adiciona um espaço abaixo do ícone */
-    font-size: 2rem;     /* Aumenta um pouco o ícone para dar mais destaque */
+    font-size: 2rem; /* Aumenta um pouco o ícone para dar mais destaque */
   }
 
   .footer-column p {
     line-height: 1.5; /* Ajusta a altura da linha para o texto do e-mail */
+  }
+
+  /* ## NOVO AJUSTE RESPONSIVO PARA OS ÍCONES SOCIAIS ## */
+  .footer-social-icons {
+    justify-content: center; /* Garante que os ícones fiquem centralizados */
   }
 }
 

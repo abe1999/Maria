@@ -14,6 +14,10 @@
       {
         "source": "/src/admin/editor",
         "destination": "/src/admin/editor.html"
+      },
+      {
+        "source": "/src/admin/editor-voce-sabia",
+        "destination": "/src/admin/editor-voce-sabia.html"
       }
     ]
   }

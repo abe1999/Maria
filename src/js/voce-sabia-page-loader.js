@@ -23,12 +23,10 @@ import { collection, query, orderBy, getDocs } from "firebase/firestore";
 renderHeader();
 renderFooter();
 
-// --- 3. LÓGICA ESPECÍFICA DA PÁGINA ---
 const gridContainer = document.getElementById("voce-sabia-grid");
 
 async function loadAllVoceSabia() {
   if (!gridContainer) return;
-
   try {
     const q = query(collection(db, "voceSabia"), orderBy("createdAt", "desc"));
     const querySnapshot = await getDocs(q);
@@ -42,22 +40,33 @@ async function loadAllVoceSabia() {
 
     querySnapshot.forEach((doc) => {
       const data = doc.data();
-      const card = document.createElement("div");
-      card.className = "sabia-card";
+      const docId = doc.id; // Pega o ID único do documento
+
+      // ## MUDANÇA PRINCIPAL AQUI ##
+      // O card agora é um link (<a>) que envolve o conteúdo
+      const cardLink = document.createElement("a");
+      cardLink.className = "sabia-card-link";
+      cardLink.href = `voce-sabia-detalhe.html?id=${docId}`; // Aponta para a pág. de detalhe com o ID
 
       let imageHtml = data.imageUrl
         ? `<img src="${data.imageUrl}" alt="${data.title}" class="card-image">`
         : "";
 
-      card.innerHTML = `
-                ${imageHtml}
-                <div class="card-content">
-                    <span class="card-category">${data.category}</span>
-                    <h3 class="card-title">${data.title}</h3>
-                    <div class="card-text">${data.content}</div>
+      cardLink.innerHTML = `
+                <div class="sabia-card">
+                    ${imageHtml}
+                    <div class="card-content">
+                        <span class="card-category">${data.category}</span>
+                        <h3 class="card-title">${data.title}</h3>
+                        <div class="card-text">${data.content.substring(
+                          0,
+                          150
+                        )}...</div>
+                        <span class="card-read-more">Ler Mais &rarr;</span>
+                    </div>
                 </div>
             `;
-      gridContainer.appendChild(card);
+      gridContainer.appendChild(cardLink);
     });
   } catch (error) {
     console.error("Erro ao carregar itens 'Você Sabia?':", error);
@@ -65,5 +74,4 @@ async function loadAllVoceSabia() {
   }
 }
 
-// Inicia o carregamento do conteúdo específico da página
-loadAllVoceSabia();
+document.addEventListener("DOMContentLoaded", loadAllVoceSabia);

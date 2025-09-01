@@ -19,12 +19,11 @@ export default defineConfig({
         eventos: resolve(__dirname, "src/pages/eventos.html"),
         proximos_eventos: resolve(__dirname, "src/pages/proximos-eventos.html"),
         acampamento: resolve(__dirname, "src/pages/acampamento.html"),
-
-        // =========================================================
-        // ## ADICIONE A NOVA PÁGINA AQUI ##
         "voce-sabia": resolve(__dirname, "src/pages/voce-sabia.html"),
-        // =========================================================
-
+        "voce-sabia-detalhe": resolve(
+          __dirname,
+          "src/pages/voce-sabia-detalhe.html"
+        ),
         "evento-detalhe": resolve(__dirname, "src/pages/evento-detalhe.html"),
         "pastoral-detalhe": resolve(
           __dirname,

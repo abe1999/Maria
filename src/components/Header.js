@@ -68,9 +68,8 @@ export function renderHeader() {
                 Eventos <i class="fa-solid fa-caret-down"></i>
               </a>
               <div class="dropdown-content">
-                <a href="${BASE}src/pages/eventos.html?categoria=evento-geral">Eventos Gerais</a>
-                <a href="${BASE}src/pages/eventos.html?categoria=missa">Missas</a>
                 <a href="${BASE}src/pages/proximos-eventos.html">Próximos Eventos</a>
+    <a href="${BASE}src/pages/eventos.html">Eventos Anteriores</a>
               </div>
             </li>
             <li><a href="${BASE}src/pages/acampamento.html">Acampamento</a></li>

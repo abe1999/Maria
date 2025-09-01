@@ -1,21 +1,22 @@
 /* ==========================================================================
-   Página de Eventos (Versão Refinada)
+    Página de Eventos (Versão Refinada)
    ========================================================================== */
 
-/* 1. VARIÁVEIS DE COR E FONTE: Mude aqui para alterar o site inteiro */
+/* 1. VARIÁVEIS DE COR E FONTE: Ajustadas para melhor legibilidade */
 :root {
   --cor-fundo: #f8f9fa;
   --cor-card: #ffffff;
-  --cor-texto: #555;
-  --cor-titulo-card: #333;
-  --cor-destaque: #b0914f; /* Um dourado sóbrio, ideal para a temática */
+  --cor-texto: #4a4a4a; /* Um cinza escuro, mais suave que o preto puro */
+  --cor-texto-claro: #7a7a7a; /* Um cinza mais claro para detalhes */
+  --cor-titulo-card: #2c2c2c; /* Um preto bem suave para os títulos */
+  --cor-destaque: #b0914f; /* Dourado sóbrio */
   --cor-sombra: rgba(0, 0, 0, 0.08);
 
   --fonte-principal: "Roboto", sans-serif;
   --fonte-titulo: "Merriweather", serif;
 }
 
-/* 2. ESTILOS GERAIS */
+/* 2. ESTILOS GERAIS (Sem alterações) */
 body {
   background-color: var(--cor-fundo);
   font-family: var(--fonte-principal);
@@ -23,7 +24,6 @@ body {
 }
 
 .eventos-section {
-  /* Renomeado para 'eventos' para maior clareza */
   padding: 60px 0;
 }
 
@@ -35,9 +35,10 @@ body {
   margin-bottom: 50px;
   position: relative;
   padding-bottom: 15px;
+  font-weight: 400; /* Deixa a fonte Merriweather um pouco mais leve e elegante */
+  letter-spacing: -0.5px; /* Aproxima um pouco as letras, um truque de design */
 }
 
-/* Linha decorativa abaixo do título da seção */
 .section-title::after {
   content: "";
   position: absolute;
@@ -50,22 +51,21 @@ body {
   border-radius: 2px;
 }
 
-/* 3. GRID E CARDS DE EVENTOS */
+/* 3. GRID E CARDS DE EVENTOS (Sem alterações na estrutura) */
 .eventos-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 35px; /* Levemente aumentado para mais respiro */
+  gap: 35px;
 }
 
-/* O link agora funciona como o card */
 .evento-card {
-  display: flex; /* Permite que o link interno preencha 100% */
+  display: flex;
   flex-direction: column;
   height: 100%;
   background-color: var(--cor-card);
   border-radius: 8px;
   box-shadow: 0 4px 12px var(--cor-sombra);
-  text-decoration: none; /* Remove sublinhado do link */
+  text-decoration: none;
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -75,7 +75,6 @@ body {
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
 }
 
-/* Efeito de destaque no título ao passar o mouse no card */
 .evento-card:hover .evento-titulo {
   color: var(--cor-destaque);
 }
@@ -86,18 +85,18 @@ body {
   object-fit: cover;
 }
 
-/* 4. CONTEÚDO INTERNO DO CARD */
+/* 4. CONTEÚDO INTERNO DO CARD (Aqui estão os principais ajustes) */
 .evento-conteudo {
   padding: 25px;
   display: flex;
   flex-direction: column;
-  flex-grow: 1; /* Essencial para o botão ficar no rodapé */
+  flex-grow: 1;
 }
 
 .evento-data {
   font-size: 0.8rem;
   font-weight: 700;
-  color: #999;
+  color: var(--cor-destaque); /* Usa a cor de destaque para a data */
   text-transform: uppercase;
   letter-spacing: 0.5px;
   margin-bottom: 12px;
@@ -105,22 +104,23 @@ body {
 
 .evento-titulo {
   font-family: var(--fonte-titulo);
-  font-size: 1.4rem;
-  line-height: 1.4;
+  font-size: 1.3rem; /* Levemente menor para mais elegância */
+  line-height: 1.5; /* Mais espaço entre as linhas do título */
   color: var(--cor-titulo-card);
   margin: 0 0 15px 0;
-  transition: color 0.3s ease; /* Transição suave da cor do título */
+  transition: color 0.3s ease;
 }
 
 .evento-resumo {
-  line-height: 1.7;
-  flex-grow: 1; /* Empurra o botão para baixo */
+  line-height: 1.8; /* Aumenta um pouco o espaçamento do texto */
+  color: var(--cor-texto); /* Usa a nova cor de texto mais suave */
+  flex-grow: 1;
 }
 
-/* Botão "Ver Mais" estilizado */
+/* Botão "Ver Mais" (Pequenos ajustes) */
 .evento-card .btn {
-  margin-top: 20px; /* Espaço entre o resumo e o botão */
-  align-self: flex-start; /* Alinha na esquerda */
+  margin-top: 25px; /* Um pouco mais de espaço acima */
+  align-self: flex-start;
   background-color: var(--cor-destaque);
   color: #fff;
   padding: 10px 22px;
@@ -133,5 +133,5 @@ body {
 }
 
 .evento-card:hover .btn {
-  background-color: #9a7d42; /* Dourado um pouco mais escuro no hover */
+  background-color: #9a7d42;
 }

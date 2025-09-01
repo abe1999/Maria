@@ -1,14 +1,14 @@
-// --- 1. IMPORTAÇÕES ESSENCIAIS ---
-// Organizei todas as importações no topo do arquivo.
+// Local: /src/js/eventos.js - VERSÃO CORRIGIDA E APRIMORADA
 
-// Funções do Firebase
+// --- 1. IMPORTAÇÕES ESSENCIAIS ---
+// Funções do Firebase (adicionamos a função 'where' para o filtro)
 import { db } from "/src/firebase-config.js";
-import { collection, getDocs, orderBy, query } from "firebase/firestore";
+import { collection, getDocs, orderBy, query, where } from "firebase/firestore";
 
 // Nossos Componentes e Funções Úteis
 import { renderHeader } from "/src/components/Header.js";
 import { renderFooter } from "/src/components/Footer.js";
-import { createEventCard } from "/src/utils/helpers.js"; // Importando nossa função central
+import { createEventCard } from "/src/utils/helpers.js";
 
 // Estilos
 import "/src/styles/base/reset.css";
@@ -27,27 +27,33 @@ async function initializePage() {
   const eventosPageContainer = document.querySelector(".eventos-grid");
   if (!eventosPageContainer) return;
 
-  eventosPageContainer.innerHTML = "<p>Carregando eventos...</p>";
+  eventosPageContainer.innerHTML = "<p>Carregando arquivo de eventos...</p>";
 
   try {
-    const q = query(collection(db, "eventos"), orderBy("date", "desc"));
+    // Pega a data de hoje para fazer a comparação
+    const hoje = new Date();
+    hoje.setHours(0, 0, 0, 0);
+
+    // Consulta simplificada: busca TODOS os eventos com data no passado
+    const q = query(
+      collection(db, "eventos"),
+      where("date", "<", hoje),
+      orderBy("date", "desc") // Ordena dos mais recentes para os mais antigos
+    );
 
     const querySnapshot = await getDocs(q);
 
-    const eventosParaExibir = querySnapshot.docs.map((doc) => {
-      return {
-        id: doc.id,
-        ...doc.data(),
-      };
-    });
+    const eventosParaExibir = querySnapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
 
     if (eventosParaExibir.length === 0) {
       eventosPageContainer.innerHTML =
-        "<p>Nenhum evento encontrado no momento.</p>";
+        "<p>Nenhum evento anterior encontrado no arquivo.</p>";
       return;
     }
 
-    // ✨ AQUI ESTÁ A CORREÇÃO: Usamos o nome da função que importamos
     eventosPageContainer.innerHTML = eventosParaExibir
       .map(createEventCard)
       .join("");

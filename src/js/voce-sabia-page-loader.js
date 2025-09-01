@@ -1,16 +1,35 @@
-// Local: /src/js/voce-sabia-page-loader.js
-import "/src/styles/pages/voce-sabia.css";
+// Local: /src/js/voce-sabia-page-loader.js - VERSÃO FINAL CORRIGIDA
+
+// --- 1. IMPORTAÇÕES GLOBAIS (O QUE ESTAVA FALTANDO) ---
+// Importa os estilos essenciais para a página ter a aparência correta
+import "/src/styles/base/reset.css";
+import "/src/styles/base/variables.css";
+import "/src/styles/base/typography.css";
+import "/src/styles/components/header.css";
+import "/src/styles/components/footer.css";
+import "/src/styles/components/page-header.css";
+import "/src/styles/pages/voce-sabia.css"; // O CSS específico da página
+
+// Importa as funções para renderizar o Header e o Footer
+import { renderHeader } from "/src/components/Header.js";
+import { renderFooter } from "/src/components/Footer.js";
+
+// Importa as ferramentas do Firebase
 import { db } from "../firebase-config.js";
 import { collection, query, orderBy, getDocs } from "firebase/firestore";
 
+// --- 2. MONTAGEM DA PÁGINA ---
+// Renderiza os componentes globais IMEDIATAMENTE
+renderHeader();
+renderFooter();
+
+// --- 3. LÓGICA ESPECÍFICA DA PÁGINA ---
 const gridContainer = document.getElementById("voce-sabia-grid");
 
 async function loadAllVoceSabia() {
   if (!gridContainer) return;
 
   try {
-    // Consulta para buscar todos os itens da coleção "voceSabia",
-    // ordenando pelos mais recentes primeiro.
     const q = query(collection(db, "voceSabia"), orderBy("createdAt", "desc"));
     const querySnapshot = await getDocs(q);
 
@@ -19,21 +38,16 @@ async function loadAllVoceSabia() {
       return;
     }
 
-    // Limpa a mensagem "Carregando..."
-    gridContainer.innerHTML = "";
+    gridContainer.innerHTML = ""; // Limpa a mensagem "Carregando..."
 
     querySnapshot.forEach((doc) => {
       const data = doc.data();
-
-      // Cria o HTML do card para cada item
       const card = document.createElement("div");
       card.className = "sabia-card";
 
-      let imageHtml = "";
-      // Adiciona a imagem apenas se a URL existir no banco de dados
-      if (data.imageUrl) {
-        imageHtml = `<img src="${data.imageUrl}" alt="${data.title}" class="card-image">`;
-      }
+      let imageHtml = data.imageUrl
+        ? `<img src="${data.imageUrl}" alt="${data.title}" class="card-image">`
+        : "";
 
       card.innerHTML = `
                 ${imageHtml}
@@ -43,15 +57,13 @@ async function loadAllVoceSabia() {
                     <div class="card-text">${data.content}</div>
                 </div>
             `;
-
       gridContainer.appendChild(card);
     });
   } catch (error) {
     console.error("Erro ao carregar itens 'Você Sabia?':", error);
-    gridContainer.innerHTML =
-      "<p>Ocorreu um erro ao carregar o conteúdo. Tente novamente mais tarde.</p>";
+    gridContainer.innerHTML = "<p>Ocorreu um erro ao carregar o conteúdo.</p>";
   }
 }
 
-// Inicia o carregamento quando a página está pronta
-document.addEventListener("DOMContentLoaded", loadAllVoceSabia);
+// Inicia o carregamento do conteúdo específico da página
+loadAllVoceSabia();

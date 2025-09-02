@@ -1,0 +1,25 @@
+/* Local: /src/styles/components/article.css */
+
+/* Este é o nosso estilo especial para textos longos e agradáveis de ler */
+.article-content p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  margin-bottom: 1.5em;
+}
+
+.article-content p:last-child {
+  margin-bottom: 0;
+}
+
+/* Podemos adicionar estilos para outros elementos dentro de um artigo também */
+.article-content ul,
+.article-content ol {
+  padding-left: 25px;
+  margin-bottom: 1.5em;
+  font-size: 1.2rem;
+  line-height: 1.8;
+}
+
+.article-content li {
+  margin-bottom: 0.75em;
+}

@@ -14,6 +14,7 @@ import "/src/styles/base/typography.css";
 import "/src/styles/components/header.css";
 import "/src/styles/components/footer.css";
 import "/src/styles/components/hero.css";
+import "/src/styles/components/article.css";
 import "/src/styles/components/quick-links.css";
 import "/src/styles/components/latest-news.css";
 

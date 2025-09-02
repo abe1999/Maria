@@ -1,10 +1,12 @@
-/* Local: /src/styles/pages/voce-sabia-detalhe.css */
+/* Local: /src/styles/pages/voce-sabia-detalhe.css - VERSÃO CORRIGIDA */
 
+/* Layout principal da página de detalhe */
 .voce-sabia-detalhe-page .container {
   max-width: 800px; /* Limita a largura para melhor leitura */
   padding: 40px 0;
 }
 
+/* Estilos para os elementos do artigo */
 #sabia-article-container .article-category {
   font-size: 0.9rem;
   font-weight: bold;
@@ -27,12 +29,10 @@
   margin-bottom: 30px;
 }
 
-#sabia-article-container .article-content p {
-  font-size: 1.2rem;
-  line-height: 1.8;
-  margin-bottom: 1.5em;
-  color: var(--color-text);
-}
+/* A REGRA PARA O PARÁGRAFO FOI REMOVIDA DAQUI INTENCIONALMENTE.
+   Agora, o texto do artigo pegará o estilo global e agradável
+   que definimos no novo arquivo 'article.css'.
+*/
 
 .back-link-container {
   margin-top: 40px;

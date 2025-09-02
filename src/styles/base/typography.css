@@ -1,26 +1,61 @@
-/* =================================================================
-TIPOGRAFIA E CONTAINER
-Estilos base para textos e o container principal.
-================================================================= */
+/* Local: /src/styles/base/typography.css - VERSÃO RESTAURADA */
 
+/* --- Estilos Globais para o Body --- */
 body {
   font-family: var(--font-primary);
-  font-size: 16px;
-  line-height: 1.6;
-  color: var(--color-text);
+  color: var(--cor-texto);
   background-color: var(--color-white);
-   /* LINHA ADICIONADA AQUI */
   padding-top: 91px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 16px; /* Define um tamanho base de 16px */
+  line-height: 1.6; /* Altura de linha base */
 }
 
-h1, h2, h3, h4, h5, h6 {
+/* --- Hierarquia de Títulos --- */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-secondary);
   font-weight: 700;
-  color: var(--color-headings);
+  color: var(--cor-headings);
   line-height: 1.2;
+  margin-bottom: 0.75em;
 }
 
-/* Classe utilitária para centralizar o conteúdo */
+h1 {
+  font-size: 2.5rem;
+}
+h2 {
+  font-size: 2rem;
+}
+h3 {
+  font-size: 1.5rem;
+}
+h4 {
+  font-size: 1.2rem;
+}
+
+/* --- Links, Listas, etc. --- */
+a {
+  color: var(--cor-primary);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--cor-destaque);
+}
+
+strong,
+b {
+  font-weight: 700;
+}
+
+/* --- Layout (Mantido do seu código) --- */
 .container {
   max-width: 1200px;
   margin-left: auto;

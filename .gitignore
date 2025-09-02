@@ -1,4 +1,13 @@
-# Logs
+# Dependências do Node.js
+# Essencial para qualquer projeto Node
+node_modules/
+
+# Pasta de build de produção
+# O conteúdo desta pasta é gerado, nunca editado diretamente
+dist/
+dist-ssr/
+
+# Arquivos de log
 logs
 *.log
 npm-debug.log*
@@ -7,21 +16,25 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
+# Arquivos de variáveis de ambiente
+# Contêm chaves e segredos, nunca devem ir para o repositório
+.env
+.env.local
 *.local
 
-# Editor directories and files
+# Arquivos de cache e configuração do Firebase
+# A SOLUÇÃO DEFINITIVA PARA O SEU PROBLEMA
+.firebase/
+firebase-debug.log
+
+# Arquivos de Sistema e Editor
+# Ignora arquivos específicos de cada sistema operacional ou editor
+.DS_Store
+.idea
 .vscode/*
 !.vscode/extensions.json
-.idea
-.DS_Store
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
-
-# Arquivos de cache
-hosting.zglzada.cache

@@ -1,7 +1,22 @@
-import { db, storage } from "/src/firebase-config.js";
-import { doc, getDoc, addDoc, updateDoc, collection } from "firebase/firestore";
-import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { app } from "/src/firebase-config.js";
+import {
+  getFirestore,
+  doc,
+  getDoc,
+  addDoc,
+  updateDoc,
+  collection,
+} from "firebase/firestore";
+import {
+  getStorage,
+  ref,
+  uploadBytesResumable,
+  getDownloadURL,
+} from "firebase/storage";
 import imageCompression from "browser-image-compression";
+
+const db = getFirestore(app);
+const storage = getStorage(app);
 
 // --- ELEMENTOS DO DOM ---
 const editorTitle = document.getElementById("editor-title");

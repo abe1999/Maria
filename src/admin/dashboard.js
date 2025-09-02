@@ -1,5 +1,6 @@
-import { db, auth } from "/src/firebase-config.js";
+import { app } from "/src/firebase-config.js";
 import {
+  getFirestore,
   collection,
   getDocs,
   orderBy,
@@ -7,7 +8,10 @@ import {
   doc,
   deleteDoc,
 } from "firebase/firestore";
-import { signOut } from "firebase/auth";
+import { getAuth, signOut } from "firebase/auth";
+
+const db = getFirestore(app);
+const auth = getAuth(app);
 
 const logoutButton = document.getElementById("logout-button");
 const eventsContainer = document.getElementById("events-list-container");

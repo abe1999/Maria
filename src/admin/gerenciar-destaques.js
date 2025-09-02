@@ -1,5 +1,6 @@
-import { db } from "/src/firebase-config.js";
+import { app } from "/src/firebase-config.js";
 import {
+  getFirestore,
   collection,
   getDocs,
   orderBy,
@@ -8,6 +9,7 @@ import {
   deleteDoc,
 } from "firebase/firestore";
 
+const db = getFirestore(app);
 const slidesContainer = document.getElementById("slides-list-container");
 
 async function loadSlides() {

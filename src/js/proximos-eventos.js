@@ -12,8 +12,18 @@ import "/src/styles/pages/eventos.css"; // Reutiliza o estilo da página de even
 import { renderHeader } from "/src/components/Header.js";
 import { renderFooter } from "/src/components/Footer.js";
 import { createEventCard } from "/src/utils/helpers.js";
-import { db } from "/src/firebase-config.js";
-import { collection, getDocs, orderBy, query, where } from "firebase/firestore";
+import { app } from "/src/firebase-config.js";
+import {
+  getFirestore,
+  collection,
+  getDocs,
+  orderBy,
+  query,
+  where,
+} from "firebase/firestore";
+
+// Cria a instância do banco de dados localmente
+const db = getFirestore(app);
 
 // --- 2. FUNÇÃO PRINCIPAL (Sua lógica de busca) ---
 async function initializeProximosEventos() {

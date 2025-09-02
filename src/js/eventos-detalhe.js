@@ -13,8 +13,12 @@ import "/src/styles/pages/eventos-detalhe.css";
 import { renderHeader } from "/src/components/Header.js";
 import { renderFooter } from "/src/components/Footer.js";
 import { formatarData, buildSafeURL } from "/src/utils/helpers.js"; // Importa do arquivo central
-import { db } from "/src/firebase-config.js";
-import { doc, getDoc } from "firebase/firestore"; // Funções para buscar um único documento
+// DEPOIS
+import { app } from "/src/firebase-config.js";
+// Adicionamos 'doc' e 'getDoc' à lista de importação
+import { getFirestore, doc, getDoc } from "firebase/firestore";
+
+const db = getFirestore(app);
 
 // --- 2. FUNÇÃO PRINCIPAL ---
 async function initializePage() {

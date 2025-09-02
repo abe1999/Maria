@@ -1,5 +1,9 @@
-import { db, storage } from "/src/firebase-config.js";
+// Importa a conexão principal 'app'
+import { app } from "/src/firebase-config.js";
+
+// Importa as ferramentas do Firestore, incluindo o 'getFirestore'
 import {
+  getFirestore,
   doc,
   getDoc,
   addDoc,
@@ -7,9 +11,21 @@ import {
   collection,
   Timestamp,
 } from "firebase/firestore";
-import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+
+// Importa as ferramentas do Storage, incluindo o 'getStorage'
+import {
+  getStorage,
+  ref,
+  uploadBytesResumable,
+  getDownloadURL,
+} from "firebase/storage";
+
+// Importa a biblioteca de compressão de imagem (esta linha não muda)
 import imageCompression from "browser-image-compression";
 
+// Cria as instâncias do db e storage localmente
+const db = getFirestore(app);
+const storage = getStorage(app);
 // --- ELEMENTOS DO DOM ---
 const editorTitle = document.getElementById("editor-title");
 const eventForm = document.getElementById("event-form");

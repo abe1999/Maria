@@ -1,5 +1,7 @@
-import { auth } from "/src/firebase-config.js";
-import { onAuthStateChanged } from "firebase/auth";
+import { app } from "/src/firebase-config.js";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+
+const auth = getAuth(app);
 
 // Mensagem para sabermos que o script começou a rodar
 console.log("--- Auth Guard Executando ---");

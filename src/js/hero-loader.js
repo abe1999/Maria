@@ -5,10 +5,19 @@
 import Swiper from "swiper";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 
-// Importa a configuração do Firebase e as funções do Firestore
-import { db } from "../firebase-config.js"; // O caminho "../" parece correto
-import { collection, query, where, orderBy, getDocs } from "firebase/firestore";
+// Importa a conexão principal 'app' e TODAS as funções do Firestore de uma só vez.
+import { app } from "../firebase-config.js";
+import {
+  getFirestore,
+  collection,
+  query,
+  where,
+  orderBy,
+  getDocs,
+} from "firebase/firestore";
 
+// Cria a instância do banco de dados a partir da conexão principal
+const db = getFirestore(app);
 // --- FUNÇÕES ---
 
 // Função para inicializar o Swiper.js

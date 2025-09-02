@@ -2,8 +2,16 @@
 
 // --- 1. IMPORTAÇÕES ESSENCIAIS ---
 // Funções do Firebase (adicionamos a função 'where' para o filtro)
-import { db } from "/src/firebase-config.js";
-import { collection, getDocs, orderBy, query, where } from "firebase/firestore";
+import { app } from "/src/firebase-config.js";
+import {
+  getFirestore,
+  collection,
+  getDocs,
+  orderBy,
+  query,
+  where,
+} from "firebase/firestore";
+const db = getFirestore(app);
 
 // Nossos Componentes e Funções Úteis
 import { renderHeader } from "/src/components/Header.js";

@@ -1,10 +1,9 @@
-// Importa as funções que vamos precisar do SDK do Firebase
-import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
-import { getAuth } from "firebase/auth";
-import { getStorage } from "firebase/storage";
+// Local: /src/firebase-config.js - VERSÃO OTIMIZADA
 
-// A configuração do seu app web do Firebase
+// Importa APENAS a função de inicialização
+import { initializeApp } from "firebase/app";
+
+// A configuração do seu app web do Firebase (continua a mesma)
 const firebaseConfig = {
   apiKey: "AIzaSyAcw22Zu4ugHUhDjeOrvAI1S9N291lQb9g",
   authDomain: "paroquia-site.firebaseapp.com",
@@ -15,10 +14,5 @@ const firebaseConfig = {
   measurementId: "G-D41V5EZ1PQ",
 };
 
-// Inicia o Firebase
-const app = initializeApp(firebaseConfig);
-
-// Exporta os serviços que vamos usar em outras partes do site
-export const db = getFirestore(app);
-export const auth = getAuth(app);
-export const storage = getStorage(app);
+// Inicia o Firebase e exporta apenas a conexão principal 'app'
+export const app = initializeApp(firebaseConfig);

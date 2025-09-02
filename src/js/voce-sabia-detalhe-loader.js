@@ -14,10 +14,18 @@ import "/src/styles/pages/voce-sabia-detalhe.css"; // O CSS específico da pági
 import { renderHeader } from "/src/components/Header.js";
 import { renderFooter } from "/src/components/Footer.js";
 
-// Importa as ferramentas do Firebase
-import { db } from "../firebase-config.js";
-import { doc, getDoc } from "firebase/firestore";
+import { app } from "/src/firebase-config.js";
+import {
+  getFirestore,
+  collection,
+  getDocs,
+  orderBy,
+  query,
+  where,
+} from "firebase/firestore";
 
+// Cria a instância do banco de dados localmente
+const db = getFirestore(app);
 // --- 2. MONTAGEM DA PÁGINA ---
 // Renderiza os componentes globais IMEDIATAMENTE
 renderHeader();

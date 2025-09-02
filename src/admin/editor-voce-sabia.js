@@ -1,5 +1,6 @@
-import { db, storage } from "../firebase-config.js";
+import { app } from "../firebase-config.js";
 import {
+  getFirestore,
   doc,
   getDoc,
   addDoc,
@@ -7,7 +8,10 @@ import {
   collection,
   serverTimestamp,
 } from "firebase/firestore";
-import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+
+const db = getFirestore(app);
+const storage = getStorage(app);
 
 // Elementos do DOM
 const form = document.getElementById("voceSabia-form");

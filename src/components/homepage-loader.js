@@ -1,6 +1,13 @@
-// Importa as funções do Firebase
-import { db } from "/src/firebase-config.js";
-import { collection, getDocs, orderBy, query, limit } from "firebase/firestore";
+import { app } from "/src/firebase-config.js";
+import {
+  getFirestore,
+  collection,
+  query,
+  limit,
+  getDocs,
+} from "firebase/firestore";
+
+const db = getFirestore(app);
 
 // Importa nossa nova função centralizada de criar o card
 import { createEventCard } from "/src/utils/helpers.js";

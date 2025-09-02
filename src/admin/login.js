@@ -1,6 +1,9 @@
-// O caminho começa com '/' para buscar a partir da raiz do servidor (que é a pasta 'src')
-import { auth } from "/src/firebase-config.js";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { app } from "/src/firebase-config.js";
+// 2. Importa as ferramentas de Autenticação, incluindo getAuth e a função de login
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+
+// 3. Cria a instância do auth localmente
+const auth = getAuth(app);
 
 const loginForm = document.getElementById("login-form");
 const emailInput = document.getElementById("email");

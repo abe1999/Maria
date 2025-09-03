@@ -22,7 +22,6 @@ import "/src/styles/components/latest-news.css";
 import { renderHeader } from "/src/components/Header.js";
 import { renderFooter } from "/src/components/Footer.js";
 import { initializeHomepageNews } from "/src/components/homepage-loader.js";
-import "/src/js/hero-loader.js"; // Importa nosso novo script do carrossel
 
 // --- LÓGICA DO SEU SITE ---
 document.addEventListener("DOMContentLoaded", () => {

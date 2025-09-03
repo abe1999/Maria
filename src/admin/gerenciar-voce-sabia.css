@@ -1,0 +1,162 @@
+/* Local: /src/admin/gerenciar-voce-sabia.css - VERSÃO FINAL */
+
+/* =================================================================
+    ESTILOS DOS BOTÕES PRINCIPAIS DA PÁGINA (Adicionar, Voltar, etc.)
+================================================================= */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.btn:hover {
+  opacity: 0.85;
+}
+
+/* Cor para o botão Primário (Adicionar Novo) */
+.btn-primary {
+  background-color: var(--color-primary);
+}
+
+/* Cor para o botão Secundário (Voltar) */
+.btn-secondary {
+  background-color: #5a6268;
+}
+
+/* =================================================================
+    ESTILOS DO CABEÇALHO DA PÁGINA
+================================================================= */
+
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.admin-header .page-title {
+  margin: 0;
+}
+
+/* =================================================================
+    ESTILOS DA LISTA DE ITENS
+================================================================= */
+
+.admin-list {
+  margin-top: 30px;
+}
+
+.list-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  margin-bottom: 15px;
+  border-left: 4px solid var(--color-primary);
+}
+
+.item-thumbnail,
+.item-thumbnail-placeholder {
+  width: 100px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.item-thumbnail-placeholder {
+  background-color: #eee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  color: #aaa;
+  text-align: center;
+}
+
+.item-info {
+  flex-grow: 1;
+}
+
+.item-title {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: var(--color-headings);
+  display: block;
+}
+
+.item-category {
+  font-size: 0.9rem;
+  color: #777;
+}
+
+.item-actions {
+  display: flex;
+  gap: 10px;
+}
+
+/* =================================================================
+    ESTILOS PARA OS BOTÕES DENTRO DA LISTA (Editar/Excluir)
+================================================================= */
+
+/* Estilo base para os botões de Editar/Excluir (já estava aqui) */
+.item-actions .btn {
+  padding: 8px 12px;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+/* Cor específica para o botão de Excluir */
+.item-actions .btn-danger {
+  background-color: #e74c3c;
+}
+
+/* =================================================================
+    AJUSTES RESPONSIVOS PARA CELULAR
+================================================================= */
+
+@media (max-width: 768px) {
+  /* Altera o cabeçalho para ter menos espaçamento em telas menores */
+  .admin-header {
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+
+  .list-item {
+    /* Empilha os itens verticalmente em telas pequenas */
+    flex-direction: column;
+    align-items: center; /* Centraliza tudo no meio */
+    text-align: center;
+    gap: 15px;
+  }
+
+  .item-info {
+    /* Garante que o texto fique alinhado ao centro */
+    order: 1; /* Coloca o texto depois da imagem */
+  }
+
+  .item-thumbnail,
+  .item-thumbnail-placeholder {
+    order: 0; /* Coloca a imagem no topo */
+  }
+
+  .item-actions {
+    order: 2; /* Coloca os botões por último */
+    /* Garante que os botões fiquem centralizados */
+    justify-content: center;
+    width: 100%; /* Faz o container dos botões ocupar a largura toda */
+  }
+}

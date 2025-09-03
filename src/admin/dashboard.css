@@ -60,6 +60,15 @@ body {
   background-color: var(--color-primary-dark, #07335b);
 }
 
+.btn-secondary {
+  background-color: #5a6268; /* Cinza escuro */
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: #4a4f54; /* Cinza um pouco mais escuro */
+}
+
 /* --- NOVO: Estilos para a barra de busca --- */
 .search-bar {
   margin-bottom: 1.5rem;

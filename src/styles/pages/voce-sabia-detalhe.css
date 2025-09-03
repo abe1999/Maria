@@ -1,12 +1,13 @@
-/* Local: /src/styles/pages/voce-sabia-detalhe.css - VERSÃO CORRIGIDA */
+/* Local: /src/styles/pages/voce-sabia-detalhe.css - VERSÃO SIMPLIFICADA */
 
-/* Layout principal da página de detalhe */
-.voce-sabia-detalhe-page .container {
-  max-width: 800px; /* Limita a largura para melhor leitura */
-  padding: 40px 0;
+/* Define a largura máxima do conteúdo do artigo para 800px em telas grandes */
+main.voce-sabia-detalhe-page {
+  max-width: 800px;
+  padding-top: 40px;
+  padding-bottom: 40px;
 }
 
-/* Estilos para os elementos do artigo */
+/* O resto do seu CSS continua o mesmo, mas agora aplicado diretamente dentro do main */
 #sabia-article-container .article-category {
   font-size: 0.9rem;
   font-weight: bold;
@@ -28,11 +29,6 @@
   border-radius: 8px;
   margin-bottom: 30px;
 }
-
-/* A REGRA PARA O PARÁGRAFO FOI REMOVIDA DAQUI INTENCIONALMENTE.
-   Agora, o texto do artigo pegará o estilo global e agradável
-   que definimos no novo arquivo 'article.css'.
-*/
 
 .back-link-container {
   margin-top: 40px;

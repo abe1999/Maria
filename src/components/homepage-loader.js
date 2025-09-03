@@ -1,18 +1,22 @@
+// Local: /src/components/homepage-loader.js - VERSÃO CORRIGIDA
+
 import { app } from "/src/firebase-config.js";
 import {
   getFirestore,
   collection,
   query,
+  where, // Adicionamos 'where' para o filtro de data
+  orderBy, // Adicionamos 'orderBy' para ordenar
   limit,
   getDocs,
 } from "firebase/firestore";
 
 const db = getFirestore(app);
 
-// Importa nossa nova função centralizada de criar o card
+// Importa nossa função de criar o card
 import { createEventCard } from "/src/utils/helpers.js";
 
-// A função que o main.js chama, agora conectada ao Firebase
+// A função que o main.js chama
 export async function initializeHomepageNews() {
   const container = document.getElementById("latest-news-grid");
   if (!container) return;
@@ -20,9 +24,15 @@ export async function initializeHomepageNews() {
   container.innerHTML = "<p>Carregando as últimas notícias...</p>";
 
   try {
-    // Cria a consulta: busca na coleção "eventos", ordena por data (desc) e LIMITA o resultado aos 3 mais recentes.
+    // Pega a data de hoje para fazer a comparação
+    const hoje = new Date();
+
+    // Consulta corrigida: busca na coleção "eventos",
+    // filtra por datas que já passaram (<= hoje),
+    // ordena pelas mais recentes e limita a 3.
     const q = query(
       collection(db, "eventos"),
+      where("date", "<=", hoje), // <-- FILTRO DE DATA ADICIONADO
       orderBy("date", "desc"),
       limit(3)
     );
@@ -35,11 +45,12 @@ export async function initializeHomepageNews() {
     }));
 
     if (latestEvents.length === 0) {
-      container.innerHTML = "<p>Nenhuma notícia encontrada.</p>";
+      container.innerHTML =
+        "<p>Nenhuma notícia ou evento anterior encontrado.</p>";
       return;
     }
 
-    // Renderiza os 3 cards na tela usando a função importada
+    // Renderiza os 3 cards na tela
     container.innerHTML = latestEvents.map(createEventCard).join("");
   } catch (error) {
     console.error("Erro ao buscar últimas notícias:", error);

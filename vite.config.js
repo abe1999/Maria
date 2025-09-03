@@ -42,6 +42,11 @@ export default defineConfig({
           "src/admin/gerenciar-destaques.html"
         ),
         editorDestaque: resolve(__dirname, "src/admin/editor-destaque.html"),
+        editorVoceSabia: resolve(__dirname, "src/admin/editor-voce-sabia.html"),
+        gerenciarVoceSabia: resolve(
+          __dirname,
+          "src/admin/gerenciar-voce-sabia.html"
+        ),
       },
     },
   },

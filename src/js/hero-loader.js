@@ -1,9 +1,19 @@
-// Local: /src/js/hero-loader.js - VERSÃO EXPORTÁVEL
+// Local: /src/js/hero-loader.js - VERSÃO FINAL CORRIGIDA
 
+// --- IMPORTS ---
 import Swiper from "swiper";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
+
+// Primeiro, importamos os estilos PADRÃO da biblioteca Swiper
 import "swiper/css";
 import "swiper/css/bundle";
+
+// =======================================================================
+// ## AGORA, importamos o NOSSO CSS, que vai sobrescrever o que for preciso ##
+import "/src/styles/components/hero.css";
+// =======================================================================
+
+// Importa a conexão principal 'app' e as funções do Firestore
 import { app } from "../firebase-config.js";
 import {
   getFirestore,
@@ -41,12 +51,12 @@ export async function loadHeroCarousel() {
     querySnapshot.forEach((doc) => {
       const slide = doc.data();
       slidesHtml += `
-                <div class="swiper-slide" style="background-image: url('${slide.imageUrl}')">
-                    <div class="slide-content">
-                        <h2>${slide.texto}</h2>
-                        <a href="${slide.linkUrl}" class="btn-slide" target="_blank">${slide.textoBotao}</a>
-                    </div>
-                </div>
+              <div class="swiper-slide" style="background-image: url('${slide.imageUrl}')">
+                  <div class="slide-content">
+                      <h2>${slide.texto}</h2>
+                      <a href="${slide.linkUrl}" class="btn-slide" target="_blank">${slide.textoBotao}</a>
+                  </div>
+              </div>
             `;
     });
     swiperWrapper.innerHTML = slidesHtml;

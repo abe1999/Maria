@@ -21,15 +21,15 @@
 ================================================== */
 
 .swiper-slide {
+  /* O pai precisa ser um ponto de referência para o filho se posicionar */
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  color: var(--color-white);
-  /* Estilos de imagem de fundo agora são aplicados diretamente no JS */
+  height: 100%;
+
+  /* Não precisamos mais de display: grid ou flex aqui */
   background-size: cover;
   background-position: center;
+  text-align: center; /* Garante que o texto dentro da caixa fique centralizado */
+  color: var(--color-white);
 }
 
 .swiper-slide::after {
@@ -47,21 +47,27 @@
   z-index: 1;
 }
 
-/* Caixa de conteúdo dentro do slide - AJUSTE PRINCIPAL AQUI */
 .slide-content {
-  position: relative; /* Garante que fique acima do overlay escuro */
+  /* O filho agora se posiciona de forma absoluta em relação ao pai */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(
+    -50%,
+    -50%
+  ); /* O truque mágico para centralização perfeita */
+
+  /* Seus outros estilos de aparência continuam aqui */
   z-index: 2;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
   padding: 2rem;
-  border-radius: 8px;
-  max-width: 1200px; /* Mesma largura do seu .container principal */
-  width: 90%; /* Ocupa 90% da largura em telas menores */
-  box-sizing: border-box; /* Garante que o padding não estoure a largura */
-
-  /* Mantendo os efeitos de vidro que você tinha */
+  max-width: 1200px;
+  width: 90%;
+  box-sizing: border-box;
   background-color: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(8px);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  border-radius: 8px;
 }
 
 .slide-content h2 {

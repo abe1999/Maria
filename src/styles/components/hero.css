@@ -139,14 +139,48 @@
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* ==================================================
-    CSS RESPONSIVO (Sem alterações)
-================================================== */
-
+/* Ajustes para TABLETS e telas menores (até 768px) */
 @media (max-width: 768px) {
-  /* ... (suas regras responsivas continuam as mesmas) ... */
+  .slider-container {
+    height: 65vh;
+  }
+
+  .slide-content {
+    padding: 1.5rem;
+  }
+
+  .slide-content h2 {
+    font-size: 2rem;
+    line-height: 1.3;
+  }
+
+  .slider-container .swiper-button-prev,
+  .slider-container .swiper-button-next {
+    display: none !important;
+  }
 }
 
+/* Ajustes para CELULARES (até 480px) */
 @media (max-width: 480px) {
-  /* ... (suas regras responsivas continuam as mesmas) ... */
+  .slider-container {
+    height: 60vh;
+  }
+
+  .slide-content {
+    width: 95%;
+    padding: 1.5rem 1rem;
+  }
+
+  .slide-content h2 {
+    font-size: 1.6rem;
+    line-height: 1.4;
+  }
+
+  .btn-slide {
+    padding: 10px 20px;
+    font-size: 0.8rem;
+  }
+
+  /* A regra de esconder as setas já foi aplicada no breakpoint de 768px,
+     então ela continua valendo para telas ainda menores. */
 }

@@ -1,22 +1,22 @@
 /* ==========================================================================
-    Página de Eventos (Versão Refinada)
+    Página de Eventos (Versão Final)
    ========================================================================== */
 
-/* 1. VARIÁVEIS DE COR E FONTE: Ajustadas para melhor legibilidade */
+/* 1. VARIÁVEIS DE COR E FONTE */
 :root {
   --cor-fundo: #f8f9fa;
   --cor-card: #ffffff;
-  --cor-texto: #4a4a4a; /* Um cinza escuro, mais suave que o preto puro */
-  --cor-texto-claro: #7a7a7a; /* Um cinza mais claro para detalhes */
-  --cor-titulo-card: #2c2c2c; /* Um preto bem suave para os títulos */
-  --cor-destaque: #b0914f; /* Dourado sóbrio */
+  --cor-texto: #4a4a4a;
+  --cor-texto-claro: #7a7a7a;
+  --cor-titulo-card: #2c2c2c;
+  --cor-destaque: #b0914f;
   --cor-sombra: rgba(0, 0, 0, 0.08);
 
   --fonte-principal: "Roboto", sans-serif;
   --fonte-titulo: "Merriweather", serif;
 }
 
-/* 2. ESTILOS GERAIS (Sem alterações) */
+/* 2. ESTILOS GERAIS */
 body {
   background-color: var(--cor-fundo);
   font-family: var(--fonte-principal);
@@ -35,8 +35,8 @@ body {
   margin-bottom: 50px;
   position: relative;
   padding-bottom: 15px;
-  font-weight: 400; /* Deixa a fonte Merriweather um pouco mais leve e elegante */
-  letter-spacing: -0.5px; /* Aproxima um pouco as letras, um truque de design */
+  font-weight: 400;
+  letter-spacing: -0.5px;
 }
 
 .section-title::after {
@@ -51,7 +51,7 @@ body {
   border-radius: 2px;
 }
 
-/* 3. GRID E CARDS DE EVENTOS (Sem alterações na estrutura) */
+/* 3. GRID E CARDS DE EVENTOS */
 .eventos-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -85,7 +85,7 @@ body {
   object-fit: cover;
 }
 
-/* 4. CONTEÚDO INTERNO DO CARD (Aqui estão os principais ajustes) */
+/* 4. CONTEÚDO INTERNO DO CARD */
 .evento-conteudo {
   padding: 25px;
   display: flex;
@@ -96,7 +96,7 @@ body {
 .evento-data {
   font-size: 0.8rem;
   font-weight: 700;
-  color: var(--cor-destaque); /* Usa a cor de destaque para a data */
+  color: var(--cor-destaque);
   text-transform: uppercase;
   letter-spacing: 0.5px;
   margin-bottom: 12px;
@@ -104,22 +104,25 @@ body {
 
 .evento-titulo {
   font-family: var(--fonte-titulo);
-  font-size: 1.3rem; /* Levemente menor para mais elegância */
-  line-height: 1.5; /* Mais espaço entre as linhas do título */
+  font-size: 1.4rem; /* Tamanho final que definimos */
+  line-height: 1.4;
   color: var(--cor-titulo-card);
   margin: 0 0 15px 0;
   transition: color 0.3s ease;
 }
 
 .evento-resumo {
-  line-height: 1.8; /* Aumenta um pouco o espaçamento do texto */
-  color: var(--cor-texto); /* Usa a nova cor de texto mais suave */
+  /* ## AJUSTE FINAL AQUI ## */
+  font-size: 1rem; /* Define o tamanho da fonte do resumo explicitamente */
+  line-height: 1.7;
+  color: var(--cor-texto);
   flex-grow: 1;
+  margin-bottom: 20px; /* Garante espaço antes do botão */
 }
 
-/* Botão "Ver Mais" (Pequenos ajustes) */
+/* Botão "Ver Mais" */
 .evento-card .btn {
-  margin-top: 25px; /* Um pouco mais de espaço acima */
+  margin-top: auto; /* Truque de flexbox para alinhar o botão na base */
   align-self: flex-start;
   background-color: var(--cor-destaque);
   color: #fff;

@@ -1,7 +1,6 @@
-// Local: /src/js/eventos.js - VERSÃO CORRIGIDA E APRIMORADA
+// Local: /src/js/eventos.js - VERSÃO FINAL
 
 // --- 1. IMPORTAÇÕES ESSENCIAIS ---
-// Funções do Firebase (adicionamos a função 'where' para o filtro)
 import { app } from "/src/firebase-config.js";
 import {
   getFirestore,
@@ -16,7 +15,7 @@ const db = getFirestore(app);
 // Nossos Componentes e Funções Úteis
 import { renderHeader } from "/src/components/Header.js";
 import { renderFooter } from "/src/components/Footer.js";
-import { createEventCard } from "/src/utils/helpers.js";
+import { createEventListPageCard } from "/src/utils/helpers.js"; // Import está correto!
 
 // Estilos
 import "/src/styles/base/reset.css";
@@ -38,15 +37,13 @@ async function initializePage() {
   eventosPageContainer.innerHTML = "<p>Carregando arquivo de eventos...</p>";
 
   try {
-    // Pega a data de hoje para fazer a comparação
     const hoje = new Date();
     hoje.setHours(0, 0, 0, 0);
 
-    // Consulta simplificada: busca TODOS os eventos com data no passado
     const q = query(
       collection(db, "eventos"),
       where("date", "<", hoje),
-      orderBy("date", "desc") // Ordena dos mais recentes para os mais antigos
+      orderBy("date", "desc")
     );
 
     const querySnapshot = await getDocs(q);
@@ -62,8 +59,11 @@ async function initializePage() {
       return;
     }
 
+    // ===============================================
+    // ## CORREÇÃO FINAL AQUI ##
+    // ===============================================
     eventosPageContainer.innerHTML = eventosParaExibir
-      .map(createEventCard)
+      .map(createEventListPageCard) // Usando o nome correto da função
       .join("");
   } catch (error) {
     console.error("Erro ao buscar eventos do Firebase:", error);

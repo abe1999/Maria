@@ -14,7 +14,7 @@ import {
 const db = getFirestore(app);
 
 // Importa nossa função de criar o card
-import { createEventCard } from "/src/utils/helpers.js";
+import { createHomepageNewsCard } from "/src/utils/helpers.js";
 
 // A função que o main.js chama
 export async function initializeHomepageNews() {
@@ -51,7 +51,7 @@ export async function initializeHomepageNews() {
     }
 
     // Renderiza os 3 cards na tela
-    container.innerHTML = latestEvents.map(createEventCard).join("");
+    container.innerHTML = latestEvents.map(createHomepageNewsCard).join("");
   } catch (error) {
     console.error("Erro ao buscar últimas notícias:", error);
     container.innerHTML = "<p>Não foi possível carregar as notícias.</p>";

@@ -12,6 +12,7 @@ import "/src/styles/components/article.css";
 import "/src/styles/components/hero.css";
 import "/src/styles/components/quick-links.css";
 import "/src/styles/components/latest-news.css";
+import "/src/styles/components/buttons.css";
 
 // --- 2. IMPORTAÇÕES DE MÓDULOS JS ---
 // Módulos Globais

@@ -7,10 +7,6 @@
 
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
-    />
-    <link
-      rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -23,30 +19,21 @@
   <body>
     <header id="header-container"></header>
 
-    <main class="event-detail-page">
-      <article class="container">
-        <h1 id="event-title-full"></h1>
-        <p id="event-date-full" class="event-meta"></p>
-
-        <img
-          id="event-image-large"
-          src=""
-          alt="Imagem principal do evento"
-          class="main-event-image"
-        />
-
-        <div id="event-text-full" class="article-content"></div>
-
-        <div id="event-gallery-container" style="display: none">
-          <h2 class="gallery-title">Galeria de Fotos</h2>
-          <div id="event-gallery" class="photo-gallery"></div>
-          <div id="event-drive-link-container" class="text-center"></div>
-        </div>
+    <main class="container event-detail-page">
+      <article id="article-main-content">
+        <p>Carregando evento...</p>
       </article>
-    </main>
 
+      <div id="event-extra-content"></div>
+
+      <div class="back-link-container">
+        <a href="eventos.html" class="btn-back">
+          <i class="fa-solid fa-arrow-left"></i> Voltar para Eventos Anteriores
+        </a>
+      </div>
+    </main>
     <footer id="footer-container"></footer>
 
-    <script type="module" src="../js/eventos-detalhe.js"></script>
+    <script type="module" src="../js/evento-detalhe.js"></script>
   </body>
 </html>

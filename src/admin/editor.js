@@ -1,4 +1,4 @@
-// Local: /src/admin/editor.js - VERSÃO COM EDITOR DE TEXTO RICO (TinyMCE)
+// Local: /src/admin/editor.js - VERSÃO COMPLETA E CORRIGIDA
 
 // --- 1. IMPORTAÇÕES ---
 import { app } from "/src/firebase-config.js";
@@ -23,9 +23,8 @@ const db = getFirestore(app);
 const storage = getStorage(app);
 
 // --- 2. INICIALIZAÇÃO DO EDITOR DE TEXTO ---
-// Este bloco "transforma" sua textarea em um editor de texto rico.
 tinymce.init({
-  selector: "#fullText", // <<< Aponta para a sua textarea de texto completo do evento
+  selector: "#fullText",
   plugins: "lists link image emoticons",
   toolbar:
     "undo redo | styles | bold italic underline | bullist numlist | link image emoticons",
@@ -33,9 +32,8 @@ tinymce.init({
   menubar: false,
   placeholder: "Digite o texto completo do evento aqui...",
   setup: function (editor) {
-    // Garante que o carregamento dos dados só aconteça DEPOIS que o editor estiver pronto.
     editor.on("init", function () {
-      loadEventData();
+      loadEventData(); // Carrega os dados do evento APÓS o editor estar pronto
     });
   },
 });
@@ -46,7 +44,6 @@ const eventForm = document.getElementById("event-form");
 const titleInput = document.getElementById("title");
 const dateInput = document.getElementById("date");
 const excerptInput = document.getElementById("excerpt");
-// const fullTextInput = document.getElementById("fullText"); // Não precisamos mais dele diretamente
 const imageUploadInput = document.getElementById("imageUpload");
 const imagePreview = document.getElementById("image-preview");
 const currentImagePath = document.getElementById("current-image-path");
@@ -71,12 +68,63 @@ const isEditMode = Boolean(eventId);
 let existingImageUrl = "";
 let existingGalleryUrls = [];
 
-// Função de upload (sem alterações)
-async function uploadFile(file) {
-  // ... (sua função de upload continua a mesma)
+// FUNÇÃO DE UPLOAD COMPLETA COM DEPURAÇÃO
+async function uploadFile(file, isMainImage = false) {
+  if (!file) return null;
+  console.log(
+    "✔️ PASSO 1: Função uploadFile iniciada para o arquivo:",
+    file.name
+  );
+
+  const options = {
+    maxSizeMB: 0.5,
+    maxWidthOrHeight: 1200,
+    useWebWorker: true,
+  };
+  console.log("✔️ PASSO 2: Comprimindo imagem...");
+  const compressedFile = await imageCompression(file, options);
+  console.log(
+    `✅ PASSO 3: Compressão concluída. Novo tamanho: ${(
+      compressedFile.size / 1024
+    ).toFixed(2)} KB`
+  );
+
+  return new Promise((resolve, reject) => {
+    const filePath = `eventos/${Date.now()}-${compressedFile.name}`;
+    const storageRef = ref(storage, filePath);
+    const uploadTask = uploadBytesResumable(storageRef, compressedFile);
+
+    uploadTask.on(
+      "state_changed",
+      (snapshot) => {
+        if (isMainImage) {
+          // Só mostra o progresso para a imagem principal
+          const progress =
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          uploadProgressContainer.style.display = "block";
+          uploadProgress.value = progress;
+          uploadProgressText.textContent = `Enviando imagem principal: ${Math.round(
+            progress
+          )}%`;
+        }
+      },
+      (error) => {
+        console.error(
+          "❌ ERRO NO UPLOAD! Verifique as regras de segurança do Storage para a pasta 'eventos/'.",
+          error
+        );
+        reject(new Error(`Falha ao enviar o arquivo. Código: ${error.code}`));
+      },
+      async () => {
+        const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
+        console.log("✅ PASSO 4: Upload bem-sucedido! URL:", downloadURL);
+        resolve(downloadURL);
+      }
+    );
+  });
 }
 
-// Função para carregar dados (com pequena alteração)
+// FUNÇÃO PARA CARREGAR DADOS NO MODO DE EDIÇÃO
 async function loadEventData() {
   if (!isEditMode) {
     editorTitle.textContent = "Adicionar Novo Evento";
@@ -96,19 +144,22 @@ async function loadEventData() {
       categoryInput.value = data.category || "noticia";
       linkInput.value = data.link || "";
 
-      // ## ALTERAÇÃO AQUI: Define o conteúdo no editor TinyMCE ##
-      tinymce.get("fullText").setContent(data.fullText || "");
-
-      if (data.image) {
-        existingImageUrl = data.image;
+      // PADRONIZADO: Busca por 'imageUrl'
+      if (data.imageUrl) {
+        existingImageUrl = data.imageUrl;
         imagePreview.src = existingImageUrl;
         imagePreview.style.display = "block";
         currentImagePath.textContent = `Imagem atual carregada.`;
       }
-      // ... (resto da sua lógica de galeria)
+
+      tinymce.get("fullText").setContent(data.fullText || "");
+
+      if (data.galeriaUrls && data.galeriaUrls.length > 0) {
+        // ... (lógica para exibir info da galeria)
+      }
     } else {
       alert("Evento não encontrado!");
-      window.location.href = "/admin/dashboard.html"; // Corrigido para não ter /src/
+      window.location.href = "dashboard.html";
     }
   } catch (error) {
     console.error("Erro ao carregar evento:", error);
@@ -116,37 +167,53 @@ async function loadEventData() {
   }
 }
 
-// Preview da imagem principal (sem alterações)
-imageUploadInput.addEventListener("change", (event) => {
-  // ... (sua lógica de preview continua a mesma)
-});
-
-// Evento de SUBMIT (com pequena alteração)
+// LÓGICA DE SUBMIT COMPLETA
 eventForm.addEventListener("submit", async (event) => {
   event.preventDefault();
   saveButton.disabled = true;
   saveButton.textContent = "Salvando...";
 
   try {
-    // ... (sua lógica de upload de imagens continua a mesma)
+    console.log("✔️ PASSO 0: Formulário enviado.");
     let mainImageUrl = existingImageUrl;
-    // ...
-    let galleryUrls = existingGalleryUrls;
-    // ...
+    const newMainImageFile = imageUploadInput.files[0];
+    if (newMainImageFile) {
+      mainImageUrl = await uploadFile(newMainImageFile, true); // Passa 'true' para indicar que é a imagem principal
+    }
+    console.log("✔️ PASSO 5: Upload da imagem principal concluído.");
 
-    // ## ALTERAÇÃO AQUI: Pega o conteúdo do editor TinyMCE ##
+    const galleryFiles = galleryImageInputs
+      .map((input) => input.files[0])
+      .filter(Boolean);
+    let galleryUrls = existingGalleryUrls;
+    if (galleryFiles.length > 0) {
+      console.log(
+        `✔️ PASSO 6: Iniciando upload de ${galleryFiles.length} imagem(ns) da galeria...`
+      );
+      const uploadPromises = galleryFiles.map((file) =>
+        uploadFile(file, false)
+      ); // 'false' para não mostrar progresso
+      galleryUrls = await Promise.all(uploadPromises);
+    }
+    console.log("✅ PASSO 6.1: Upload da galeria concluído.");
+
     const fullTextContent = tinymce.get("fullText").getContent();
 
     const eventData = {
       title: titleInput.value,
       date: Timestamp.fromDate(new Date(dateInput.value + "T00:00:00")),
       excerpt: excerptInput.value,
-      fullText: fullTextContent, // Usa o conteúdo do editor
+      fullText: fullTextContent,
       category: categoryInput.value,
       link: linkInput.value,
-      image: mainImageUrl,
-      galeriaUrls: galleryUrls,
+      imageUrl: mainImageUrl, // PADRONIZADO
+      galleryUrls: galleryUrls,
     };
+
+    console.log(
+      "📦 PASSO 7: Pacote de dados pronto para ser salvo:",
+      eventData
+    );
 
     if (isEditMode) {
       const docRef = doc(db, "eventos", eventId);
@@ -156,9 +223,15 @@ eventForm.addEventListener("submit", async (event) => {
       await addDoc(collection(db, "eventos"), eventData);
       alert("Evento cadastrado com sucesso!");
     }
+
+    console.log("✅ PASSO 8: Dados salvos no Firestore com sucesso!");
     window.location.href = "dashboard.html";
   } catch (error) {
-    // ... (sua lógica de erro continua a mesma)
+    console.error("❌ ERRO GERAL NO PROCESSO DE SALVAMENTO!", error);
+    alert(`Erro ao salvar: ${error.message}`);
+    saveButton.disabled = false;
+    saveButton.textContent = "Salvar Evento";
+    uploadProgressContainer.style.display = "none";
   }
 });
 

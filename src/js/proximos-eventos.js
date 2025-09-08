@@ -1,3 +1,5 @@
+// Local: /src/js/proximos-eventos.js - VERSÃO CORRIGIDA
+
 // --- 1. IMPORTAÇÕES ESSENCIAIS ---
 // Estilos
 import "/src/styles/base/reset.css";
@@ -6,12 +8,15 @@ import "/src/styles/base/typography.css";
 import "/src/styles/components/header.css";
 import "/src/styles/components/footer.css";
 import "/src/styles/components/page-header.css";
-import "/src/styles/pages/eventos.css"; // Reutiliza o estilo da página de eventos
+import "/src/styles/pages/eventos.css";
 
 // Componentes, Funções Úteis e Firebase
 import { renderHeader } from "/src/components/Header.js";
 import { renderFooter } from "/src/components/Footer.js";
-import { createEventCard } from "/src/utils/helpers.js";
+
+// ## CORREÇÃO AQUI: Importando a função com o nome novo e correto ##
+import { createEventListPageCard } from "/src/utils/helpers.js";
+
 import { app } from "/src/firebase-config.js";
 import {
   getFirestore,
@@ -22,11 +27,13 @@ import {
   where,
 } from "firebase/firestore";
 
-// Cria a instância do banco de dados localmente
 const db = getFirestore(app);
 
-// --- 2. FUNÇÃO PRINCIPAL (Sua lógica de busca) ---
+// --- 2. FUNÇÃO PRINCIPAL ---
 async function initializeProximosEventos() {
+  renderHeader();
+  renderFooter();
+
   const container = document.querySelector(".eventos-grid");
   if (!container) return;
 
@@ -55,7 +62,8 @@ async function initializeProximosEventos() {
       return;
     }
 
-    container.innerHTML = proximosEventos.map(createEventCard).join("");
+    // ## CORREÇÃO AQUI: Usando a função com o nome novo e correto ##
+    container.innerHTML = proximosEventos.map(createEventListPageCard).join("");
   } catch (error) {
     console.error("Erro ao buscar próximos eventos:", error);
     container.innerHTML =
@@ -64,8 +72,4 @@ async function initializeProximosEventos() {
 }
 
 // --- 3. EXECUÇÃO ---
-document.addEventListener("DOMContentLoaded", () => {
-  renderHeader();
-  renderFooter();
-  initializeProximosEventos(); // Chama a função principal
-});
+initializeProximosEventos();

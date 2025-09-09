@@ -2,7 +2,7 @@
   {
     "id": "catequese",
     "name": "Pastoral Catequética",
-    "image": "https://picsum.photos/id/212/800/600",
+    "image": "../public/img/pastorais/catequese.jpg",
     "excerpt": "Oferecemos um caminho de iniciação e formação na fé para crianças, jovens e adultos, preparando-os para receber os sacramentos e viver o Evangelho em comunidade.",
     "objective": "A Pastoral Catequética tem por objetivo o trabalho permanente de iniciação e formação na fé, em apoio às comunidades na preparação das pessoas que pretendem receber os sacramentos católicos e viver o Evangelho.",
     "activities": [
@@ -62,7 +62,7 @@
   {
     "id": "coroinhas",
     "name": "Pastoral dos Coroinhas e Acólitos",
-    "image": "https://picsum.photos/id/10/800/600",
+    "image": "../public/img/pastorais/coroinhas.jpeg",
     "excerpt": "Formando e acompanhando crianças e adolescentes no serviço ao altar, despertando o amor e o respeito à Sagrada Eucaristia e auxiliando nas celebrações litúrgicas.",
     "objective": "A Pastoral dos Coroinhas e Acólitos tem como objetivo formar e acompanhar crianças e adolescentes no serviço litúrgico da igreja, despertando o amor e o respeito à Sagrada Eucaristia, destacando a importância da missão como o primeiro engajamento pastoral, envolvendo a família nessa trajetória de evangelização.",
     "activities": [
@@ -91,7 +91,7 @@
   {
     "id": "terco-dos-homens",
     "name": "Terço dos Homens",
-    "image": "https://picsum.photos/id/30/800/600",
+    "image": "../public/img/pastorais/terco.jpg",
     "excerpt": "Uma devoção Mariana que reúne homens de todas as idades para a oração do Santo Terço, buscando fortalecer a fé, a família e a presença masculina na Igreja.",
     "objective": "Reunir homens de todas as idades para a oração do terço, buscando a intercessão de Nossa Senhora e resgatando-os para o seio da Igreja. A pastoral visa evangelizar, motivar a vivência da fé cristã, santificar as famílias e conscientizar sobre a importância da presença masculina na comunidade.",
     "activities": [
@@ -120,7 +120,7 @@
   {
     "id": "legiao-de-maria",
     "name": "Legião de Maria",
-    "image": "https://picsum.photos/id/40/800/600",
+    "image": "../public/img/pastorais/legiao.jpg",
     "excerpt": "Um movimento de leigos católicos que, sob a intercessão de Nossa Senhora, buscam a santidade pessoal e a evangelização da comunidade através da oração e do trabalho apostólico.",
     "objective": "Buscar a santidade pessoal dos seus membros através da oração e do serviço, e a santificação do próximo por meio do trabalho missionário de evangelização, seguindo o exemplo de Maria.",
     "activities": [
@@ -157,7 +157,7 @@
   {
     "id": "pastoral-da-musica",
     "name": "Pastoral da Música Litúrgica",
-    "image": "https://picsum.photos/id/145/800/600",
+    "image": "../public/img/pastorais/musica.png",
     "excerpt": "Responsável por animar as celebrações litúrgicas através do canto e dos instrumentos, ajudando toda a comunidade a rezar e a participar das missas com mais alegria e devoção.",
     "objective": "Ajudar a comunidade a participar das celebrações religiosas com mais alegria e devoção, preparando os músicos e a assembleia para que possam participar da liturgia de forma plena e ativa.",
     "activities": [
@@ -195,7 +195,7 @@
   {
     "id": "pastoral-do-dizimo",
     "name": "Pastoral do Dízimo",
-    "image": "https://picsum.photos/id/21/800/600",
+    "image": "../public/img/pastorais/dizimo.png",
     "excerpt": "Responsável por conscientizar os fiéis sobre a importância da contribuição do dízimo como um ato de fé, gratidão e corresponsabilidade com a comunidade paroquial.",
     "objective": "Conscientizar e esclarecer os católicos sobre a dimensão bíblica e espiritual do dízimo, motivando uma contribuição generosa. A pastoral também busca estar atenta às necessidades dos fiéis, encaminhando-os para o apoio espiritual e material quando necessário.",
     "activities": [
@@ -233,7 +233,7 @@
   {
     "id": "grupo-quem-como-deus",
     "name": "Grupo de Oração 'Quem como Deus?'",
-    "image": "https://picsum.photos/id/48/800/600",
+    "image": "../public/img/pastorais/quem.jpeg",
     "excerpt": "Grupo de oração voltado para a comunidade, com a missão de levar atendimento de cura e libertação, a Palavra de Deus e a oração do Terço de São Miguel às famílias.",
     "objective": "Levar a comunidade a uma experiência de fé através do atendimento de oração por cura e libertação. O grupo realiza visitas às famílias, levando a Palavra de Deus, orações, louvor e a devoção do Terço de São Miguel Arcanjo.",
     "activities": [

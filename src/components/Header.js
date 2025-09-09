@@ -59,7 +59,6 @@ export function renderHeader() {
           </button>
           <ul>
             <li><a href="${BASE}">Início</a></li>
-            
             <li><a href="${BASE}src/pages/comunidades.html">Comunidades</a></li>
             <li><a href="${BASE}src/pages/pastorais.html">Pastorais</a></li>
             <li><a href="${BASE}src/pages/horarios.html">Horários</a></li>
@@ -69,10 +68,13 @@ export function renderHeader() {
               </a>
               <div class="dropdown-content">
                 <a href="${BASE}src/pages/proximos-eventos.html">Próximos Eventos</a>
-    <a href="${BASE}src/pages/eventos.html">Eventos Anteriores</a>
+                <a href="${BASE}src/pages/eventos.html">Eventos Anteriores</a>
               </div>
             </li>
             <li><a href="${BASE}src/pages/acampamento.html">Acampamento</a></li>
+
+            <li><a href="${BASE}src/pages/voce-sabia.html">Você Sabia?</a></li>
+
           </ul>
         </nav>
         <div class="header-right">

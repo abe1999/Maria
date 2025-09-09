@@ -26,29 +26,23 @@ export function buildSafeURL(path) {
 // ## FUNÇÃO PARA OS CARDS DA HOMEPAGE - COM LINK CORRIGIDO ##
 // =======================================================================
 export function createHomepageNewsCard(evento) {
-  // A CORREÇÃO ESTÁ AQUI: Garantimos que o /src/ está no caminho.
-  const linkURL = buildSafeURL(
-    `/src/pages/evento-detalhe.html?id=${evento.id}`
-  );
-
+  const linkURL = buildSafeURL(`/pages/evento-detalhe.html?id=${evento.id}`);
   const imageURL = buildSafeURL(
     evento.imageUrl || "/img/placeholder-evento.jpg"
   );
   const dataFormatada = formatarData(evento.date);
 
   return `
-    <div class="home-news-card">
-      <a href="${linkURL}">
-        <img src="${imageURL}" alt="Imagem do evento: ${evento.title}">
-        <div class="home-news-content">
-          <p class="home-news-date">${dataFormatada}</p>
-          <h3 class="home-news-title">${evento.title}</h3>
-        </div>
-      </a>
-    </div>
+    <a href="${linkURL}" class="home-news-card">
+      <img src="${imageURL}" alt="Imagem do evento: ${evento.title}" class="home-news-image">
+      
+      <div class="home-news-content">
+        <p class="home-news-date">${dataFormatada}</p>
+        <h3 class="home-news-title">${evento.title}</h3>
+      </div>
+    </a>
   `;
 }
-
 // =======================================================================
 // ## FUNÇÃO PARA OS CARDS DA PÁGINA DE EVENTOS - TAMBÉM CORRIGIDA ##
 // =======================================================================

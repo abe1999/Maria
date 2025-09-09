@@ -34,21 +34,13 @@
   gap: 30px;
 }
 
-/* Card totalmente reprojetado e CORRIGIDO */
 .home-news-card {
   position: relative;
-  background-color: var(--color-primary);
+  display: block;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-
-  /* --- AJUSTE PRINCIPAL --- */
-  /* Removemos a altura fixa para que o card possa ser responsivo */
-  /* height: 380px; --- REMOVIDO --- */
-
-  /* Adicionamos a proporção de paisagem (16:9) AQUI, no contêiner principal do card. */
-  /* Isso garante que ele sempre terá o formato retangular correto. */
   aspect-ratio: 16 / 9;
 }
 
@@ -57,57 +49,65 @@
   box-shadow: 0 10px 25px rgba(48, 71, 94, 0.2);
 }
 
-.home-news-card a {
-  text-decoration: none;
-  color: #fff;
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-
-.home-news-card img {
+/* A IMAGEM (ocupa todo o espaço do card) */
+.home-news-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 0.4s ease;
-
-  /* --- AJUSTE --- */
-  /* Removemos o aspect-ratio daqui, pois ele deve estar no contêiner (.home-news-card) */
-  /* aspect-ratio: 16 / 9; --- REMOVIDO DA IMAGEM --- */
 }
 
-.home-news-card:hover img {
+.home-news-card:hover .home-news-image {
   transform: scale(1.05) rotate(1deg);
 }
 
+/* ===================================================================
+   ## O CONTEÚDO (AGORA COM O GRADIENTE E O TEXTO JUNTOS) ##
+   =================================================================== */
 .home-news-content {
+  /* Posicionamento por cima da imagem, na parte de baixo */
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 25px;
   z-index: 2;
+
+  /* O gradiente fica aqui, como fundo DESTA caixa */
   background: linear-gradient(
     to top,
-    rgba(14, 42, 73, 0.95) 20%,
-    /* Gradiente um pouco mais forte */ rgba(14, 42, 73, 0) 100%
+    rgba(14, 42, 73, 0.95) 45%,
+    transparent 100%
   );
+
+  /* Estilos para o texto e o espaçamento */
+  padding: 25px 25px 1px 15px;
+  color: #fff;
+
+  /* Lógica para alinhar o texto embaixo dentro desta caixa */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 80%; /* A caixa ocupa 80% da altura da imagem para dar espaço para o gradiente */
 }
 
 .home-news-date {
-  font-size: 0.9rem; /* Ajustado */
+  font-size: 0.9rem;
   font-weight: 500;
   color: var(--color-secondary);
-  text-transform: uppercase;
   text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.9);
 }
 
 .home-news-title {
   font-family: "Merriweather", serif;
-  font-size: 1.35rem; /* Ajustado */
-  color: #fff;
+  font-size: 1.35rem;
   margin-top: 10px;
   line-height: 1.4;
+  text-wrap: balance;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 
 .home-news-card:hover .home-news-title {

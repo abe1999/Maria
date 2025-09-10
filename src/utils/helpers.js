@@ -1,5 +1,3 @@
-// Local: /src/utils/helpers.js - VERSÃO FINAL COM LINKS CORRIGIDOS
-
 export function formatarData(timestamp) {
   if (!timestamp || typeof timestamp.toDate !== "function") {
     return "Data indisponível";
@@ -23,35 +21,30 @@ export function buildSafeURL(path) {
 }
 
 // =======================================================================
-// ## FUNÇÃO PARA OS CARDS DA HOMEPAGE - COM LINK CORRIGIDO ##
+// ## FUNÇÃO PARA OS CARDS DA HOMEPAGE -  ##
 // =======================================================================
 export function createHomepageNewsCard(evento) {
-  const linkURL = buildSafeURL(`/pages/evento-detalhe.html?id=${evento.id}`);
+  const linkURL = buildSafeURL(`src/pages/evento-detalhe.html?id=${evento.id}`);
   const imageURL = buildSafeURL(
     evento.imageUrl || "/img/placeholder-evento.jpg"
   );
   const dataFormatada = formatarData(evento.date);
 
   return `
-    <a href="${linkURL}" class="home-news-card">
-      <img src="${imageURL}" alt="Imagem do evento: ${evento.title}" class="home-news-image">
-      
-      <div class="home-news-content">
-        <p class="home-news-date">${dataFormatada}</p>
-        <h3 class="home-news-title">${evento.title}</h3>
-      </div>
-    </a>
+    <div class="home-news-card">
+      <a href="${linkURL}">
+        <img src="${imageURL}" alt="Imagem do evento: ${evento.title}" class="home-news-image">
+        <div class="home-news-content">
+          <p class="home-news-date">${dataFormatada}</p>
+          <h3 class="home-news-title">${evento.title}</h3>
+        </div>
+      </a>
+    </div>
   `;
 }
-// =======================================================================
-// ## FUNÇÃO PARA OS CARDS DA PÁGINA DE EVENTOS - TAMBÉM CORRIGIDA ##
-// =======================================================================
-export function createEventListPageCard(evento) {
-  // GARANTIMOS A CORREÇÃO AQUI TAMBÉM
-  const linkURL = buildSafeURL(
-    `/src/pages/evento-detalhe.html?id=${evento.id}`
-  );
 
+export function createEventListPageCard(evento) {
+  const linkURL = buildSafeURL(`src/pages/evento-detalhe.html?id=${evento.id}`);
   const imageURL = buildSafeURL(
     evento.imageUrl || "/img/placeholder-evento.jpg"
   );

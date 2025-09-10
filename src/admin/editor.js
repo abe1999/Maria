@@ -124,7 +124,6 @@ async function uploadFile(file, isMainImage = false) {
   });
 }
 
-// FUNÇÃO PARA CARREGAR DADOS NO MODO DE EDIÇÃO
 async function loadEventData() {
   if (!isEditMode) {
     editorTitle.textContent = "Adicionar Novo Evento";
@@ -134,6 +133,7 @@ async function loadEventData() {
     editorTitle.textContent = "Editar Evento";
     const docRef = doc(db, "eventos", eventId);
     const docSnap = await getDoc(docRef);
+
     if (docSnap.exists()) {
       const data = docSnap.data();
       titleInput.value = data.title || "";
@@ -144,7 +144,8 @@ async function loadEventData() {
       categoryInput.value = data.category || "noticia";
       linkInput.value = data.link || "";
 
-      // PADRONIZADO: Busca por 'imageUrl'
+      tinymce.get("fullText").setContent(data.fullText || "");
+
       if (data.imageUrl) {
         existingImageUrl = data.imageUrl;
         imagePreview.src = existingImageUrl;
@@ -152,11 +153,27 @@ async function loadEventData() {
         currentImagePath.textContent = `Imagem atual carregada.`;
       }
 
-      tinymce.get("fullText").setContent(data.fullText || "");
+      // ===============================================================
+      // ## NOVO BLOCO: Exibe o status da galeria existente ##
+      // ===============================================================
+      if (data.galleryUrls && data.galleryUrls.length > 0) {
+        existingGalleryUrls = data.galleryUrls;
 
-      if (data.galeriaUrls && data.galeriaUrls.length > 0) {
-        // ... (lógica para exibir info da galeria)
+        // Remove mensagens antigas para não duplicar
+        const oldInfo = document.querySelector(".gallery-status-info");
+        if (oldInfo) oldInfo.remove();
+
+        const galleryInfoDiv = document.createElement("div");
+        galleryInfoDiv.className = "gallery-status-info"; // Para podermos estilizar
+        galleryInfoDiv.innerHTML = `
+          <p><strong>Galeria Atual:</strong> ${existingGalleryUrls.length} imagem(ns) carregada(s).</p>
+          <small>Para alterar a galeria, basta selecionar novas imagens nos campos abaixo. As novas substituirão as antigas.</small>
+        `;
+
+        // Adiciona a mensagem abaixo do último campo de upload da galeria
+        galleryImageInputs[2].parentElement.appendChild(galleryInfoDiv);
       }
+      // ===============================================================
     } else {
       alert("Evento não encontrado!");
       window.location.href = "dashboard.html";

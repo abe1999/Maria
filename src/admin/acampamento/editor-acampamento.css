@@ -1,0 +1,74 @@
+/* Local: /src/admin/acampamento/editor-acampamento.css */
+
+.editor-form {
+  background-color: #fff;
+  padding: 20px 30px 30px 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+}
+
+.input-group {
+  margin-bottom: 25px;
+  padding-top: 20px;
+  border-top: 1px solid #f0f0f0;
+}
+
+.editor-form > .input-group:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  color: var(--color-primary, #0d5497);
+}
+
+.input-group input[type="text"],
+.input-group input[type="date"],
+.input-group input[type="number"],
+.input-group input[type="url"],
+.input-group select,
+.input-group textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  box-sizing: border-box;
+  font-family: var(--font-primary);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input-group input:focus,
+.input-group select:focus,
+.input-group textarea:focus {
+  outline: none;
+  border-color: var(--color-primary, #0d5497);
+  box-shadow: 0 0 0 3px rgba(13, 84, 151, 0.15);
+}
+
+.input-row {
+  display: flex;
+  gap: 20px;
+}
+
+.input-row .input-group {
+  flex: 1;
+  border-top: none;
+  padding-top: 0;
+}
+
+.form-actions {
+  margin-top: 30px;
+  text-align: right;
+}
+
+#image-preview {
+  max-width: 200px;
+  margin-top: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}

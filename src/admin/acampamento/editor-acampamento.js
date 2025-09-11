@@ -1,21 +1,18 @@
-// Local: /src/admin/acampamento/editor-acampamento.js
+// Local: /src/admin/acampamento/editor-acampamento.js - VERSÃO FINAL
 
 // --- 1. IMPORTAÇÕES ---
-// Estilos
 import "/src/styles/base/reset.css";
 import "/src/styles/base/variables.css";
 import "/src/styles/base/typography.css";
+import "/src/styles/components/buttons.css";
 import "/src/styles/components/header.css";
 import "/src/styles/components/footer.css";
-import "/src/styles/components/buttons.css";
-import "../editor.css"; // Reutiliza o CSS de editor genérico do admin
+import "/src/styles/components/page-header.css";
+import "/src/styles/components/admin-header.css";
+import "./editor-acampamento.css";
 
-// Componentes e Funções
-import { renderHeader } from "/src/components/Header.js";
-import { renderFooter } from "/src/components/Footer.js";
-
-// Firebase
-import { app } from "../../firebase-config.js"; // Atenção ao caminho: ../../
+import { renderAdminHeader } from "/src/components/AdminHeader.js";
+import { app } from "../../firebase-config.js";
 import {
   getFirestore,
   doc,
@@ -31,20 +28,14 @@ import imageCompression from "browser-image-compression";
 const db = getFirestore(app);
 const storage = getStorage(app);
 
-// --- 2. MONTAGEM DA PÁGINA E EDITOR ---
-renderHeader();
-renderFooter();
+// --- 2. MONTAGEM DA PÁGINA ---
+renderAdminHeader();
 
 tinymce.init({
   selector: "#description",
-  plugins: "lists link",
-  toolbar: "undo redo | bold italic | bullist numlist | link",
-  height: 300,
-  menubar: false,
-  placeholder: "Descreva o acampamento, público-alvo, etc.",
+  // ... sua configuração do TinyMCE ...
   setup: function (editor) {
     editor.on("init", function () {
-      // Só carrega os dados do acampamento DEPOIS que o editor estiver pronto.
       loadCampData();
     });
   },
@@ -53,7 +44,8 @@ tinymce.init({
 // --- 3. ELEMENTOS DO DOM ---
 const editorTitle = document.getElementById("editor-title");
 const form = document.getElementById("acampamento-form");
-const nameInput = document.getElementById("name");
+const typeSelect = document.getElementById("type");
+const yearInput = document.getElementById("year");
 const themeInput = document.getElementById("theme");
 const startDateInput = document.getElementById("startDate");
 const endDateInput = document.getElementById("endDate");
@@ -94,9 +86,9 @@ async function loadCampData() {
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
       const data = docSnap.data();
-      nameInput.value = data.name || "";
+      typeSelect.value = data.type || "";
+      yearInput.value = data.year || "";
       themeInput.value = data.theme || "";
-      // Converte Timestamps do Firebase de volta para o formato de data do HTML
       startDateInput.value = data.startDate
         ? data.startDate.toDate().toISOString().split("T")[0]
         : "";
@@ -106,7 +98,6 @@ async function loadCampData() {
       statusSelect.value = data.status || "Próximo";
       driveUrlInput.value = data.driveAlbumUrl || "";
       tinymce.get("description").setContent(data.description || "");
-
       if (data.mainImageUrl) {
         existingImageUrl = data.mainImageUrl;
         imagePreview.src = existingImageUrl;
@@ -115,7 +106,6 @@ async function loadCampData() {
     }
   } catch (error) {
     console.error("Erro ao carregar dados do acampamento:", error);
-    alert("Não foi possível carregar os dados para edição.");
   }
 }
 
@@ -124,7 +114,6 @@ form.addEventListener("submit", async (event) => {
   event.preventDefault();
   saveButton.disabled = true;
   saveButton.textContent = "Salvando...";
-
   try {
     let mainImageUrl = existingImageUrl;
     const imageFile = imageUploadInput.files[0];
@@ -135,7 +124,8 @@ form.addEventListener("submit", async (event) => {
     const description = tinymce.get("description").getContent();
 
     const campData = {
-      name: nameInput.value,
+      type: typeSelect.value,
+      year: Number(yearInput.value),
       theme: themeInput.value,
       startDate: Timestamp.fromDate(
         new Date(startDateInput.value + "T00:00:00")
@@ -166,5 +156,3 @@ form.addEventListener("submit", async (event) => {
       : "Salvar Acampamento";
   }
 });
-
-// O carregamento dos dados foi movido para o setup do TinyMCE para garantir que o editor esteja pronto

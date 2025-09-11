@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gerenciar Acampamentos - Painel Administrativo</title>
+
+    <script type="module" src="../auth-guard.js"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header id="header-container"></header>
+
+    <main class="admin-page container">
+      <div class="page-header admin-header">
+        <a href="../dashboard.html" class="btn btn-secondary">
+          <i class="fa-solid fa-arrow-left"></i> Voltar ao Painel
+        </a>
+        <h1 class="page-title">Gerenciar Acampamentos</h1>
+        <a href="editor-acampamento.html" class="btn btn-primary">
+          <i class="fa-solid fa-plus"></i> Adicionar Novo
+        </a>
+      </div>
+
+      <div id="acampamentos-list-container" class="admin-list">
+        <p>Carregando acampamentos...</p>
+      </div>
+    </main>
+
+    <script type="module" src="gerenciar-acampamentos.js"></script>
+  </body>
+</html>

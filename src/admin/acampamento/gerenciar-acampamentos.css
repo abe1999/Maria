@@ -1,0 +1,102 @@
+/* Local: /src/admin/acampamento/gerenciar-acampamentos.css */
+/* ADICIONE ESTE BLOCO NO TOPO DO ARQUIVO */
+
+/* Estilos para o Cabeçalho da Página */
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.admin-header .page-title {
+  margin: 0;
+}
+
+/* O resto do seu CSS para a lista continua abaixo... */
+.admin-list {
+  margin-top: 30px;
+}
+
+.list-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  margin-bottom: 15px;
+  border-left: 4px solid var(--color-secondary); /* Dourado */
+}
+
+.item-thumbnail,
+.item-thumbnail-placeholder {
+  width: 100px;
+  height: 100px; /* Um pouco mais alto para cartazes */
+  object-fit: cover;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.item-thumbnail-placeholder {
+  background-color: #eee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  color: #aaa;
+  text-align: center;
+}
+
+.item-info {
+  flex-grow: 1;
+}
+
+.item-title {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: var(--color-headings);
+  display: block;
+  margin-bottom: 5px;
+}
+
+.item-category,
+.item-status {
+  font-size: 0.9rem;
+  color: #777;
+  display: block; /* Para ficarem um abaixo do outro */
+}
+
+.item-status strong {
+  color: var(--color-primary);
+}
+
+.item-actions {
+  display: flex;
+  gap: 10px;
+}
+
+@media (max-width: 768px) {
+  .admin-header {
+    /* Empilha os itens verticalmente */
+    flex-direction: column;
+    /* Adiciona um espaço vertical entre eles */
+    gap: 15px;
+    /* Centraliza os itens */
+    align-items: center;
+  }
+
+  .admin-header .page-title {
+    /* Coloca o título como o primeiro item na ordem visual */
+    order: -1;
+    text-align: center;
+  }
+
+  /* Faz os botões ocuparem mais espaço para facilitar o toque */
+  .admin-header .btn {
+    width: 100%;
+    max-width: 350px; /* Limita a largura máxima dos botões */
+    justify-content: center; /* Centraliza o ícone e texto dentro do botão */
+  }
+}

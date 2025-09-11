@@ -3,44 +3,51 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Acampamento - Paróquia Nossa Senhora de Nazaré</title>
-
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Roboto:wght@400;500;700&display=swap"
-      rel="stylesheet"
-    />
+    <title>Acampamentos - Paróquia Nossa Senhora de Nazaré</title>
   </head>
   <body>
     <header id="header-container"></header>
 
     <main class="container">
       <div class="page-header">
-        <h1 class="page-title">Nossos Acampamentos</h1>
-        <p>
-          Cinco experiências únicas de fé, amizade e encontro com Deus. Clique
-          em uma aba para descobrir o acampamento que chama por você.
+        <h1 class="page-title">Acampamentos Paroquiais</h1>
+        <p class="page-subtitle">
+          Uma experiência de fé, comunidade e encontro com Deus.
         </p>
       </div>
 
-      <section class="tabs-layout">
-        <div class="tabs-container" id="acampamento-tabs"></div>
+      <section class="page-section">
+        <h2>Agenda - Próximos Acampamentos</h2>
+        <div id="agenda-acampamentos-grid" class="agenda-grid">
+          <p>Carregando agenda...</p>
+        </div>
+      </section>
 
-        <div class="content-container" id="acampamento-content"></div>
+      <section class="page-section">
+        <h2>Explore Mais</h2>
+        <div class="hub-links-grid">
+          <a href="acampamento-historia.html" class="hub-link-card">
+            <i class="fa-solid fa-book-open"></i>
+            <h3>Nossa História</h3>
+            <p>Conheça a trajetória do movimento.</p>
+          </a>
+          <a href="acampamento-inscricoes.html" class="hub-link-card">
+            <i class="fa-solid fa-file-signature"></i>
+            <h3>Como Participar</h3>
+            <p>Veja os requisitos e baixe a ficha.</p>
+          </a>
+          <a href="acampamento-galeria.html" class="hub-link-card">
+            <i class="fa-solid fa-images"></i>
+            <h3>Galeria de Fotos</h3>
+            <p>Relembre os momentos marcantes.</p>
+          </a>
+        </div>
       </section>
     </main>
 
     <footer id="footer-container"></footer>
 
+    <script type="module" src="/main.js"></script>
     <script type="module" src="../js/acampamento.js"></script>
   </body>
 </html>

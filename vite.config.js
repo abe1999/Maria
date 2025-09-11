@@ -47,6 +47,10 @@ export default defineConfig({
           __dirname,
           "src/admin/gerenciar-voce-sabia.html"
         ),
+        editorAcampamento: resolve(
+          __dirname,
+          "src/admin/acampamento/editor-acampamento.html"
+        ),
       },
     },
   },

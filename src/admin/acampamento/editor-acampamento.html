@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Editor de Acampamento - Painel Administrativo</title>
+
+    <script
+      src="https://cdn.tiny.cloud/1/SEU_API_KEY_AQUI/tinymce/7/tinymce.min.js"
+      referrerpolicy="origin"
+    ></script>
+  </head>
+  <body>
+    <header id="header-container"></header>
+
+    <main class="admin-page container">
+      <div class="page-header admin-header">
+        <a href="gerenciar-acampamentos.html" class="btn btn-secondary">
+          <i class="fa-solid fa-arrow-left"></i> Voltar
+        </a>
+        <h1 id="editor-title">Adicionar Novo Acampamento</h1>
+      </div>
+
+      <form id="acampamento-form" class="editor-form">
+        <div class="input-group">
+          <label for="name">Nome do Acampamento</label>
+          <input
+            type="text"
+            id="name"
+            placeholder="Ex: Acampamento Sênior, Acampamento Juvenil"
+            required
+          />
+        </div>
+
+        <div class="input-group">
+          <label for="theme">Tema do Acampamento</label>
+          <input type="text" id="theme" placeholder="Ex: Firmes na Fé" />
+        </div>
+
+        <div class="input-row">
+          <div class="input-group">
+            <label for="startDate">Data de Início</label>
+            <input type="date" id="startDate" required />
+          </div>
+          <div class="input-group">
+            <label for="endDate">Data de Fim</label>
+            <input type="date" id="endDate" required />
+          </div>
+        </div>
+
+        <div class="input-group">
+          <label for="status">Status do Acampamento</label>
+          <select id="status" required>
+            <option value="Próximo">
+              Próximo (ainda não abriu inscrições)
+            </option>
+            <option value="Inscrições Abertas">Inscrições Abertas</option>
+            <option value="Realizado">Realizado (já aconteceu)</option>
+          </select>
+        </div>
+
+        <div class="input-group">
+          <label for="description">Descrição (Texto para a página)</label>
+          <textarea
+            id="description"
+            rows="10"
+            placeholder="Descreva o acampamento, público-alvo, etc."
+          ></textarea>
+        </div>
+
+        <div class="input-group">
+          <label for="mainImageUpload"
+            >Imagem Principal (Cartaz do Acampamento)</label
+          >
+          <input
+            type="file"
+            id="mainImageUpload"
+            accept="image/png, image/jpeg, image/webp"
+          />
+          <div class="image-preview-container">
+            <img
+              id="image-preview"
+              src=""
+              alt="Pré-visualização da imagem"
+              style="display: none"
+            />
+          </div>
+        </div>
+
+        <div class="input-group">
+          <label for="driveAlbumUrl"
+            >Link do Álbum de Fotos (Google Drive)</label
+          >
+          <input
+            type="url"
+            id="driveAlbumUrl"
+            placeholder="Cole o link compartilhável do Google Drive aqui"
+          />
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" id="save-button" class="btn btn-primary">
+            Salvar Acampamento
+          </button>
+        </div>
+      </form>
+    </main>
+
+    <footer id="footer-container"></footer>
+
+    <script type="module" src="/main.js"></script>
+    <script type="module" src="editor-acampamento.js"></script>
+  </body>
+</html>

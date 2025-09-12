@@ -30,6 +30,23 @@ export default defineConfig({
           __dirname,
           "src/pages/comunidade-detalhe.html"
         ),
+        "acampamento-inscricoes": resolve(
+          __dirname,
+          "src/pages/acampamento-inscricoes.html"
+        ),
+        //...
+        acampamento: resolve(__dirname, "src/pages/acampamento.html"),
+        // ADICIONE A NOVA PÁGINA AQUI
+        "acampamento-sobre": resolve(
+          __dirname,
+          "src/pages/acampamento-sobre.html"
+        ),
+        "acampamento-galeria": resolve(
+          __dirname,
+          "src/pages/acampamento-galeria.html"
+        ),
+
+        //...
 
         // Páginas do Admin
         login: resolve(__dirname, "src/admin/login.html"),

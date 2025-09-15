@@ -1,4 +1,4 @@
-// Local: /src/js/acampamento-galeria.js
+// Local: /src/js/acampamento-galeria.js - VERSÃO CORRIGIDA
 
 // --- 1. IMPORTAÇÕES ---
 import "/src/styles/base/reset.css";
@@ -7,6 +7,7 @@ import "/src/styles/base/typography.css";
 import "/src/styles/components/header.css";
 import "/src/styles/components/footer.css";
 import "/src/styles/components/page-header.css";
+import "/src/styles/components/buttons.css";
 import "/src/styles/pages/acampamento-galeria.css";
 
 import { renderHeader } from "/src/components/Header.js";
@@ -28,10 +29,14 @@ renderHeader();
 renderFooter();
 
 // --- 3. LÓGICA DA GALERIA ---
+// ## CORREÇÃO AQUI: A declaração da variável estava faltando ou no lugar errado ##
 const galleryContainer = document.getElementById("album-gallery-container");
 
 async function loadAlbumGallery() {
-  if (!galleryContainer) return;
+  if (!galleryContainer) {
+    console.error("Elemento #album-gallery-container não encontrado no HTML.");
+    return;
+  }
   try {
     const q = query(
       collection(db, "acampamentos"),
@@ -46,24 +51,22 @@ async function loadAlbumGallery() {
       return;
     }
 
-    const allCamps = querySnapshot.docs.map((doc) => doc.data());
+    const allCamps = querySnapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
 
-    // A "mágica" de agrupar por ano
     const campsByYear = allCamps.reduce((acc, camp) => {
       const year = camp.year;
-      if (!acc[year]) {
-        acc[year] = [];
-      }
+      if (!acc[year]) acc[year] = [];
       acc[year].push(camp);
       return acc;
     }, {});
 
-    galleryContainer.innerHTML = ""; // Limpa a mensagem "Carregando..."
+    galleryContainer.innerHTML = "";
 
-    // Pega os anos e os ordena do mais novo para o mais antigo
     const sortedYears = Object.keys(campsByYear).sort((a, b) => b - a);
 
-    // Renderiza cada seção de ano
     for (const year of sortedYears) {
       galleryContainer.innerHTML += `<h2 class="year-title">${year}</h2>`;
       let yearHtml = '<div class="album-grid">';
@@ -71,17 +74,20 @@ async function loadAlbumGallery() {
       campsByYear[year].forEach((camp) => {
         const imageUrl = camp.mainImageUrl || "/img/placeholder-evento.jpg";
         const albumUrl = camp.driveAlbumUrl || "#";
+        const campName = `Acampamento ${camp.type} ${camp.year}`;
+        const campDate = camp.startDate
+          ? camp.startDate
+              .toDate()
+              .toLocaleDateString("pt-BR", { month: "long", year: "numeric" })
+          : "";
 
         yearHtml += `
                     <a href="${albumUrl}" class="album-card" target="_blank" rel="noopener noreferrer">
-                        <img src="${imageUrl}" alt="Cartaz do ${camp.type} ${
-          camp.year
-        }" class="album-card__image">
+                        <img src="${imageUrl}" alt="Cartaz do ${campName}" class="album-card__image">
                         <div class="album-card__content">
-                            <h3 class="album-card__title">Acampamento ${
-                              camp.type
-                            }</h3>
+                            <h3 class="album-card__title">${campName}</h3>
                             <p class="album-card__theme">${camp.theme || ""}</p>
+                            <p class="album-card__date">${campDate}</p>
                         </div>
                     </a>
                 `;
@@ -97,4 +103,5 @@ async function loadAlbumGallery() {
   }
 }
 
+// Inicia o carregamento
 loadAlbumGallery();

@@ -1,4 +1,4 @@
-/* Local: /src/styles/pages/acampamento-galeria.css */
+/* Local: /src/styles/pages/acampamento-galeria.css - VERSÃO REFINADA */
 
 .year-title {
   font-family: var(--font-secondary);
@@ -17,13 +17,16 @@
 }
 
 .album-card {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   text-decoration: none;
   background-color: #fff;
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
   transition: all 0.3s ease;
+  border: 1px solid var(--color-border);
 }
 
 .album-card:hover {
@@ -39,6 +42,9 @@
 
 .album-card__content {
   padding: 20px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column; /* Organiza o conteúdo em coluna */
 }
 
 .album-card__title {
@@ -51,4 +57,19 @@
 .album-card__theme {
   font-size: 1rem;
   color: var(--color-text);
+  font-style: italic;
+  margin-bottom: 15px;
+  flex-grow: 1; /* Empurra a data para baixo */
+}
+
+.album-card__date {
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: var(--color-primary); /* Usa a cor primária para destacar a data */
+}
+
+@media (max-width: 500px) {
+  .album-grid {
+    grid-template-columns: 1fr;
+  }
 }

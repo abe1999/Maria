@@ -1,37 +1,50 @@
 /* Local: /src/styles/components/buttons.css */
 
-/* Estilo base para TODOS os botões */
+/* Estilo base para TODOS os botões e links com a classe .btn */
 .btn {
   display: inline-flex;
   align-items: center;
-  gap: 8px; /* Espaço entre o ícone e o texto */
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  font-weight: bold;
+  gap: 8px;
+  padding: 12px 24px;
+  font-family: var(--font-secondary);
+  font-size: 1rem;
+  font-weight: 700;
   text-decoration: none;
-  color: white; /* Cor do texto padrão para botões */
+  border-radius: 5px;
   cursor: pointer;
+  border: 2px solid transparent; /* Adicionado para transição suave */
   transition: all 0.3s ease;
-  font-size: 0.9rem;
 }
 
-.btn:hover {
-  opacity: 0.9;
+/* Botão Primário (Azul) */
+.btn-primary {
+  background-color: var(--color-primary);
+  color: white;
+}
+.btn-primary:hover {
+  background-color: var(--color-primary-dark);
   transform: translateY(-2px);
 }
 
-/* Cor para o botão Primário (Adicionar, Salvar) */
-.btn-primary {
-  background-color: var(--color-primary);
-}
-
-/* Cor para o botão Secundário (Voltar, Gerenciar) */
+/* Botão Secundário (Dourado/Amarelo, como no seu latest-news) */
 .btn-secondary {
-  background-color: #5a6268;
+  background-color: transparent;
+  border: 2px solid var(--color-secondary);
+  color: var(--color-secondary);
+}
+.btn-secondary:hover {
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
+  transform: translateY(-2px);
 }
 
-/* Cor para o botão de Perigo (Excluir) */
+/* Botão de Perigo (Vermelho) */
 .btn-danger {
   background-color: #e74c3c;
+  color: white;
+  border-color: #e74c3c;
+}
+.btn-danger:hover {
+  background-color: #c0392b;
+  border-color: #c0392b;
 }

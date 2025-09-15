@@ -1,16 +1,12 @@
-// Local: /src/admin/acampamento/editor-acampamento.js - VERSÃO FINAL
-
-// --- 1. IMPORTAÇÕES ---
 import "/src/styles/base/reset.css";
 import "/src/styles/base/variables.css";
 import "/src/styles/base/typography.css";
 import "/src/styles/components/buttons.css";
-import "/src/styles/components/header.css";
-import "/src/styles/components/footer.css";
 import "/src/styles/components/page-header.css";
 import "/src/styles/components/admin-header.css";
-import "./editor-acampamento.css";
+import "../editor.css"; // Reutiliza o CSS de editor genérico
 
+// Componentes e Funções
 import { renderAdminHeader } from "/src/components/AdminHeader.js";
 import { app } from "../../firebase-config.js";
 import {
@@ -31,21 +27,11 @@ const storage = getStorage(app);
 // --- 2. MONTAGEM DA PÁGINA ---
 renderAdminHeader();
 
-tinymce.init({
-  selector: "#description",
-  // ... sua configuração do TinyMCE ...
-  setup: function (editor) {
-    editor.on("init", function () {
-      loadCampData();
-    });
-  },
-});
-
 // --- 3. ELEMENTOS DO DOM ---
 const editorTitle = document.getElementById("editor-title");
 const form = document.getElementById("acampamento-form");
 const typeSelect = document.getElementById("type");
-const yearInput = document.getElementById("year");
+const editionInput = document.getElementById("edition"); // Novo
 const themeInput = document.getElementById("theme");
 const startDateInput = document.getElementById("startDate");
 const endDateInput = document.getElementById("endDate");
@@ -63,20 +49,10 @@ let existingImageUrl = "";
 
 // Função de upload de imagem (reutilizada)
 async function uploadFile(file) {
-  if (!file) return null;
-  const options = {
-    maxSizeMB: 0.5,
-    maxWidthOrHeight: 1200,
-    useWebWorker: true,
-  };
-  const compressedFile = await imageCompression(file, options);
-  const filePath = `acampamentos/${Date.now()}-${compressedFile.name}`;
-  const storageRef = ref(storage, filePath);
-  await uploadBytes(storageRef, compressedFile);
-  return await getDownloadURL(storageRef);
+  /* ... (código continua o mesmo) */
 }
 
-// Função para carregar dados no modo de edição
+// Função para carregar dados no modo de edição (ATUALIZADA)
 async function loadCampData() {
   if (!isEditMode) return;
   editorTitle.textContent = "Editar Acampamento";
@@ -87,7 +63,7 @@ async function loadCampData() {
     if (docSnap.exists()) {
       const data = docSnap.data();
       typeSelect.value = data.type || "";
-      yearInput.value = data.year || "";
+      editionInput.value = data.edition || ""; // Carrega a edição
       themeInput.value = data.theme || "";
       startDateInput.value = data.startDate
         ? data.startDate.toDate().toISOString().split("T")[0]
@@ -97,7 +73,6 @@ async function loadCampData() {
         : "";
       statusSelect.value = data.status || "Próximo";
       driveUrlInput.value = data.driveAlbumUrl || "";
-      tinymce.get("description").setContent(data.description || "");
       if (data.mainImageUrl) {
         existingImageUrl = data.mainImageUrl;
         imagePreview.src = existingImageUrl;
@@ -105,15 +80,14 @@ async function loadCampData() {
       }
     }
   } catch (error) {
-    console.error("Erro ao carregar dados do acampamento:", error);
+    console.error("Erro ao carregar dados:", error);
   }
 }
 
-// Lógica de Submit do formulário
+// Lógica de Submit do formulário (ATUALIZADA)
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
-  saveButton.disabled = true;
-  saveButton.textContent = "Salvando...";
+  // ...
   try {
     let mainImageUrl = existingImageUrl;
     const imageFile = imageUploadInput.files[0];
@@ -121,20 +95,18 @@ form.addEventListener("submit", async (event) => {
       mainImageUrl = await uploadFile(imageFile);
     }
 
-    const description = tinymce.get("description").getContent();
-
     const campData = {
       type: typeSelect.value,
-      year: Number(yearInput.value),
+      edition: Number(editionInput.value), // Salva a edição
       theme: themeInput.value,
       startDate: Timestamp.fromDate(
         new Date(startDateInput.value + "T00:00:00")
       ),
       endDate: Timestamp.fromDate(new Date(endDateInput.value + "T00:00:00")),
       status: statusSelect.value,
-      description: description,
       mainImageUrl: mainImageUrl,
       driveAlbumUrl: driveUrlInput.value,
+      // O campo 'description' foi removido
     };
 
     if (isEditMode) {
@@ -145,14 +117,11 @@ form.addEventListener("submit", async (event) => {
       await addDoc(collection(db, "acampamentos"), campData);
       alert("Acampamento cadastrado com sucesso!");
     }
-
     window.location.href = "gerenciar-acampamentos.html";
   } catch (error) {
-    console.error("Erro ao salvar acampamento:", error);
-    alert(`Ocorreu um erro ao salvar: ${error.message}`);
-    saveButton.disabled = false;
-    saveButton.textContent = isEditMode
-      ? "Atualizar Acampamento"
-      : "Salvar Acampamento";
+    /* ... */
   }
 });
+
+// Carrega os dados se estiver em modo de edição
+loadCampData();

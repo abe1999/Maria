@@ -1,4 +1,4 @@
-/* Local: /src/styles/pages/acampamento-galeria.css - VERSÃO REFINADA */
+/* Local: /src/styles/pages/acampamento-galeria.css - VERSÃO FINAL */
 
 .year-title {
   font-family: var(--font-secondary);
@@ -12,7 +12,8 @@
 
 .album-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  /* MUDANÇA PRINCIPAL: Agora temos 3 colunas de tamanho igual no desktop */
+  grid-template-columns: repeat(3, 1fr);
   gap: 30px;
 }
 
@@ -44,14 +45,14 @@
   padding: 20px;
   flex-grow: 1;
   display: flex;
-  flex-direction: column; /* Organiza o conteúdo em coluna */
+  flex-direction: column;
 }
 
 .album-card__title {
   font-family: var(--font-secondary);
   font-size: 1.4rem;
   color: var(--color-headings);
-  margin: 0 0 5px 0;
+  margin: 0 0 8px 0;
 }
 
 .album-card__theme {
@@ -59,17 +60,31 @@
   color: var(--color-text);
   font-style: italic;
   margin-bottom: 15px;
-  flex-grow: 1; /* Empurra a data para baixo */
+  flex-grow: 1;
 }
 
 .album-card__date {
   font-size: 0.9rem;
   font-weight: bold;
-  color: var(--color-primary); /* Usa a cor primária para destacar a data */
+  color: var(--color-primary);
 }
 
+/* =============================================
+   ## AJUSTES RESPONSIVOS PARA O NOVO GRID ##
+   ============================================= */
+
+/* Para tablets (telas até 992px de largura) */
+@media (max-width: 992px) {
+  .album-grid {
+    /* Em tablets, mostramos 2 colunas */
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Para celulares (telas até 500px de largura) */
 @media (max-width: 500px) {
   .album-grid {
+    /* Em celulares, mostramos 1 coluna */
     grid-template-columns: 1fr;
   }
 }

@@ -1,4 +1,4 @@
-// Local: /src/js/acampamento.js
+// Local: /src/js/acampamento.js - VERSÃO FINAL E LIMPA
 
 // --- 1. IMPORTAÇÕES ---
 import "/src/styles/base/reset.css";
@@ -7,7 +7,7 @@ import "/src/styles/base/typography.css";
 import "/src/styles/components/header.css";
 import "/src/styles/components/footer.css";
 import "/src/styles/components/page-header.css";
-import "/src/styles/pages/acampamento.css"; // O CSS que acabamos de criar
+import "/src/styles/pages/acampamento.css";
 
 import { renderHeader } from "/src/components/Header.js";
 import { renderFooter } from "/src/components/Footer.js";
@@ -34,8 +34,6 @@ const agendaContainer = document.getElementById("agenda-acampamentos-grid");
 async function loadAgenda() {
   if (!agendaContainer) return;
   try {
-    // Busca os acampamentos com status 'Próximo' ou 'Inscrições Abertas',
-    // ordena pela data de início e limita a 3 resultados.
     const q = query(
       collection(db, "acampamentos"),
       where("status", "in", ["Próximo", "Inscrições Abertas"]),
@@ -65,12 +63,14 @@ async function loadAgenda() {
             year: "numeric",
           });
 
+        const campTitle = `${camp.edition}º Acampamento de ${camp.type}`;
+
         return `
                 <div class="camp-card">
-                    <img src="${imageUrl}" alt="Cartaz do ${camp.type} ${camp.year}" class="camp-card-image">
+                    <img src="${imageUrl}" alt="Cartaz do ${campTitle}" class="camp-card-image">
                     <div class="camp-card-content">
                         <span class="camp-card-status">${camp.status}</span>
-                        <h3 class="camp-card-title">Acampamento ${camp.type} ${camp.year}</h3>
+                        <h3 class="camp-card-title">${campTitle}</h3>
                         <p class="camp-card-date">${startDate} a ${endDate}</p>
                     </div>
                 </div>
@@ -84,4 +84,5 @@ async function loadAgenda() {
   }
 }
 
+// Inicia o carregamento da agenda
 loadAgenda();

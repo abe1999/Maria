@@ -24,14 +24,14 @@ import imageCompression from "browser-image-compression";
 const db = getFirestore(app);
 const storage = getStorage(app);
 
-// --- 2. MONTAGEM DA PÁGINA ---
 renderAdminHeader();
+// A inicialização do TinyMCE foi REMOVIDA
 
 // --- 3. ELEMENTOS DO DOM ---
 const editorTitle = document.getElementById("editor-title");
 const form = document.getElementById("acampamento-form");
 const typeSelect = document.getElementById("type");
-const editionInput = document.getElementById("edition"); // Novo
+const editionInput = document.getElementById("edition");
 const themeInput = document.getElementById("theme");
 const startDateInput = document.getElementById("startDate");
 const endDateInput = document.getElementById("endDate");
@@ -47,12 +47,20 @@ const campId = params.get("id");
 const isEditMode = Boolean(campId);
 let existingImageUrl = "";
 
-// Função de upload de imagem (reutilizada)
 async function uploadFile(file) {
-  /* ... (código continua o mesmo) */
+  if (!file) return null;
+  const options = {
+    maxSizeMB: 0.5,
+    maxWidthOrHeight: 1200,
+    useWebWorker: true,
+  };
+  const compressedFile = await imageCompression(file, options);
+  const filePath = `acampamentos/${Date.now()}-${compressedFile.name}`;
+  const storageRef = ref(storage, filePath);
+  await uploadBytes(storageRef, compressedFile);
+  return await getDownloadURL(storageRef);
 }
 
-// Função para carregar dados no modo de edição (ATUALIZADA)
 async function loadCampData() {
   if (!isEditMode) return;
   editorTitle.textContent = "Editar Acampamento";
@@ -63,7 +71,7 @@ async function loadCampData() {
     if (docSnap.exists()) {
       const data = docSnap.data();
       typeSelect.value = data.type || "";
-      editionInput.value = data.edition || ""; // Carrega a edição
+      editionInput.value = data.edition || "";
       themeInput.value = data.theme || "";
       startDateInput.value = data.startDate
         ? data.startDate.toDate().toISOString().split("T")[0]
@@ -84,44 +92,54 @@ async function loadCampData() {
   }
 }
 
-// Lógica de Submit do formulário (ATUALIZADA)
-form.addEventListener("submit", async (event) => {
-  event.preventDefault();
-  // ...
-  try {
-    let mainImageUrl = existingImageUrl;
-    const imageFile = imageUploadInput.files[0];
-    if (imageFile) {
-      mainImageUrl = await uploadFile(imageFile);
-    }
+if (form) {
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    saveButton.disabled = true;
+    saveButton.textContent = "Salvando...";
+    try {
+      let mainImageUrl = existingImageUrl;
+      const imageFile = imageUploadInput.files[0];
+      if (imageFile) {
+        mainImageUrl = await uploadFile(imageFile);
+      }
 
-    const campData = {
-      type: typeSelect.value,
-      edition: Number(editionInput.value), // Salva a edição
-      theme: themeInput.value,
-      startDate: Timestamp.fromDate(
-        new Date(startDateInput.value + "T00:00:00")
-      ),
-      endDate: Timestamp.fromDate(new Date(endDateInput.value + "T00:00:00")),
-      status: statusSelect.value,
-      mainImageUrl: mainImageUrl,
-      driveAlbumUrl: driveUrlInput.value,
-      // O campo 'description' foi removido
-    };
+      const campData = {
+        type: typeSelect.value,
+        edition: Number(editionInput.value),
+        theme: themeInput.value,
+        startDate: Timestamp.fromDate(
+          new Date(startDateInput.value + "T00:00:00")
+        ),
+        endDate: Timestamp.fromDate(new Date(endDateInput.value + "T00:00:00")),
+        status: statusSelect.value,
+        mainImageUrl: mainImageUrl,
+        driveAlbumUrl: driveUrlInput.value,
+      };
 
-    if (isEditMode) {
-      const docRef = doc(db, "acampamentos", campId);
-      await updateDoc(docRef, campData);
-      alert("Acampamento atualizado com sucesso!");
-    } else {
-      await addDoc(collection(db, "acampamentos"), campData);
-      alert("Acampamento cadastrado com sucesso!");
+      if (isEditMode) {
+        const docRef = doc(db, "acampamentos", campId);
+        await updateDoc(docRef, campData);
+        alert("Acampamento atualizado com sucesso!");
+      } else {
+        await addDoc(collection(db, "acampamentos"), campData);
+        alert("Acampamento cadastrado com sucesso!");
+      }
+      window.location.href = "gerenciar-acampamentos.html";
+    } catch (error) {
+      console.error("Erro ao salvar acampamento:", error);
+      alert(`Ocorreu um erro ao salvar: ${error.message}`);
+      saveButton.disabled = false;
+      saveButton.textContent = isEditMode
+        ? "Atualizar Acampamento"
+        : "Salvar Acampamento";
     }
-    window.location.href = "gerenciar-acampamentos.html";
-  } catch (error) {
-    /* ... */
-  }
-});
+  });
+} else {
+  console.error(
+    "ERRO CRÍTICO: Formulário #acampamento-form não encontrado no HTML."
+  );
+}
 
 // Carrega os dados se estiver em modo de edição
 loadCampData();

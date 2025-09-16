@@ -12,10 +12,33 @@
       { "dia": "Todo dia 06 do mês", "descricao": "Missa Devocional às 19h" }
     ],
     "endereco": "Rua da Flauta, 1889 - Castanheira (Esquina com Rua Harpa), Porto Velho (RO)",
-    "googleMapsUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3942.875773261815!2d-63.874329624983815!3d-8.797740091254651!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x92325c70ec861c97%3A0xa2bceca7aea2f870!2sR.%20Pau%20Ferro%2C%201889%20-%20Castanheira%2C%20Porto%20Velho%20-%20RO%2C%2076811-462!5e0!3m2!1spt-BR!2sbr!4v1755607241273!5m2!1spt-BR!2sbr",
+    "googleMapsUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3943.011880556942!2d-63.85695002498762!3d-8.78363789127533!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x923247d519b8849b%3A0x6b7744383c814170!2sComunidade%20S%C3%A3o%20Marcelino%20Champagnat!5e0!3m2!1spt-BR!2sbr!4v1726510006329!5m2!1spt-BR!2sbr",
     "redesSociais": {
       "instagram": "https://www.instagram.com/saomchampagnatpvh/",
-      "facebook": "https://www.facebook.com/smarcelinochampagnat?mibextid=wwXIfr&rdid=9eMCTOZAS0qDWynK&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F17FfMegDed%2F%3Fmibextid%3DwwXIfr#"
+      "facebook": "https://www.facebook.com/smarcelinochampagnat"
+    }
+  },
+  {
+    "id": "matriz-nazare",
+    "nome": "Paróquia Nossa Senhora de Nazaré (Igreja Matriz)",
+    "imagemCard": "/img/comunidades/matriz-nazare-card.jpg",
+    "imagemBanner": "/img/comunidades/matriz-nazare-banner.jpg",
+    "bairro": "Jardim Eldorado",
+    "resumo": "A Igreja Matriz da paróquia, coração de nossa comunidade no bairro Jardim Eldorado. Ponto de encontro para as principais celebrações, missas e eventos paroquiais.",
+    "historia": "<p>A Paróquia Nossa Senhora de Nazaré foi criada em 31 de julho de 1991 pelo Arcebispo de Porto Velho Dom José Martins, nas dependências da Escola Maria de Nazaré, tendo à frente o Irmão Marista Pedrinho Tambosi. Contudo, durante 20 anos (10 anos nas dependências da escola) foi atendida como uma capela pelos padres Combonianos, que residiam na Paróquia Nossa Senhora das Graças.</p><p>Somente em 21 de fevereiro de 2010 foi instalada a Paróquia Nossa Senhora de Nazaré, quando o Dom Moacyr Grechi encontrou os padres Dehonianos para atender a mesma. O primeiro Pároco foi o Pe. Leonardo Hellmann (2010-2013). Veio em seguida o Pe. Alceu Luiz Weber (2014…). Foram Vigários paroquiais: Pe. Renato Rohr (2010-2012); P. Francisco José Alves (2014-2015); Pe. Odilo Antônio Leviski (2016…).</p><p>A Paróquia conta com a presença em seu território do Seminário São João XXIII, os Irmãos Maristas, Irmãs Calvarianas e Irmãs da Filhas da Santa Cruz.</p><p>A Paróquia é constituída por 8 comunidades: matriz Nossa Senhora de Nazaré, Sagrada Família, Nossa Senhora Auxiliadora, Nossa Senhora Aparecida, Santa Clara, Menino Jesus de Praga, São Marcelino Champagnat e Nossa Senhora da Conceição.</p>",
+    "horarios": [
+      { "dia": "Terça a Sábado", "descricao": "Santa Missa às 19h30" },
+      { "dia": "Domingo", "descricao": "Santas Missas às 07h, 10h e 19h30" },
+      {
+        "dia": "Toda Quinta-feira",
+        "descricao": "Adoração ao Santíssimo a partir das 18h30"
+      }
+    ],
+    "endereco": "Rua Pau Ferro, 650 - Jardim Eldorado, Porto Velho (RO)",
+    "googleMapsUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3943.2081515516086!2d-63.88219792498788!3d-8.76566089129759!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x92324716757a030f%3A0x6a0a75f1b80c2f82!2sPar%C3%B3quia%20Nossa%20Senhora%20de%20Nazar%C3%A9!5e0!3m2!1spt-BR!2sbr!4v1726510065416!5m2!1spt-BR!2sbr",
+    "redesSociais": {
+      "instagram": "https://www.instagram.com/paroqnsnazarepvh/",
+      "facebook": "https://www.facebook.com/ParoqNSNazarePVH"
     }
   }
 ]

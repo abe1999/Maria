@@ -12,11 +12,10 @@
   text-align: center;
 }
 
-/* Grid da Agenda */
 .agenda-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(3, 1fr); /* 3 colunas no desktop */
+  gap: 30px;
 }
 
 .camp-card {
@@ -30,7 +29,7 @@
 
 .camp-card-image {
   width: 100%;
-  height: 180px;
+  aspect-ratio: 1 / 1;
   object-fit: cover;
 }
 
@@ -101,4 +100,17 @@
   font-size: 1rem;
   color: var(--color-text-light);
   line-height: 1.5;
+}
+
+/* ## REGRAS RESPONSIVAS PARA O NOVO GRID ## */
+@media (max-width: 992px) {
+  .agenda-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 colunas em tablets */
+  }
+}
+
+@media (max-width: 500px) {
+  .agenda-grid {
+    grid-template-columns: 1fr; /* 1 coluna em celulares */
+  }
 }

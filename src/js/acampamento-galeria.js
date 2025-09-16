@@ -33,10 +33,7 @@ renderFooter();
 const galleryContainer = document.getElementById("album-gallery-container");
 
 async function loadAlbumGallery() {
-  if (!galleryContainer) {
-    console.error("Elemento #album-gallery-container não encontrado no HTML.");
-    return;
-  }
+  if (!galleryContainer) return;
   try {
     const q = query(
       collection(db, "acampamentos"),
@@ -57,7 +54,7 @@ async function loadAlbumGallery() {
     }));
 
     const campsByYear = allCamps.reduce((acc, camp) => {
-      const year = camp.year;
+      const year = camp.startDate.toDate().getFullYear();
       if (!acc[year]) acc[year] = [];
       acc[year].push(camp);
       return acc;
@@ -74,20 +71,41 @@ async function loadAlbumGallery() {
       campsByYear[year].forEach((camp) => {
         const imageUrl = camp.mainImageUrl || "/img/placeholder-evento.jpg";
         const albumUrl = camp.driveAlbumUrl || "#";
-        const campName = `Acampamento ${camp.type} ${camp.year}`;
-        const campDate = camp.startDate
-          ? camp.startDate
-              .toDate()
-              .toLocaleDateString("pt-BR", { month: "long", year: "numeric" })
-          : "";
+        const campTitle = `${camp.edition}º Acampamento ${camp.type}`;
+
+        // ==============================================================
+        // ## LÓGICA DA DATA CORRIGIDA AQUI ##
+        // ==============================================================
+        let campDateRange = "";
+        // Verifica se as datas existem antes de formatar
+        if (camp.startDate && camp.endDate) {
+          // Define o novo formato numérico
+          const options = {
+            day: "2-digit",
+            month: "2-digit",
+            year: "numeric",
+            timeZone: "UTC",
+          };
+
+          const startDateFormatted = camp.startDate
+            .toDate()
+            .toLocaleDateString("pt-BR", options);
+          const endDateFormatted = camp.endDate
+            .toDate()
+            .toLocaleDateString("pt-BR", options);
+
+          // Une as duas datas
+          campDateRange = `${startDateFormatted} a ${endDateFormatted}`;
+        }
+        // ==============================================================
 
         yearHtml += `
                     <a href="${albumUrl}" class="album-card" target="_blank" rel="noopener noreferrer">
-                        <img src="${imageUrl}" alt="Cartaz do ${campName}" class="album-card__image">
+                        <img src="${imageUrl}" alt="Cartaz do ${campTitle}" class="album-card__image">
                         <div class="album-card__content">
-                            <h3 class="album-card__title">${campName}</h3>
+                            <h3 class="album-card__title">${campTitle}</h3>
                             <p class="album-card__theme">${camp.theme || ""}</p>
-                            <p class="album-card__date">${campDate}</p>
+                            <p class="album-card__date">${campDateRange}</p>
                         </div>
                     </a>
                 `;

@@ -1,8 +1,10 @@
-// Local do arquivo: src/components/Header.js
+// Local do arquivo: src/components/Header.js - VERSÃO FINAL E ORGANIZADA
 
-// Importe a imagem do logo diretamente para que o Vite gerencie o caminho.
-import logoImage from "../../public/img/logo/Nazare-logo.png";
+import logoImage from "/img/logo/Nazare-logo.png";
 
+// =========================================================
+// ## FUNÇÕES DE LÓGICA (DEFINIDAS FORA) ##
+// =========================================================
 const initializeHeaderScrollEffect = () => {
   const header = document.querySelector("#main-header");
   if (!header) return;
@@ -20,27 +22,34 @@ const initializeMobileMenu = () => {
   const hamburgerButton = document.getElementById("hamburger-menu-button");
   const closeButton = document.getElementById("close-menu-button");
   const mainNav = document.getElementById("main-nav");
-  if (!body || !hamburgerButton || !closeButton || !mainNav) {
-    return;
+
+  if (hamburgerButton && closeButton) {
+    hamburgerButton.addEventListener("click", () =>
+      body.classList.add("menu-open")
+    );
+    closeButton.addEventListener("click", () =>
+      body.classList.remove("menu-open")
+    );
   }
-  hamburgerButton.addEventListener("click", () => {
-    body.classList.add("menu-open");
-  });
-  closeButton.addEventListener("click", () => {
-    body.classList.remove("menu-open");
-  });
-  const dropdowns = mainNav.querySelectorAll(".dropdown");
-  dropdowns.forEach((dropdown) => {
-    const dropBtn = dropdown.querySelector(".drop-btn");
-    dropBtn.addEventListener("click", (event) => {
+
+  const dropdownTriggers = mainNav.querySelectorAll(
+    ".main-nav .dropdown > .drop-btn"
+  );
+  dropdownTriggers.forEach((trigger) => {
+    trigger.addEventListener("click", (event) => {
+      // Esta lógica de clique SÓ funciona em telas de celular
       if (window.innerWidth <= 992) {
         event.preventDefault();
-        dropdown.classList.toggle("active");
+        const parentDropdown = trigger.parentElement;
+        parentDropdown.classList.toggle("active");
       }
     });
   });
 };
 
+// =========================================================
+// ## FUNÇÃO PRINCIPAL QUE MONTA TUDO ##
+// =========================================================
 export function renderHeader() {
   const headerPlaceholder = document.getElementById("header-container");
   if (!headerPlaceholder) return;
@@ -67,14 +76,12 @@ export function renderHeader() {
                 Eventos <i class="fa-solid fa-caret-down"></i>
               </a>
               <div class="dropdown-content">
-                <a href="${BASE}src/pages/proximos-eventos.html">Próximos Eventos</a>
-                <a href="${BASE}src/pages/eventos.html">Eventos Anteriores</a>
+                <a href="${BASE}src/pages/proximos-eventos.html"><span>Próximos Eventos</span></a>
+                <a href="${BASE}src/pages/eventos.html"><span>Eventos Anteriores</span></a>
               </div>
             </li>
             <li><a href="${BASE}src/pages/acampamento.html">Acampamento</a></li>
-
             <li><a href="${BASE}src/pages/voce-sabia.html">Você Sabia?</a></li>
-
           </ul>
         </nav>
         <div class="header-right">
@@ -87,8 +94,10 @@ export function renderHeader() {
     </header>
   `;
 
+  // 1. Insere o HTML na página
   headerPlaceholder.innerHTML = headerHTML;
 
+  // 2. DEPOIS de o HTML existir, chama as funções para adicionar a interatividade
   initializeHeaderScrollEffect();
   initializeMobileMenu();
 }

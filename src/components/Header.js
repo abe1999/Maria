@@ -1,19 +1,19 @@
-// Local do arquivo: src/components/Header.js - VERSÃO FINAL E ORGANIZADA
+// Local: /src/components/Header.js - VERSÃO FINAL SEM constants.js
 
+// ## CORREÇÃO: Importamos a imagem diretamente aqui ##
 import logoImage from "/img/logo/Nazare-logo.png";
 
-// =========================================================
-// ## FUNÇÕES DE LÓGICA (DEFINIDAS FORA) ##
-// =========================================================
+import "/src/styles/base/reset.css";
+import "/src/styles/base/variables.css";
+import "/src/styles/base/typography.css";
+import "/src/styles/components/header.css";
+import "/src/styles/components/buttons.css";
+
 const initializeHeaderScrollEffect = () => {
   const header = document.querySelector("#main-header");
   if (!header) return;
   window.addEventListener("scroll", () => {
-    if (window.scrollY > 50) {
-      header.classList.add("scrolled");
-    } else {
-      header.classList.remove("scrolled");
-    }
+    header.classList.toggle("scrolled", window.scrollY > 50);
   });
 };
 
@@ -32,28 +32,26 @@ const initializeMobileMenu = () => {
     );
   }
 
-  const dropdownTriggers = mainNav.querySelectorAll(
-    ".main-nav .dropdown > .drop-btn"
-  );
-  dropdownTriggers.forEach((trigger) => {
-    trigger.addEventListener("click", (event) => {
-      // Esta lógica de clique SÓ funciona em telas de celular
-      if (window.innerWidth <= 992) {
-        event.preventDefault();
-        const parentDropdown = trigger.parentElement;
-        parentDropdown.classList.toggle("active");
-      }
+  if (mainNav) {
+    const dropdownTriggers = mainNav.querySelectorAll(".dropdown > .drop-btn");
+    dropdownTriggers.forEach((trigger) => {
+      trigger.addEventListener("click", (event) => {
+        if (window.innerWidth <= 992) {
+          event.preventDefault();
+          trigger.parentElement.classList.toggle("active");
+        }
+      });
     });
-  });
+  }
 };
 
-// =========================================================
-// ## FUNÇÃO PRINCIPAL QUE MONTA TUDO ##
-// =========================================================
+// --- Função Principal que Monta Tudo ---
+
 export function renderHeader() {
   const headerPlaceholder = document.getElementById("header-container");
   if (!headerPlaceholder) return;
 
+  // ## CORREÇÃO: Definimos a constante BASE aqui dentro ##
   const BASE = import.meta.env.BASE_URL;
 
   const headerHTML = `
@@ -76,8 +74,8 @@ export function renderHeader() {
                 Eventos <i class="fa-solid fa-caret-down"></i>
               </a>
               <div class="dropdown-content">
-                <a href="${BASE}src/pages/proximos-eventos.html"><span>Próximos Eventos</span></a>
-                <a href="${BASE}src/pages/eventos.html"><span>Eventos Anteriores</span></a>
+                <a href="${BASE}src/pages/proximos-eventos.html">Próximos Eventos</a>
+                <a href="${BASE}src/pages/eventos.html">Eventos Anteriores</a>
               </div>
             </li>
             <li><a href="${BASE}src/pages/acampamento.html">Acampamento</a></li>
@@ -94,10 +92,9 @@ export function renderHeader() {
     </header>
   `;
 
-  // 1. Insere o HTML na página
   headerPlaceholder.innerHTML = headerHTML;
 
-  // 2. DEPOIS de o HTML existir, chama as funções para adicionar a interatividade
+  // Chama as funções para "dar vida" ao header
   initializeHeaderScrollEffect();
   initializeMobileMenu();
 }

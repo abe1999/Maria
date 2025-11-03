@@ -109,6 +109,70 @@
             </div>
           </div>
 
+          <div class="input-group">
+            <label for="driveAlbumUrl"
+              >Link do Álbum de Fotos (Google Drive)</label
+            >
+            <input
+              type="url"
+              id="driveAlbumUrl"
+              placeholder="Cole o link compartilhável aqui"
+            />
+          </div>
+
+          <div class="input-group">
+            <h4>Opções de Inscrição (Contador Anônimo)</h4>
+            <p
+              style="
+                font-size: 0.9rem;
+                color: #555;
+                margin-top: -20px;
+                margin-bottom: 20px;
+              "
+            >
+              Use para eventos de "confirmação de presença" anônima. O ID do
+              Contador deve ser único (ex: 'retiro_nov_2025_dia1').
+            </p>
+
+            <div class="input-row">
+              <div class="input-group">
+                <label for="rsvp_option_1_text">Texto da Opção 1</label>
+                <input
+                  type="text"
+                  id="rsvp_option_1_text"
+                  placeholder="Ex: Dia 30/11 - Sábado"
+                />
+              </div>
+              <div class="input-group">
+                <label for="rsvp_option_1_id">ID do Contador 1</label>
+                <input
+                  type="text"
+                  id="rsvp_option_1_id"
+                  placeholder="Ex: retiro_nov_dia30"
+                />
+              </div>
+            </div>
+
+            <div class="input-row">
+              <div class="input-group">
+                <label for="rsvp_option_2_text">Texto da Opção 2</label>
+                <input
+                  type="text"
+                  id="rsvp_option_2_text"
+                  placeholder="Ex: Dia 01/12 - Domingo"
+                />
+              </div>
+              <div class="input-group">
+                <label for="rsvp_option_2_id">ID do Contador 2</label>
+                <input
+                  type="text"
+                  id="rsvp_option_2_id"
+                  placeholder="Ex: retiro_nov_dia01"
+                />
+              </div>
+            </div>
+          </div>
+
           <div class="form-actions">
             <button type="submit" id="save-button" class="btn btn-primary">
               Salvar Evento

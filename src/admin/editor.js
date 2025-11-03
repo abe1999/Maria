@@ -61,12 +61,17 @@ const galleryImageInputs = [
   document.getElementById("galleryImage3"),
 ];
 
+const rsvpOption1TextInput = document.getElementById("rsvp_option_1_text");
+const rsvpOption1IdInput = document.getElementById("rsvp_option_1_id");
+const rsvpOption2TextInput = document.getElementById("rsvp_option_2_text");
+const rsvpOption2IdInput = document.getElementById("rsvp_option_2_id");
+
 // --- 4. LÓGICA PRINCIPAL ---
 const params = new URLSearchParams(window.location.search);
 const eventId = params.get("id");
 const isEditMode = Boolean(eventId);
 let existingImageUrl = "";
-let existingGalleryUrls = [];
+let existingGalleryUrls = []; // Variável para guardar as URLs da galeria existente
 
 // FUNÇÃO DE UPLOAD COMPLETA COM DEPURAÇÃO
 async function uploadFile(file, isMainImage = false) {
@@ -135,7 +140,7 @@ async function loadEventData() {
     const docSnap = await getDoc(docRef);
 
     if (docSnap.exists()) {
-      const data = docSnap.data();
+      const data = docSnap.data(); // 'data' é definida AQUI
       titleInput.value = data.title || "";
       dateInput.value = data.date
         ? data.date.toDate().toISOString().split("T")[0]
@@ -143,7 +148,6 @@ async function loadEventData() {
       excerptInput.value = data.excerpt || "";
       categoryInput.value = data.category || "noticia";
       linkInput.value = data.link || "";
-
       tinymce.get("fullText").setContent(data.fullText || "");
 
       if (data.imageUrl) {
@@ -153,25 +157,29 @@ async function loadEventData() {
         currentImagePath.textContent = `Imagem atual carregada.`;
       }
 
-      // ===============================================================
-      // ## NOVO BLOCO: Exibe o status da galeria existente ##
-      // ===============================================================
       if (data.galleryUrls && data.galleryUrls.length > 0) {
         existingGalleryUrls = data.galleryUrls;
-
-        // Remove mensagens antigas para não duplicar
         const oldInfo = document.querySelector(".gallery-status-info");
         if (oldInfo) oldInfo.remove();
-
         const galleryInfoDiv = document.createElement("div");
-        galleryInfoDiv.className = "gallery-status-info"; // Para podermos estilizar
-        galleryInfoDiv.innerHTML = `
-          <p><strong>Galeria Atual:</strong> ${existingGalleryUrls.length} imagem(ns) carregada(s).</p>
-          <small>Para alterar a galeria, basta selecionar novas imagens nos campos abaixo. As novas substituirão as antigas.</small>
-        `;
-
-        // Adiciona a mensagem abaixo do último campo de upload da galeria
+        galleryInfoDiv.className = "gallery-status-info";
+        galleryInfoDiv.innerHTML = `... (status da galeria) ...`;
         galleryImageInputs[2].parentElement.appendChild(galleryInfoDiv);
+      }
+
+      // ===============================================================
+      // ## ESTE É O LUGAR CORRETO PARA O CÓDIGO DE CARREGAR O RSVP ##
+      // Dentro de if(docSnap.exists())
+      // ===============================================================
+      if (data.rsvpOptions) {
+        if (data.rsvpOptions[0]) {
+          rsvpOption1TextInput.value = data.rsvpOptions[0].text || "";
+          rsvpOption1IdInput.value = data.rsvpOptions[0].id || "";
+        }
+        if (data.rsvpOptions[1]) {
+          rsvpOption2TextInput.value = data.rsvpOptions[1].text || "";
+          rsvpOption2IdInput.value = data.rsvpOptions[1].id || "";
+        }
       }
       // ===============================================================
     } else {
@@ -184,7 +192,7 @@ async function loadEventData() {
   }
 }
 
-// LÓGICA DE SUBMIT COMPLETA
+// LÓGICA DE SUBMIT COMPLETA (JÁ INCLUI A GALERIA)
 eventForm.addEventListener("submit", async (event) => {
   event.preventDefault();
   saveButton.disabled = true;
@@ -195,7 +203,7 @@ eventForm.addEventListener("submit", async (event) => {
     let mainImageUrl = existingImageUrl;
     const newMainImageFile = imageUploadInput.files[0];
     if (newMainImageFile) {
-      mainImageUrl = await uploadFile(newMainImageFile, true); // Passa 'true' para indicar que é a imagem principal
+      mainImageUrl = await uploadFile(newMainImageFile, true);
     }
     console.log("✔️ PASSO 5: Upload da imagem principal concluído.");
 
@@ -204,17 +212,32 @@ eventForm.addEventListener("submit", async (event) => {
       .filter(Boolean);
     let galleryUrls = existingGalleryUrls;
     if (galleryFiles.length > 0) {
-      console.log(
-        `✔️ PASSO 6: Iniciando upload de ${galleryFiles.length} imagem(ns) da galeria...`
-      );
+      console.log(`✔️ PASSO 6: Iniciando upload...`);
       const uploadPromises = galleryFiles.map((file) =>
         uploadFile(file, false)
-      ); // 'false' para não mostrar progresso
+      );
       galleryUrls = await Promise.all(uploadPromises);
     }
     console.log("✅ PASSO 6.1: Upload da galeria concluído.");
 
     const fullTextContent = tinymce.get("fullText").getContent();
+
+    // ===============================================================
+    // ## ESTE É O LUGAR CORRETO PARA O CÓDIGO DE SALVAR O RSVP ##
+    // ===============================================================
+    const rsvpOptions = [];
+    if (rsvpOption1TextInput.value && rsvpOption1IdInput.value) {
+      rsvpOptions.push({
+        text: rsvpOption1TextInput.value,
+        id: rsvpOption1IdInput.value,
+      });
+    }
+    if (rsvpOption2TextInput.value && rsvpOption2IdInput.value) {
+      rsvpOptions.push({
+        text: rsvpOption2TextInput.value,
+        id: rsvpOption2IdInput.value,
+      });
+    }
 
     const eventData = {
       title: titleInput.value,
@@ -223,14 +246,13 @@ eventForm.addEventListener("submit", async (event) => {
       fullText: fullTextContent,
       category: categoryInput.value,
       link: linkInput.value,
-      imageUrl: mainImageUrl, // PADRONIZADO
+      imageUrl: mainImageUrl,
       galleryUrls: galleryUrls,
+      rsvpOptions: rsvpOptions, // A nova propriedade
     };
+    // ===============================================================
 
-    console.log(
-      "📦 PASSO 7: Pacote de dados pronto para ser salvo:",
-      eventData
-    );
+    console.log("📦 PASSO 7: Pacote de dados pronto:", eventData);
 
     if (isEditMode) {
       const docRef = doc(db, "eventos", eventId);
@@ -241,7 +263,7 @@ eventForm.addEventListener("submit", async (event) => {
       alert("Evento cadastrado com sucesso!");
     }
 
-    console.log("✅ PASSO 8: Dados salvos no Firestore com sucesso!");
+    console.log("✅ PASSO 8: Dados salvos no Firestore!");
     window.location.href = "dashboard.html";
   } catch (error) {
     console.error("❌ ERRO GERAL NO PROCESSO DE SALVAMENTO!", error);

@@ -86,6 +86,68 @@ main.evento-detalhe-page {
   font-weight: bold;
 }
 
+#rsvp-container {
+  margin-top: 50px;
+  padding-top: 30px;
+  border-top: 1px solid var(--color-border);
+}
+
+#rsvp-container h2 {
+  font-family: var(--font-secondary);
+  font-size: 2rem;
+  color: var(--color-headings);
+  margin-bottom: 25px;
+}
+
+.rsvp-option {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  gap: 15px;
+}
+
+.rsvp-text {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--color-headings);
+}
+
+.rsvp-controls {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.rsvp-controls label {
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.rsvp-quantity {
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 70px; /* Largura fixa para o seletor de quantidade */
+}
+
+/* Estilo do botão de confirmação */
+.btn-rsvp {
+  /* Herda o estilo .btn */
+}
+
+/* Estilo do botão quando já foi confirmado */
+.btn-rsvp.confirmed {
+  background-color: #28a745; /* Verde de sucesso */
+  color: white;
+  border-color: #28a745;
+  cursor: not-allowed;
+}
+
 /* =========================================================
    ## AJUSTES RESPONSIVOS PARA A GALERIA ##
 ========================================================= */

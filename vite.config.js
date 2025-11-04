@@ -71,6 +71,10 @@ export default defineConfig({
           __dirname,
           "src/admin/acampamento/gerenciar-acampamentos.html"
         ),
+        relatorioInscricoes: resolve(
+          __dirname,
+          "src/admin/relatorio-inscricoes.html"
+        ),
       },
     },
   },

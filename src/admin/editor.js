@@ -65,6 +65,8 @@ const rsvpOption1TextInput = document.getElementById("rsvp_option_1_text");
 const rsvpOption1IdInput = document.getElementById("rsvp_option_1_id");
 const rsvpOption2TextInput = document.getElementById("rsvp_option_2_text");
 const rsvpOption2IdInput = document.getElementById("rsvp_option_2_id");
+const rsvpOption3TextInput = document.getElementById("rsvp_option_3_text");
+const rsvpOption3IdInput = document.getElementById("rsvp_option_3_id");
 
 // --- 4. LÓGICA PRINCIPAL ---
 const params = new URLSearchParams(window.location.search);
@@ -180,6 +182,10 @@ async function loadEventData() {
           rsvpOption2TextInput.value = data.rsvpOptions[1].text || "";
           rsvpOption2IdInput.value = data.rsvpOptions[1].id || "";
         }
+        if (data.rsvpOptions[2]) {
+          rsvpOption3TextInput.value = data.rsvpOptions[2].text || "";
+          rsvpOption3IdInput.value = data.rsvpOptions[2].id || "";
+        }
       }
       // ===============================================================
     } else {
@@ -223,7 +229,8 @@ eventForm.addEventListener("submit", async (event) => {
     const fullTextContent = tinymce.get("fullText").getContent();
 
     // ===============================================================
-    // ## ESTE É O LUGAR CORRETO PARA O CÓDIGO DE SALVAR O RSVP ##
+    // ## LÓGICA DE SALVAMENTO DO RSVP CORRIGIDA ##
+    // Cada 'if' agora é independente
     // ===============================================================
     const rsvpOptions = [];
     if (rsvpOption1TextInput.value && rsvpOption1IdInput.value) {
@@ -238,6 +245,14 @@ eventForm.addEventListener("submit", async (event) => {
         id: rsvpOption2IdInput.value,
       });
     }
+    // "if" da Opção 3 foi movido para fora
+    if (rsvpOption3TextInput.value && rsvpOption3IdInput.value) {
+      rsvpOptions.push({
+        text: rsvpOption3TextInput.value,
+        id: rsvpOption3IdInput.value,
+      });
+    }
+    // ===============================================================
 
     const eventData = {
       title: titleInput.value,
@@ -250,9 +265,11 @@ eventForm.addEventListener("submit", async (event) => {
       galleryUrls: galleryUrls,
       rsvpOptions: rsvpOptions, // A nova propriedade
     };
-    // ===============================================================
 
-    console.log("📦 PASSO 7: Pacote de dados pronto:", eventData);
+    console.log(
+      "📦 PASSO 7: Pacote de dados pronto para ser salvo:",
+      eventData
+    );
 
     if (isEditMode) {
       const docRef = doc(db, "eventos", eventId);
@@ -263,7 +280,7 @@ eventForm.addEventListener("submit", async (event) => {
       alert("Evento cadastrado com sucesso!");
     }
 
-    console.log("✅ PASSO 8: Dados salvos no Firestore!");
+    console.log("✅ PASSO 8: Dados salvos no Firestore com sucesso!");
     window.location.href = "dashboard.html";
   } catch (error) {
     console.error("❌ ERRO GERAL NO PROCESSO DE SALVAMENTO!", error);

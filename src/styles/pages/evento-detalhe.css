@@ -156,4 +156,29 @@ main.evento-detalhe-page {
     /* Em celulares, a galeria terá 2 colunas para as fotos não ficarem tão pequenas */
     grid-template-columns: 1fr;
   }
+  .rsvp-option {
+    /* Empilha o texto e os controles */
+    flex-direction: column;
+    /* Alinha tudo à esquerda */
+    align-items: flex-start;
+    gap: 20px; /* Aumenta o espaço vertical */
+  }
+
+  .rsvp-controls {
+    /* Garante que os controles ocupem 100% da largura */
+    width: 100%;
+    /* Também empilha os controles (label, select, botão) */
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .rsvp-quantity {
+    width: 100%; /* Faz o seletor de quantidade ocupar a largura toda */
+  }
+
+  .btn-rsvp {
+    width: 100%; /* Faz o botão ocupar a largura toda */
+    justify-content: center; /* Centraliza o texto do botão */
+  }
 }

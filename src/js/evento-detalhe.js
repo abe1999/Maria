@@ -146,7 +146,10 @@ async function handleRsvpClick(event) {
   const button = event.target;
   const optionId = button.dataset.id;
   const optionText = button.dataset.text;
-  const quantitySelect = document.getElementById(`quantity-${option.id}`);
+
+  // ## CORREÇÃO AQUI: Trocamos 'option.id' por 'optionId' ##
+  const quantitySelect = document.getElementById(`quantity-${optionId}`);
+
   const quantity = Number(quantitySelect.value);
 
   if (quantity <= 0) return;
@@ -158,8 +161,10 @@ async function handleRsvpClick(event) {
   ) {
     button.disabled = true;
     button.textContent = "Salvando...";
+
     try {
       const counterRef = doc(db, "contadoresDeEventos", optionId);
+
       await setDoc(
         counterRef,
         {

@@ -3,9 +3,6 @@
 // ## CORREÇÃO: Importamos a imagem diretamente aqui ##
 import logoImage from "/img/logo/Nazare-logo.png";
 
-import "/src/styles/base/reset.css";
-import "/src/styles/base/variables.css";
-import "/src/styles/base/typography.css";
 import "/src/styles/components/header.css";
 import "/src/styles/components/buttons.css";
 
@@ -74,8 +71,8 @@ export function renderHeader() {
                 Eventos <i class="fa-solid fa-caret-down"></i>
               </a>
               <div class="dropdown-content">
-                <a href="${BASE}src/pages/proximos-eventos.html">Próximos Eventos</a>
-                <a href="${BASE}src/pages/eventos.html">Eventos Anteriores</a>
+                <a href="${BASE}src/pages/proximos-eventos.html"><span>Próximos Eventos</span></a>
+                <a href="${BASE}src/pages/eventos.html"><span>Eventos Anteriores</span></a>
               </div>
             </li>
             <li><a href="${BASE}src/pages/acampamento.html">Acampamento</a></li>

@@ -1,4 +1,4 @@
-/* header.css - VERSÃO FINAL UNIFICADA */
+/* header.css - VERSÃO FINAL E DEFINITIVA */
 
 /* --- Cabeçalho Principal --- */
 .main-header {
@@ -13,36 +13,34 @@
   z-index: 1000;
   transition: padding 0.4s ease-in-out;
 }
-
-.main-header .container,
-.header-right {
+.main-header.scrolled {
+  padding: 5px 0;
+}
+.main-header .container {
   display: flex;
   align-items: center;
-  gap: 20px;
+  justify-content: space-between;
 }
-
 .main-header .logo img {
-  height: 75px;
-  width: auto;
-  margin-top: -7.5px;
-  margin-bottom: -7.5px;
-  transition: height 0.4s ease-in-out, margin 0.4s ease-in-out;
+  height: 60px; /* Altura Padrão */
+  transition: height 0.4s ease-in-out;
+}
+.main-header.scrolled .logo img {
+  height: 45px; /* Altura Menor */
 }
 
 /* --- Navegação Principal (Desktop) --- */
 .main-nav {
   flex-grow: 1;
 }
-
 .main-nav ul {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 30px;
 }
-
 .main-nav > ul > li > a {
-  /* Seletor mais específico */
+  /* Seletor específico */
   font-family: var(--font-secondary);
   font-size: 15px;
   letter-spacing: 0.5px;
@@ -52,11 +50,9 @@
   position: relative;
   transition: color 0.3s ease;
 }
-
 .main-nav > ul > li > a:hover {
   color: var(--color-secondary-hover);
 }
-
 .main-nav > ul > li > a::after {
   content: "";
   position: absolute;
@@ -67,7 +63,6 @@
   background-color: var(--color-secondary-hover);
   transition: width 0.3s ease;
 }
-
 .main-nav > ul > li > a:hover::after {
   width: 100%;
 }
@@ -77,13 +72,11 @@
   display: flex;
   gap: 18px;
 }
-
 .social-media a {
   font-size: 18px;
   color: var(--color-secondary);
   transition: color 0.3s ease, transform 0.3s ease;
 }
-
 .social-media a:hover {
   color: var(--color-secondary-hover);
   transform: scale(1.1);
@@ -93,7 +86,6 @@
 .main-nav .dropdown {
   position: relative;
 }
-
 .dropdown-content {
   display: none;
   position: absolute;
@@ -109,7 +101,6 @@
   z-index: 1000;
   overflow: hidden;
 }
-
 .main-nav .dropdown .dropdown-content a {
   font-family: var(--font-primary);
   font-size: 15px;
@@ -121,16 +112,25 @@
   display: block;
   transition: all 0.3s ease;
 }
-
 .dropdown-content a:hover {
   background-color: var(--color-primary-dark);
   color: var(--color-secondary-hover);
 }
 
-.dropdown:hover .dropdown-content {
-  display: block;
+/* =========================================================
+   ## LÓGICA DO DESKTOP (SÓ PARA TELAS GRANDES) ##
+   ========================================================= */
+@media (min-width: 993px) {
+  /* A MÁGICA DO DESKTOP: Mostra o menu ao passar o mouse */
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  .dropdown:hover .drop-btn .fa-caret-down {
+    transform: rotate(180deg);
+  }
 }
 
+/* --- Ícone de Seta (Geral) --- */
 .drop-btn .fa-caret-down {
   color: var(--color-secondary);
   margin-left: 6px;
@@ -138,24 +138,22 @@
   transition: transform 0.3s ease;
 }
 
-.dropdown:hover .drop-btn .fa-caret-down {
-  transform: rotate(180deg);
-}
-
-/* --- Header Rolado --- */
-.main-header.scrolled {
-  padding: 5px 0;
-}
-.main-header.scrolled .logo img {
-  height: 45px;
-}
-
 /* =================================================================
-    ESTILOS RESPONSIVOS DO CABEÇALHO (BLOCO ÚNICO E CORRIGIDO)
+    ESTILOS RESPONSIVOS (MOBILE)
 ================================================================= */
 .hamburger-menu,
 .close-menu-button {
-  display: none; /* ... */
+  display: none;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: var(--color-secondary);
+}
+.hamburger-menu i,
+.close-menu-button i {
+  font-family: "Font Awesome 6 Free" !important;
+  font-weight: 900 !important;
 }
 body.menu-open {
   overflow: hidden;
@@ -174,9 +172,6 @@ body.menu-open {
     display: flex;
     justify-content: flex-end;
   }
-  .menu-open .main-header {
-    z-index: 2001; /* Garante que o header fique ACIMA da camada preta e do menu */
-  }
   .main-nav {
     position: fixed;
     top: 0;
@@ -192,6 +187,9 @@ body.menu-open {
   }
   .menu-open .main-nav {
     right: 0;
+  }
+  .menu-open .main-header {
+    z-index: 2001;
   }
   .close-menu-button {
     display: block;
@@ -215,16 +213,14 @@ body.menu-open {
     font-size: 18px;
     display: block;
     width: 100%;
-    padding: 20px;
+    padding: 20px 10px;
     box-sizing: border-box;
   }
 
-  /* ========================================================= */
-  /* ## CORREÇÃO DEFINITIVA PARA O DROPDOWN MOBILE ##           */
-  /* ========================================================= */
+  /* --- Dropdown no Mobile --- */
   .dropdown-content {
-    position: static; /* Volta a ser um item normal da lista */
-    display: none; /* Escondido por padrão */
+    position: static !important;
+    display: none;
     box-shadow: none;
     border: none;
     background-color: var(--color-primary-dark);
@@ -232,20 +228,27 @@ body.menu-open {
     border-radius: 0;
     min-width: auto;
     transform: none;
+    /* ## CORREÇÃO AQUI: Remove o padding da caixa ## */
     padding-left: 0;
   }
+
+  /* ## CORREÇÃO AQUI: Devolve o padding para o <span> ## */
   .main-nav .dropdown .dropdown-content a span {
-    padding: 12px 15px 12px 40px; /* Recuo para o texto do submenu */
+    padding: 12px 15px 12px 40px; /* O recuo de 40px está no <span> */
     display: block;
-    width: 100%;
-    box-sizing: border-box;
   }
-  /* Mostra o submenu APENAS se o <li> pai tiver a classe .active */
+
+  .main-nav .dropdown .dropdown-content a {
+    /* Garante que o link não tenha padding próprio */
+    padding: 0;
+    font-size: 16px;
+  }
+
   .dropdown.active .dropdown-content {
     display: block;
   }
 
-  /* Garante que o hover do desktop não interfira no mobile */
+  /* Removemos a regra de hover conflitante */
   .dropdown:hover .dropdown-content {
     display: none;
   }

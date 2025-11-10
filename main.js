@@ -13,6 +13,7 @@ import "/src/styles/components/hero.css";
 import "/src/styles/components/quick-links.css";
 import "/src/styles/components/latest-news.css";
 import "/src/styles/components/buttons.css";
+import "/src/styles/components/verse-of-the-day.css";
 
 // --- 2. IMPORTAÇÕES DE MÓDULOS JS ---
 // Módulos Globais
@@ -22,6 +23,7 @@ import { renderFooter } from "/src/components/Footer.js";
 // ## CORREÇÃO AQUI: Importamos as funções da homepage ##
 import { loadHeroCarousel } from "/src/js/hero-loader.js";
 import { initializeHomepageNews } from "/src/components/homepage-loader.js";
+import { loadVerseOfDay } from "/src/js/verse-of-the-day.js";
 
 // --- 3. EXECUÇÃO ---
 
@@ -40,4 +42,8 @@ if (document.getElementById("destaques-container")) {
 // Se encontrar o container das notícias, carrega as notícias
 if (document.getElementById("latest-news-grid")) {
   initializeHomepageNews();
+}
+
+if (document.getElementById("verse-container")) {
+  loadVerseOfDay();
 }

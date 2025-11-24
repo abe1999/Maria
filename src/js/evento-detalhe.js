@@ -1,4 +1,4 @@
-// Local: /src/js/evento-detalhe.js - VERSÃO FINAL COM TUDO (INSCRIÇÃO + GALERIA)
+// Local: /src/js/evento-detalhe.js - VERSÃO FINAL REVISADA
 
 // --- 1. IMPORTAÇÕES ---
 // Estilos
@@ -17,7 +17,7 @@ import { renderHeader } from "/src/components/Header.js";
 import { renderFooter } from "/src/components/Footer.js";
 import { formatarData, buildSafeURL } from "/src/utils/helpers.js";
 
-// ## MODIFICADO: Adiciona as novas funções do Firestore ##
+// Firebase
 import { app } from "../firebase-config.js";
 import {
   getFirestore,
@@ -33,17 +33,15 @@ const db = getFirestore(app);
 renderHeader();
 renderFooter();
 
-// --- 3. LÓGICA ESPECÍFICA DA PÁGINA ---
-// ## ADICIONADO: Busca o novo container de inscrição ##
+// --- 3. LÓGICA DA PÁGINA ---
 const articleContainer = document.getElementById("article-main-content");
 const rsvpContainer = document.getElementById("rsvp-container");
 const extraContainer = document.getElementById("event-extra-content");
 
 async function initializePage() {
+  // Verifica se a estrutura do HTML está correta
   if (!articleContainer || !extraContainer || !rsvpContainer) {
-    console.error(
-      "Erro: Um dos containers principais (article, rsvp, extra) não foi encontrado no HTML."
-    );
+    console.error("Erro: Containers principais não encontrados no HTML.");
     return;
   }
 
@@ -51,7 +49,8 @@ async function initializePage() {
     const params = new URLSearchParams(window.location.search);
     const eventId = params.get("id");
     if (!eventId) {
-      /* ... */ return;
+      articleContainer.innerHTML = `<h1>ID do evento não fornecido.</h1>`;
+      return;
     }
 
     const docRef = doc(db, "eventos", eventId);
@@ -60,9 +59,10 @@ async function initializePage() {
     if (docSnap.exists()) {
       const eventItem = { id: docSnap.id, ...docSnap.data() };
 
-      // Preenche o conteúdo principal (como antes)
+      // 1. Preenche o conteúdo principal
       document.title = `${eventItem.title} - Paróquia N. S. de Nazaré`;
       const imageUrl = eventItem.imageUrl || "/img/placeholder-evento.jpg";
+
       articleContainer.innerHTML = `
         <h1 class="page-title">${eventItem.title}</h1>
         <p class="article-category">Data: ${formatarData(eventItem.date)}</p>
@@ -72,13 +72,11 @@ async function initializePage() {
         <div class="article-content">${eventItem.fullText}</div>
       `;
 
-      // Limpa os containers de conteúdo extra
+      // Limpa containers extras
       extraContainer.innerHTML = "";
       rsvpContainer.innerHTML = "";
 
-      // =======================================================
-      // ## CÓDIGO ADICIONADO: Lógica do RSVP ##
-      // =======================================================
+      // 2. Lógica de Inscrições (RSVP)
       if (eventItem.rsvpOptions && eventItem.rsvpOptions.length > 0) {
         let rsvpHTML = "<h2>Inscrições</h2>";
 
@@ -87,6 +85,7 @@ async function initializePage() {
           const inscricaoSalva = localStorage.getItem(storageKey);
 
           if (inscricaoSalva) {
+            // Visual para quem já se inscreveu
             rsvpHTML += `
               <div class="rsvp-option">
                 <span class="rsvp-text">${option.text}</span>
@@ -97,6 +96,7 @@ async function initializePage() {
                 </div>
               </div>`;
           } else {
+            // Visual para nova inscrição
             rsvpHTML += `
               <div class="rsvp-option">
                 <span class="rsvp-text">${option.text}</span>
@@ -119,14 +119,30 @@ async function initializePage() {
         rsvpContainer.innerHTML = rsvpHTML;
       }
 
-      // Lógica Condicional para Galeria (EXISTENTE)
+      // 3. Lógica da Galeria
       if (eventItem.galleryUrls && eventItem.galleryUrls.length > 0) {
-        // ... (seu código da galeria, sem alterações)
+        let galleryHTML = `<div class="event-gallery-container"><h2>Galeria de Fotos</h2><div class="event-gallery">`;
+        galleryHTML += eventItem.galleryUrls
+          .map((imgUrl) => {
+            const safeImgUrl = buildSafeURL(imgUrl);
+            return `<a href="${safeImgUrl}" target="_blank"><img src="${safeImgUrl}" alt="Foto da galeria"></a>`;
+          })
+          .join("");
+        galleryHTML += `</div></div>`;
+        extraContainer.innerHTML += galleryHTML;
       }
 
-      // Lógica Condicional para Link do Drive (EXISTENTE)
-      if (eventItem.link) {
-        // ... (seu código do link do drive, sem alterações)
+      // 4. Lógica do Link do Drive (CORRIGIDA PARA ACEITAR OS DOIS FORMATOS)
+      const linkDoDrive = eventItem.driveAlbumUrl || eventItem.link;
+
+      if (linkDoDrive) {
+        const driveHTML = `
+            <div class="event-drive-link-container" style="text-align: center; margin-top: 30px;">
+                <a href="${linkDoDrive}" class="btn btn-primary" target="_blank">
+                    <i class="fa-brands fa-google-drive"></i> Ver Álbum Completo
+                </a>
+            </div>`;
+        extraContainer.innerHTML += driveHTML;
       }
     } else {
       articleContainer.innerHTML = `<h1>Evento não encontrado.</h1>`;
@@ -137,19 +153,15 @@ async function initializePage() {
   }
 }
 
-// =======================================================
-// ## CÓDIGO ADICIONADO: Nova função para o clique ##
-// =======================================================
+// --- FUNÇÃO DE CLIQUE DO RSVP ---
 async function handleRsvpClick(event) {
+  // Verifica se o clique foi no botão correto
   if (!event.target.classList.contains("btn-rsvp")) return;
 
   const button = event.target;
   const optionId = button.dataset.id;
   const optionText = button.dataset.text;
-
-  // ## CORREÇÃO AQUI: Trocamos 'option.id' por 'optionId' ##
   const quantitySelect = document.getElementById(`quantity-${optionId}`);
-
   const quantity = Number(quantitySelect.value);
 
   if (quantity <= 0) return;
@@ -165,6 +177,7 @@ async function handleRsvpClick(event) {
     try {
       const counterRef = doc(db, "contadoresDeEventos", optionId);
 
+      // Salva no Firebase (incrementando o contador)
       await setDoc(
         counterRef,
         {
@@ -174,8 +187,10 @@ async function handleRsvpClick(event) {
         { merge: true }
       );
 
+      // Salva no navegador do usuário
       localStorage.setItem(`inscrito_${optionId}`, quantity);
 
+      // Atualiza a tela
       button.textContent = `Inscrição Confirmada (${quantity} pessoa(s))`;
       button.classList.add("confirmed");
       button.classList.remove("btn-primary");
@@ -189,12 +204,10 @@ async function handleRsvpClick(event) {
   }
 }
 
-// Inicia a execução da lógica específica da página
+// --- EXECUÇÃO ---
 initializePage();
 
-// =======================================================
-// ## CÓDIGO ADICIONADO: "Ouvinte" de cliques ##
-// =======================================================
+// Adiciona o ouvinte de eventos apenas se o container existir
 if (rsvpContainer) {
   rsvpContainer.addEventListener("click", handleRsvpClick);
 }

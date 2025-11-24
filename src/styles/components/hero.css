@@ -1,14 +1,14 @@
-/* hero.css - VERSÃO CORRIGIDA E REFINADA */
+/* hero.css - VERSÃO FINAL E OTIMIZADA (FLEXBOX) */
 
 /* ==================================================
-    ESTILOS PARA A SEÇÃO DO SLIDER
+   ESTILOS PARA A SEÇÃO DO SLIDER
 ================================================== */
 
 .slider-container {
   width: 100%;
   height: 70vh;
   background-color: var(--color-light-gray);
-  position: relative; /* Adicionado para contexto de posicionamento */
+  position: relative;
 }
 
 .swiper {
@@ -17,21 +17,25 @@
 }
 
 /* ==================================================
-    ESTILOS PARA OS SLIDES INDIVIDUAIS
+   ESTILOS PARA OS SLIDES INDIVIDUAIS
 ================================================== */
 
 .swiper-slide {
-  /* O pai precisa ser um ponto de referência para o filho se posicionar */
   position: relative;
-  height: 100%;
+  height: 100%; /* Garante que o slide ocupe toda a altura */
 
-  /* Não precisamos mais de display: grid ou flex aqui */
+  /* A Mágica do Flexbox para Centralizar */
+  display: flex;
+  justify-content: center; /* Centraliza na Horizontal (Esquerda/Direita) */
+  align-items: center; /* Centraliza na Vertical (Cima/Baixo) */
+
+  text-align: center;
+  color: var(--color-white);
   background-size: cover;
   background-position: center;
-  text-align: center; /* Garante que o texto dentro da caixa fique centralizado */
-  color: var(--color-white);
 }
 
+/* Camada escura (Overlay) */
 .swiper-slide::after {
   content: "";
   position: absolute;
@@ -47,27 +51,23 @@
   z-index: 1;
 }
 
+/* Caixa de conteúdo dentro do slide */
 .slide-content {
-  /* O filho agora se posiciona de forma absoluta em relação ao pai */
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(
-    -50%,
-    -50%
-  ); /* O truque mágico para centralização perfeita */
+  position: relative; /* Volta a ser relativo para fluir bem */
+  z-index: 2; /* Fica acima do overlay */
 
-  /* Seus outros estilos de aparência continuam aqui */
-  z-index: 2;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
-  padding: 2rem;
-  max-width: 1200px;
+  /* Tamanho e Espaçamento */
   width: 90%;
+  max-width: 1200px;
+  padding: 2rem;
   box-sizing: border-box;
+
+  /* Estilo Visual (Vidro) */
   background-color: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(8px);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
   border-radius: 8px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
 }
 
 .slide-content h2 {
@@ -85,7 +85,7 @@
 }
 
 /* ==================================================
-    NAVEGAÇÃO DO SWIPER (Sem alterações)
+   NAVEGAÇÃO DO SWIPER
 ================================================== */
 
 .swiper-button-prev,
@@ -93,6 +93,7 @@
   color: var(--color-secondary);
   text-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
   transition: color 0.3s ease, transform 0.3s ease;
+  z-index: 10; /* Garante que fiquem sobre tudo */
 }
 
 .swiper-button-prev:hover,
@@ -114,7 +115,7 @@
 }
 
 /* ==================================================
-    ESTILO PARA O BOTÃO DENTRO DO SLIDE (Sem alterações)
+   ESTILO PARA O BOTÃO DENTRO DO SLIDE
 ================================================== */
 
 .btn-slide {
@@ -139,6 +140,10 @@
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
+/* ==================================================
+   CSS RESPONSIVO (Media Queries)
+================================================== */
+
 /* Ajustes para TABLETS e telas menores (até 768px) */
 @media (max-width: 768px) {
   .slider-container {
@@ -154,6 +159,7 @@
     line-height: 1.3;
   }
 
+  /* Esconde as setas em tablets e celulares */
   .slider-container .swiper-button-prev,
   .slider-container .swiper-button-next {
     display: none !important;
@@ -180,7 +186,4 @@
     padding: 10px 20px;
     font-size: 0.8rem;
   }
-
-  /* A regra de esconder as setas já foi aplicada no breakpoint de 768px,
-     então ela continua valendo para telas ainda menores. */
 }

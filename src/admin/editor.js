@@ -49,6 +49,7 @@ const imagePreview = document.getElementById("image-preview");
 const currentImagePath = document.getElementById("current-image-path");
 const categoryInput = document.getElementById("category");
 const linkInput = document.getElementById("link");
+const driveUrlInput = document.getElementById("driveAlbumUrl");
 const saveButton = document.getElementById("save-button");
 const uploadProgressContainer = document.getElementById(
   "upload-progress-container"
@@ -150,6 +151,9 @@ async function loadEventData() {
       excerptInput.value = data.excerpt || "";
       categoryInput.value = data.category || "noticia";
       linkInput.value = data.link || "";
+      if (driveUrlInput) {
+        driveUrlInput.value = data.driveAlbumUrl || "";
+      }
       tinymce.get("fullText").setContent(data.fullText || "");
 
       if (data.imageUrl) {
@@ -261,6 +265,7 @@ eventForm.addEventListener("submit", async (event) => {
       fullText: fullTextContent,
       category: categoryInput.value,
       link: linkInput.value,
+      driveAlbumUrl: driveUrlInput ? driveUrlInput.value : "",
       imageUrl: mainImageUrl,
       galleryUrls: galleryUrls,
       rsvpOptions: rsvpOptions, // A nova propriedade

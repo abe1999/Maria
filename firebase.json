@@ -2,22 +2,56 @@
   "hosting": {
     "public": "dist",
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "cleanUrls": true,
+    "trailingSlash": false,
     "rewrites": [
       {
-        "source": "/src/admin/login",
-        "destination": "/src/admin/login.html"
+        "source": "/detalhe-evento",
+        "destination": "/src/pages/evento-detalhe.html"
       },
       {
-        "source": "/src/admin/dashboard",
-        "destination": "/src/admin/dashboard.html"
+        "source": "/agenda",
+        "destination": "/src/pages/eventos.html"
       },
       {
-        "source": "/src/admin/editor",
-        "destination": "/src/admin/editor.html"
+        "source": "/proximos",
+        "destination": "/src/pages/proximos-eventos.html"
       },
       {
-        "source": "/src/admin/editor-voce-sabia",
-        "destination": "/src/admin/editor-voce-sabia.html"
+        "source": "/acampamentos",
+        "destination": "/src/pages/acampamento.html"
+      },
+      {
+        "source": "/acampamento-info",
+        "destination": "/src/pages/acampamento-inscricoes.html"
+      },
+      {
+        "source": "/historia-acampamento",
+        "destination": "/src/pages/acampamento-sobre.html"
+      },
+      {
+        "source": "/galeria-acampamento",
+        "destination": "/src/pages/acampamento-galeria.html"
+      },
+      {
+        "source": "/curiosidades",
+        "destination": "/src/pages/voce-sabia.html"
+      },
+      {
+        "source": "/curiosidade-detalhe",
+        "destination": "/src/pages/voce-sabia-detalhe.html"
+      },
+      {
+        "source": "/comunidades",
+        "destination": "/src/pages/comunidades.html"
+      },
+      {
+        "source": "/pastorais",
+        "destination": "/src/pages/pastorais.html"
+      },
+      {
+        "source": "/horarios",
+        "destination": "/src/pages/horarios.html"
       }
     ]
   }

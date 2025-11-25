@@ -132,7 +132,6 @@ async function initializePage() {
         extraContainer.innerHTML += galleryHTML;
       }
 
-      // 4. Lógica do Link do Drive (CORRIGIDA PARA ACEITAR OS DOIS FORMATOS)
       const linkDoDrive = eventItem.driveAlbumUrl || eventItem.link;
 
       if (linkDoDrive) {

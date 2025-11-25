@@ -1,3 +1,5 @@
+// Local: /src/utils/helpers.js - VERSÃO LIMPA E CORRIGIDA
+
 export function formatarData(timestamp) {
   if (!timestamp || typeof timestamp.toDate !== "function") {
     return "Data indisponível";
@@ -16,15 +18,17 @@ export function buildSafeURL(path) {
   if (path.startsWith("http")) {
     return path;
   }
-  // Apenas garante que o caminho comece com uma barra
+  // Garante que o caminho comece com uma barra
   return `/${path.replace(/^\//, "")}`;
 }
 
 // =======================================================================
-// ## FUNÇÃO PARA OS CARDS DA HOMEPAGE -  ##
+// ## FUNÇÃO PARA OS CARDS DA HOMEPAGE (Com Link Curto) ##
 // =======================================================================
 export function createHomepageNewsCard(evento) {
-  const linkURL = buildSafeURL(`src/pages/evento-detalhe.html?id=${evento.id}`);
+  // Usa o apelido definido no firebase.json
+  const linkURL = buildSafeURL(`detalhe-evento?id=${evento.id}`);
+
   const imageURL = buildSafeURL(
     evento.imageUrl || "/img/placeholder-evento.jpg"
   );
@@ -43,8 +47,13 @@ export function createHomepageNewsCard(evento) {
   `;
 }
 
+// =======================================================================
+// ## FUNÇÃO PARA OS CARDS DA PÁGINA DE EVENTOS (Com Link Curto) ##
+// =======================================================================
 export function createEventListPageCard(evento) {
-  const linkURL = buildSafeURL(`src/pages/evento-detalhe.html?id=${evento.id}`);
+  // Usa o apelido definido no firebase.json
+  const linkURL = buildSafeURL(`detalhe-evento?id=${evento.id}`);
+
   const imageURL = buildSafeURL(
     evento.imageUrl || "/img/placeholder-evento.jpg"
   );

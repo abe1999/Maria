@@ -21,18 +21,15 @@
 ================================================== */
 
 .swiper-slide {
+  /* O pai precisa ser um ponto de referência para o filho se posicionar */
   position: relative;
-  height: 100%; /* Garante que o slide ocupe toda a altura */
+  height: 100%;
 
-  /* A Mágica do Flexbox para Centralizar */
-  display: flex;
-  justify-content: center; /* Centraliza na Horizontal (Esquerda/Direita) */
-  align-items: center; /* Centraliza na Vertical (Cima/Baixo) */
-
-  text-align: center;
-  color: var(--color-white);
+  /* Não precisamos mais de display: grid ou flex aqui */
   background-size: cover;
   background-position: center;
+  text-align: center; /* Garante que o texto dentro da caixa fique centralizado */
+  color: var(--color-white);
 }
 
 /* Camada escura (Overlay) */
@@ -53,21 +50,26 @@
 
 /* Caixa de conteúdo dentro do slide */
 .slide-content {
-  position: relative; /* Volta a ser relativo para fluir bem */
-  z-index: 2; /* Fica acima do overlay */
+  /* O filho agora se posiciona de forma absoluta em relação ao pai */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(
+    -50%,
+    -50%
+  ); /* O truque mágico para centralização perfeita */
 
-  /* Tamanho e Espaçamento */
-  width: 90%;
-  max-width: 1200px;
+  /* Seus outros estilos de aparência continuam aqui */
+  z-index: 2;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
   padding: 2rem;
+  max-width: 1200px;
+  width: 90%;
   box-sizing: border-box;
-
-  /* Estilo Visual (Vidro) */
   background-color: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(8px);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
   border-radius: 8px;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
 }
 
 .slide-content h2 {
